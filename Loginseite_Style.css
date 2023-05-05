@@ -2,38 +2,37 @@ body {
   background-color: white;
 }
 
-.barTop{    
+.barTop {
 
   position: absolute;
   height: 90px;
   width: 100%;
   background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
   left: 0%;
-  right:0%;
-  top:0%;
+  right: 0%;
+  top: 0%;
   z-index: -2;
-                 
+
 }
 
-.barLeft{
+.barLeft {
 
   position: absolute;
   height: 100%;
   width: 70px;
   left: 0%;
-  right:0%;
-  top:0%;
+  right: 0%;
+  top: 0%;
 
-  background-image: linear-gradient(to bottom,  rgb(74, 142, 206), rgb(0, 255, 0));
+  background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
   z-index: -1;
- 
+
 }
 
-.login{
+
+
+.login {
 
   position: absolute;
   left: 10%;
 }
-
-
-                
