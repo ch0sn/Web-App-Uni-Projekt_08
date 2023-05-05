@@ -1,18 +1,9 @@
 # Web-App-Uni-Projekt 08
 Web-Technologien Projekt mit Lukas.
 
-Es ist einfach nur geil.
+Icons-Folder mit allen Icons
+
+Loginseite.html = Loginseite
+LoginSeite_Style.css = CSS zu Loginseite
 
 
-HIER KÖNNTE IHRE WERBUNG STEHEN!
-
-
-Gute Nacht!
-
-
-Danke für alles!
-
-
-Test aus Visual Code. 
-
-Ich bin einfach gut.
