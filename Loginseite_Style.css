@@ -5,8 +5,9 @@ body {
 .barTop {
 
   position: absolute;
-  height: 90px;
+  height: 10%;
   width: 100%;
+  min-height: 95px;
   background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
   left: 0%;
   right: 0%;
@@ -19,32 +20,36 @@ body {
 
   position: absolute;
   height: 100%;
-  width: 70px;
+  width: 6%;
   left: 0%;
   right: 0%;
   top: 0%;
-
   background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
   z-index: -1;
-
-}
-
-.boxMiddle {
-
-  position: absolute;
-  height: 30%;
-  width: 50%;
-  left: 10%;
-  right: 0%;
-  top: 10%;
-  border-radius: 10px;
-  background-image: linear-gradient(to bottom, rgb(217, 217, 217), rgb(217, 217, 217));
-  
 
 }
 
 .login {
 
   position: absolute;
+  height: 30%;
+  width: 50%;
   left: 10%;
+  right: 5%;
+  top: 15%;
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom, rgb(217, 217, 217), rgb(217, 217, 217));
+  inline-size: auto;
+  z-index: -2;
 }
+
+.barLeftLogo{
+  position: absolute;
+  width: 200%;
+  left: 5%;
+  right: 5%;
+  top: 0.5%;
+  
+  
+}
+
