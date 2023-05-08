@@ -1,0 +1,45 @@
+.barLeft {
+
+    position: absolute;
+    height: 100%;
+    width: 70px;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+
+    background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
+    z-index: -1;
+
+}
+
+.barTop {
+
+    position: absolute;
+    height: 90px;
+    width: 100%;
+    background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    z-index: -2;
+
+}
+
+.barTopElements{
+    display: inline-block;
+    position: relative;
+}
+
+button [id=btn_K]{
+
+}
+
+.dropdown-options_K{
+    display: none;
+    position: absolute;
+    overflow: auto;
+}
+
+.dropdown:hover .dropdown-options_K{
+    display: block;
+}
