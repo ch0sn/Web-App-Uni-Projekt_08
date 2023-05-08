@@ -1,90 +1,117 @@
-.kennung {
-  display: flex;
-}
-
-.passwort {
-  display: flex;
-}
-
 body {
   background-color: white;
 }
 
 .barTop {
 
+  
   position: absolute;
-  height: 10%;
+  height: 95px;
   width: 100%;
-  min-height: 95px;
   background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  z-index: -2;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: -1;
+
+  
 
 }
 
 .barLeft {
 
   position: absolute;
+  width: 80px;
   height: 100%;
-  width: 6%;
-  left: 0%;
-  right: 0%;
-  top: 0%;
+  left: 0px;
   background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
-  z-index: -1;
+  z-index: -2;
+  
 
+}
+
+
+.logo {
+  position: relative;
+  width: 250px;
 }
 
 .login {
-  
-  position: absolute;
-  height: 30%;
-  width: 50%;
-  left: 10%;
-  right: 5%;
-  top: 15%;
+
+  position: relative;
+  margin-top: 50px;
+  width: 680px;
+  left: 130px;
   border-radius: 10px;
-  background-image: linear-gradient(to bottom, rgb(217, 217, 217), rgb(217, 217, 217));
-  inline-size: auto;
-  z-index: -2;
+  background-color: rgb(217, 217, 217);
+
+  font-family: 'Orbitron', sans-serif;
+
+  border: 2px solid rgb(0, 0, 0)
+  
 }
 
-.barLeftLogo {
-  position: absolute;
-  width: 200%;
-  left: 5%;
-  right: 5%;
-  top: 0.5%;
 
 
-}
-
-.kennung {
+.username {
   display: flex;
+  gap: 50px;
+  margin-top: 10%;
+  margin-left: 20%;
+
+  font-size: 20px;
+
+  
 }
 
 .passwort {
   display: flex;
+  gap: 100px;
+  margin-top: 10%;
+  margin-left: 20%;
+
+  font-size: 20px;
+  
+  
 }
 
-input[id=username] {
-  margin-left: 10%;
+.forgot_passwort { 
+  gap: 94px;
+  margin-top: 0;
+  margin-left: 20%;
+
+  font-size: 12px;
   margin-bottom: 10%;
-}
-
-
-input[id=password] {
-  margin-left: 35%;
-
+  
+  
 }
 
 
 input[type=submit] {
   background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
-  width: 20%;
+  width: 50%;
   padding: 1%;
+  
+  margin-left: 25%;
+  margin-bottom: 5%;
+  
 
-  margin-left: 28%;
+  font-family: 'Orbitron', sans-serif;
+  
+
+  
 }
+
+.login {  
+
+  /* display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". ."
+    ". ."
+    ". ."
+    ". .";  */
+}
+
