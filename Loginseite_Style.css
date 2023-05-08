@@ -1,3 +1,11 @@
+.kennung{
+ display: flex;
+}
+
+.passwort{
+  display: flex;
+}
+
 body {
   background-color: white;
 }
@@ -29,7 +37,7 @@ body {
 
 }
 
-.login {
+.boxMiddle {
 
   position: absolute;
   height: 30%;
@@ -39,17 +47,12 @@ body {
   top: 15%;
   border-radius: 10px;
   background-image: linear-gradient(to bottom, rgb(217, 217, 217), rgb(217, 217, 217));
-  inline-size: auto;
-  z-index: -2;
+  
+
 }
 
-.barLeftLogo{
+.login {
+
   position: absolute;
-  width: 200%;
-  left: 5%;
-  right: 5%;
-  top: 0.5%;
-  
-  
+  left: 10%;
 }
-
