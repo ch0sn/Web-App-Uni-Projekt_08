@@ -36,18 +36,31 @@ body {
   z-index: -1;
 
 }
+
+.boxMiddle {
+  position: absolute;
+  height: 30%;
+  width: 50%;
+  left: 10%;
+  right: 0%;
+  top: 10%;
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom, rgb(217, 217, 217), rgb(217, 217, 217));
+}
+
 input[id = username]{
   margin-left: 10%;
   margin-bottom: 10%;
 }
 
+input[id = password]{
+  margin-left: 35%;
 
-  input[id = password]{
-    margin-left: 35%;
+}
 
-  }
 
 .login {
+
   position: absolute;
   left: 10%;
 
