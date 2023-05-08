@@ -1,8 +1,8 @@
-.kennung{
- display: flex;
+.kennung {
+  display: flex;
 }
 
-.passwort{
+.passwort {
   display: flex;
 }
 
@@ -37,8 +37,8 @@ body {
 
 }
 
-.boxMiddle {
-
+.login {
+  
   position: absolute;
   height: 30%;
   width: 50%;
@@ -47,12 +47,44 @@ body {
   top: 15%;
   border-radius: 10px;
   background-image: linear-gradient(to bottom, rgb(217, 217, 217), rgb(217, 217, 217));
-  
+  inline-size: auto;
+  z-index: -2;
+}
+
+.barLeftLogo {
+  position: absolute;
+  width: 200%;
+  left: 5%;
+  right: 5%;
+  top: 0.5%;
+
 
 }
 
-.login {
+.kennung {
+  display: flex;
+}
 
-  position: absolute;
-  left: 10%;
+.passwort {
+  display: flex;
+}
+
+input[id=username] {
+  margin-left: 10%;
+  margin-bottom: 10%;
+}
+
+
+input[id=password] {
+  margin-left: 35%;
+
+}
+
+
+input[type=submit] {
+  background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
+  width: 20%;
+  padding: 1%;
+
+  margin-left: 28%;
 }
