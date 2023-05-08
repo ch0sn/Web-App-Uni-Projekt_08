@@ -1,3 +1,11 @@
+.kennung{
+ display: flex;
+}
+
+.passwort{
+  display: flex;
+}
+
 body {
   background-color: white;
 }
@@ -28,11 +36,31 @@ body {
   z-index: -1;
 
 }
+input[id = username]{
+  margin-left: 10%;
+  margin-bottom: 10%;
+}
 
 
+  input[id = password]{
+    margin-left: 35%;
+
+  }
 
 .login {
-
   position: absolute;
   left: 10%;
+
+
+}
+a[id=vergessen]{
+
+}
+
+input[type=submit]{
+  background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
+  width: 20%;
+  padding: 1%;
+
+  margin-left: 28%;
 }
