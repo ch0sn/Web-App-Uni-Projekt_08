@@ -1,19 +1,9 @@
-.barLeft {
-
-    position: absolute;
-    height: 100%;
-    width: 70px;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-
-    background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
-    z-index: -1;
-
+header {
+    display: flex;
+    align-items: center;
 }
 
 .barTop {
-
     position: absolute;
     height: 90px;
     width: 100%;
@@ -21,25 +11,152 @@
     left: 0%;
     right: 0%;
     top: 0%;
-    z-index: -2;
+    z-index: -1;
+}
 
+.barLeft {
+    position: absolute;
+    height: 100%;
+    width: 70px;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
+    z-index: -2;
 }
 
 .barTopElements{
+    z-index: 11;
+}
+
+.navbar_links {
+    list-style: none;
+}
+
+.navbar_links li{
     display: inline-block;
+    padding: 0px 20px;
+}
+/* general Dropdown-menu settings */
+.dropdown {
     position: relative;
+    display: inline-block;
 }
 
-button [id=btn_K]{
 
+/* Dropdown-Button "Kurse" settings */
+.dropbtn_K {
+    color: white;
+    background-color: #3498DB;
+    padding:16px;
+    font-size: 16px;
+    border: none;
+    cursor:pointer;
 }
-
-.dropdown-options_K{
+/* Dropdown-Button "Kurse" color change, when hovered or selected */
+.dropbtn_K:hover, .dropbtn_K:focus{
+    background-color: #2980B9;
+}
+/* Dropdown-menu settings for "Kurse" */
+.dropdown_content_K {
     display: none;
     position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
     overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right:237px;
+    z-index: 2;
 }
-
-.dropdown:hover .dropdown-options_K{
+/* "Kurse" Dropdown-menu options' settings */
+.dropdown_content_K a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
 }
+/* "Kurse" Dropdown-menu options' hover color change */
+.dropdown a:hover {background-color: #ddd;}
+/* "Kurse" Dropdown-menu options displaying*/
+.show {display: block;}
+
+
+/* Dropdown-Button "Tools" settings */
+.dropbtn_T {
+    color: white;
+    background-color: #3498DB;
+    padding:16px;
+    font-size: 16px;
+    border: none;
+    cursor:pointer;
+}
+/* Dropdown-Button "Tools" color change, when hovered or selected */
+.dropbtn_T:hover, .dropbtn_T:focus{
+    background-color: #2980B9;
+}
+/* Dropdown-menu settings for "Tools" */
+.dropdown_content_T {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    overflow: auto;
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    left: 165px;
+}
+/* "Tools" Dropdown-menu options' settings */
+.dropdown_content_T a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    left: 5%;
+}
+/* "Tools" Dropdown-menu options' hover color change */
+.dropdown a:hover {
+    background-color: #ddd;
+}
+/* "Tools" Dropdown-menu options displaying*/
+.show {display: block;}
+
+
+/* Dropdown-Button "Foren" settings */
+.dropbtn_F {
+    color: white;
+    background-color: #3498DB;
+    padding:16px;
+    font-size: 16px;
+    border: none;
+    cursor:pointer;
+}
+/* Dropdown-Button "Foren" color change, when hovered or selected */
+.dropbtn_F:hover, .dropbtn_F:focus{
+    background-color: #2980B9;
+}
+/* Dropdown-menu settings for "Foren" */
+.dropdown_content_F {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    overflow: auto;
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    left: 275px;
+}
+/* "Foren" Dropdown-menu options' settings */
+.dropdown_content_F a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    left: 5%;
+}
+/* "Foren" Dropdown-menu options' hover color change */
+.dropdown a:hover {
+    background-color: #ddd;
+}
+/* "Foren" Dropdown-menu options displaying*/
+.show {display: block;}
+
