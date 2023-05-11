@@ -4,7 +4,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 </style>
-    
+
 
 <head>
 
@@ -14,11 +14,11 @@
 
 <body>
 
-
-
-
-
     <div class="barTop">
+
+        <div class="thmLogo">
+            <img src="/Icons/thm_logo.svg" alt="THM Logo Icon">
+        </div>
 
     </div>
 
@@ -26,13 +26,48 @@
 
     </div>
 
-    <div class="logo">
-        <img src="/Icons/thm_logo.svg" alt="THM Logo Icon">
-    </div>
+    <div class="barBottom">
 
-    
+        <div class="Info">
 
-    <div class="boxMiddle">
+            <div class="Impressum">
+
+                <a href="https://www.thm.de/site/impressum.html" ; id="impressum" ; style="color:rgb(255, 255, 255);" ;
+                    target="_blank">Impressum</a>
+
+            </div>
+
+            <div class="Hilfe">
+
+                <a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" ; id="impressum" ;
+                    style="color:rgb(255, 255, 255);" ; target="_blank">Hilfe</a>
+
+            </div>
+
+            <div class="Datenschutz">
+
+                <a href="https://www.thm.de/datenschutz/" ; id="impressum" ; style="color:rgb(255, 255, 255);" ;
+                    target="_blank">Datenschutz</a>
+
+            </div>
+
+
+        </div>
+
+        <div class="bitcoinLogo">
+
+
+            <img src="/Icons/bitcoin.svg" alt="THM Logo Icon">
+
+            <script>
+                var button = document.querySelector('.bitcoinLogo');
+                button.addEventListener('click', function () {
+                    document.documentElement.scrollTop = 0;
+                });
+            </script>
+
+        </div>
+
 
     </div>
 
@@ -54,7 +89,7 @@
             </div>
         </div>
 
-       
+
 
         <div class="passwort">
             <b>Passwort :</b>
@@ -72,12 +107,12 @@
         </div>
 
         <input type="submit" value="Anmelden" />
-        
+
         <br>
-                
+
     </div>
 
-    
+
 </body>
 
 </html>
