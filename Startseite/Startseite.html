@@ -1,52 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>BMFA-Startseite</title>
     <link rel="stylesheet" href="Startseite_Style.css">
 </head>
 <body>
-    <header>
-        <div class="barTopLogo">
-            <img src="/Icons/thm_logo.svg" alt="THM Logo Icon" height=75>
-        </div>
 
-        <div class="dropdown">
-        <ul class="navbar_links">
-            <!-- navbar buttons with onClick functions generated -->
-            <li><button onclick="showOptionsK()" class="dropbtn_K">Kurse</button></li>
-            <li><button onclick="showOptionsT()" class="dropbtn_T">Tools</button></li>
-            <li><button onclick="showOptionsF()" class="dropbtn_F">Foren</button></li>
+        <nav>
+        <a  class="barTopLogo" href="Startseite.html"><img src="/Icons/thm_logo.svg" alt="THM Logo Icon" height=75> </a>
+            <ul>
 
-            <!-- "Kurse" dropdown options with links-->
-            <div id="kDrops" class="dropdown_content_K">
-                <a href="#">Kurs1</a>
-                <a href="#">Kurs2</a>
-                <a href="#">Kurs3</a>
-            </div>
+                <li class="expandable_li_K">
+                    <input type="checkbox" id="kurse_checkbox">
+                    <label for="kurse_checkbox">Kurse <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
+                    <ul class="dropdown_K">
+                        <li><a href="#">Kurs1</a></li>
+                        <li><a href="#">Kurs2</a></li>
+                        <li><a href="#">Kurs3</a></li>
+                    </ul>
+                </li>
 
-            <!-- "Tools" dropdown options with links-->
-            <div id="tDrops" class="dropdown_content_T">
-                <a href="https://webmail.thm.de/rc/?_task=mail&_mbox=INBOX#" target="_blank">Webmail</a>
-                <a href="https://www.thm.de/organizer/" target="_blank">Organizer</a>
-                <a href="https://www.thm.de/zqe/unsere-aufgaben/meinungsportal.html" target="_blank">Feedback</a>
-                <a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Support</a>
-            </div>
+                <li class="expandable_li_T">
+                    <input type="checkbox" id="tools_checkbox">
+                    <label for="tools_checkbox">Tools <img src="/Icons/WhiteDownArrow.png" alt="whtiearrowdown"/></label>
+                    <ul class="dropdown_T">
+                        <li><a href="https://webmail.thm.de/rc/?_task=mail&_mbox=INBOX#" target="_blank">Webmail</a></li>
+                        <li> <a href="https://www.thm.de/organizer/" target="_blank">Organizer</a></li>
+                        <li> <a href="https://www.thm.de/zqe/unsere-aufgaben/meinungsportal.html" target="_blank">Feedback</a></li>
+                        <li> <a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Support</a></li>
+                    </ul>
+                </li>
 
-            <!-- "Foren" dropwdown options with links -->
-            <div id="fDrops" class="dropdown_content_F">
-                <a href="https://www.thm.de/site/hochschule/campus/aktuelles.html" target="_blank">News</a>
-                <a href="https://www.asta.thm.de/" target="_blank">ASTA</a>
-                <a href="#" target="_blank">Lerngruppe</a>
-            </div>
+                <li class="expandable_li_F">
+                    <input type="checkbox" id="forum_checkbox">
+                    <label for="forum_checkbox">Forum <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
+                    <ul class="dropdown_F">
+                        <li><a href="https://www.thm.de/site/hochschule/campus/aktuelles.html" target="_blank">News</a></li>
+                        <li><a href="https://www.asta.thm.de/" target="_blank">ASTA</a></li>
+                        <li><a href="#" target="_blank">Lerngruppe</a></li>
+                    </ul>
+                </li>
 
-        </ul>
-        </div>
+            </ul>
+        </nav>
 
-
-        <div class="barTop">
-        </div>
-    </header>
 
 
     <div class="barLeft">
@@ -58,7 +56,7 @@
 <script>
 
     /* When the user clicks on the "Kurse"-button,
-toggle between hiding and showing the dropdown content */
+toggle between hiding and showing the dropdown content
     function showOptionsK(){
     document.getElementById("kDrops").classList.toggle("show");
 }
@@ -74,9 +72,9 @@ window.onclick = function (event){
             }
         }
     }
-}
+}*/
     /* When the user clicks on the "Tools"-button,
-    toggle between hiding and showing the dropdown content */
+    toggle between hiding and showing the dropdown content
 function showOptionsT(){
     document.getElementById("tDrops").classList.toggle("show");
 }
@@ -92,10 +90,10 @@ window.onclick = function (event){
             }
         }
     }
-}
+}*/
 
     /* When the user clicks on the "Tools"-button,
-    toggle between hiding and showing the dropdown content */
+    toggle between hiding and showing the dropdown content
     function showOptionsF(){
         document.getElementById("fDrops").classList.toggle("show");
     }
@@ -111,9 +109,37 @@ window.onclick = function (event){
                 }
             }
         }
-    }
+    }*/
 </script>
 
 
 </body>
 </html>
+
+
+<!-- navbar buttons with onClick functions generated
+                   <button onclick="showOptionsK()" class="dropbtn_K">Kurse <img src="/Icons/WhiteDownArrow.png"/></button></li>
+
+               "Kurse" dropdown options with links
+               <ul id="kDrops" class="dropdown_K">
+                   <li><a href="#">Kurs1</a></li>
+                   <li><a href="#">Kurs2</a></li>
+                   <li> <a href="#">Kurs3</a></li>
+               </ul>
+
+               <li><button onclick="showOptionsT()" class="dropbtn_T">Tools <img src="/Icons/WhiteDownArrow.png"/></button></li>
+               "Tools" dropdown options with links
+                <ul id="tDrops" class="dropdown_T">
+                    <li> <a href="https://webmail.thm.de/rc/?_task=mail&_mbox=INBOX#" target="_blank">Webmail</a></li>
+                    <li> <a href="https://www.thm.de/organizer/" target="_blank">Organizer</a></li>
+                    <li> <a href="https://www.thm.de/zqe/unsere-aufgaben/meinungsportal.html" target="_blank">Feedback</a></li>
+                    <li> <a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Support</a></li>
+               </ul>
+
+               <li><button onclick="showOptionsF()" class="dropbtn_F">Foren <img src="/Icons/WhiteDownArrow.png"/></button></li>
+                "Foren" dropwdown options with links
+               <ul id="fDrops" class="dropdown_F">
+                   <li><a href="https://www.thm.de/site/hochschule/campus/aktuelles.html" target="_blank">News</a></li>
+                   <li><a href="https://www.asta.thm.de/" target="_blank">ASTA</a></li>
+                   <li><a href="#" target="_blank">Lerngruppe</a></li>
+               </ul> -->
