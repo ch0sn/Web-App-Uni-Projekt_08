@@ -1,162 +1,200 @@
-header {
+:root {
+    --background-color: #314453;
+    --darker-background-color: #243848;
+    --accent-color: #41DCE1;
+    --text-color: #FFFFFF;
+
+    --navbar-height: 85px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+nav{
+    height: var(--navbar-height);
+    background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
     display: flex;
     align-items: center;
+    justify-content: start;
 }
 
-.barTop {
-    position: absolute;
-    height: 90px;
-    width: 100%;
-    background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    z-index: -1;
+nav .barTopLogo{
+    margin-left: 10px;
+    margin-right: 50px;
 }
 
-.barLeft {
-    position: absolute;
+nav ul {
     height: 100%;
-    width: 70px;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
-    z-index: -2;
-}
-
-.barTopElements{
-    z-index: 11;
-}
-
-.navbar_links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
     list-style: none;
 }
 
-.navbar_links li{
-    display: inline-block;
-    padding: 0px 20px;
-}
-/* general Dropdown-menu settings */
-.dropdown {
+nav li {
+    height: 100%;
+    width: 200px;
+    text-align: center;
     position: relative;
-    display: inline-block;
+}
+nav li:hover{
+    background: var(--accent-color);
 }
 
+nav ul a{
+    height: 100%;
+    width: 100%;
 
-/* Dropdown-Button "Kurse" settings */
-.dropbtn_K {
-    color: white;
-    background-color: #3498DB;
-    padding:16px;
-    font-size: 16px;
-    border: none;
-    cursor:pointer;
-}
-/* Dropdown-Button "Kurse" color change, when hovered or selected */
-.dropbtn_K:hover, .dropbtn_K:focus{
-    background-color: #2980B9;
-}
-/* Dropdown-menu settings for "Kurse" */
-.dropdown_content_K {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    right:237px;
-    z-index: 2;
-}
-/* "Kurse" Dropdown-menu options' settings */
-.dropdown_content_K a {
-    color: black;
-    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-decoration: none;
-    display: block;
 }
-/* "Kurse" Dropdown-menu options' hover color change */
-.dropdown a:hover {background-color: #ddd;}
-/* "Kurse" Dropdown-menu options displaying*/
-.show {display: block;}
 
+.dropdown_K{
+    height: min-content;
+    width: 200px;
+    background: var(--background-color);
 
-/* Dropdown-Button "Tools" settings */
-.dropbtn_T {
-    color: white;
-    background-color: #3498DB;
-    padding:16px;
-    font-size: 16px;
-    border: none;
-    cursor:pointer;
-}
-/* Dropdown-Button "Tools" color change, when hovered or selected */
-.dropbtn_T:hover, .dropbtn_T:focus{
-    background-color: #2980B9;
-}
-/* Dropdown-menu settings for "Tools" */
-.dropdown_content_T {
     display: none;
+    flex-direction: column;
+
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    overflow: auto;
-    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
-    left: 165px;
+    left:0;
+    top: var(--navbar-height);
 }
-/* "Tools" Dropdown-menu options' settings */
-.dropdown_content_T a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    left: 5%;
-}
-/* "Tools" Dropdown-menu options' hover color change */
-.dropdown a:hover {
-    background-color: #ddd;
-}
-/* "Tools" Dropdown-menu options displaying*/
-.show {display: block;}
 
+.dropdown_K li{
+    height: 40px;
+    width: 100%;
+}
+.dropdown_K li a{
+    justify-content: center;
+}
 
-/* Dropdown-Button "Foren" settings */
-.dropbtn_F {
-    color: white;
-    background-color: #3498DB;
-    padding:16px;
-    font-size: 16px;
-    border: none;
-    cursor:pointer;
+nav li:hover .dropdown_K{
+    display: flex;
 }
-/* Dropdown-Button "Foren" color change, when hovered or selected */
-.dropbtn_F:hover, .dropbtn_F:focus{
-    background-color: #2980B9;
-}
-/* Dropdown-menu settings for "Foren" */
-.dropdown_content_F {
+
+nav input[type="checkbox"]{
     display: none;
+}
+
+.expandable_li_K{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown_T{
+    height: min-content;
+    width: 200px;
+    background: var(--background-color);
+
+    display: none;
+    flex-direction: column;
+
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    overflow: auto;
-    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
-    left: 275px;
+    left:0;
+    top: var(--navbar-height);
 }
-/* "Foren" Dropdown-menu options' settings */
-.dropdown_content_F a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    left: 5%;
+
+.dropdown_T li{
+    height: 40px;
+    width: 100%;
 }
-/* "Foren" Dropdown-menu options' hover color change */
-.dropdown a:hover {
-    background-color: #ddd;
+.dropdown_T li a{
+    justify-content: center;
 }
-/* "Foren" Dropdown-menu options displaying*/
-.show {display: block;}
+
+nav li:hover .dropdown_T{
+    display: flex;
+}
+
+.expandable_li_T{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown_F{
+    height: min-content;
+    width: 200px;
+    background: var(--background-color);
+
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    left:0;
+    top: var(--navbar-height);
+}
+
+.dropdown_F li{
+    height: 40px;
+    width: 100%;
+}
+.dropdown_F li a{
+    justify-content: center;
+}
+
+nav li:hover .dropdown_F{
+    display: flex;
+}
+
+.expandable_li_F{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
