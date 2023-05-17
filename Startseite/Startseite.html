@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="Startseite_Style.css">
 </head>
 <body>
-
-        <nav>
+    <!-- Navbar-Sektion beginnt. -->
+    <nav>
+        <!-- Logo wird in Navbar hinzugefügt. -->
         <a  class="barTopLogo" href="Startseite.html"><img src="/Icons/thm_logo.svg" alt="THM Logo Icon" height=75> </a>
-            <ul>
 
+        <!-- Ungeordnete Listen-Layout Sektion -->
+        <ul>
+            <!-- 1. Listeneintrag "Kurse" in der ungeordneten Listenlayouts als "expandable_li_K" -->
                 <li class="expandable_li_K">
                     <input type="checkbox" id="kurse_checkbox">
                     <label for="kurse_checkbox">Kurse <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
+                    <!-- ungeordneten Listen-Layout als Dropdown für "Kurse" -->
                     <ul class="dropdown_K">
                         <li><a href="#">Kurs1</a></li>
                         <li><a href="#">Kurs2</a></li>
@@ -21,9 +25,11 @@
                     </ul>
                 </li>
 
+            <!-- 2. Listeneintrag "Tools" in der ungeordneten Listenlayouts als "expandable_li_T" -->
                 <li class="expandable_li_T">
                     <input type="checkbox" id="tools_checkbox">
-                    <label for="tools_checkbox">Tools <img src="/Icons/WhiteDownArrow.png" alt="whtiearrowdown"/></label>
+                    <label for="tools_checkbox">Tools <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
+                    <!-- ungeordneten Listen-Layout als Dropdown für "Tools" -->
                     <ul class="dropdown_T">
                         <li><a href="https://webmail.thm.de/rc/?_task=mail&_mbox=INBOX#" target="_blank">Webmail</a></li>
                         <li> <a href="https://www.thm.de/organizer/" target="_blank">Organizer</a></li>
@@ -32,9 +38,11 @@
                     </ul>
                 </li>
 
+            <!-- 3. Listeneintrag "Tools" in der ungeordneten Listenlayouts als "expandable_li_F" -->
                 <li class="expandable_li_F">
                     <input type="checkbox" id="forum_checkbox">
                     <label for="forum_checkbox">Forum <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
+                    <!-- ungeordneten Listen-Layout als Dropdown für "Forum" -->
                     <ul class="dropdown_F">
                         <li><a href="https://www.thm.de/site/hochschule/campus/aktuelles.html" target="_blank">News</a></li>
                         <li><a href="https://www.asta.thm.de/" target="_blank">ASTA</a></li>
@@ -42,10 +50,10 @@
                     </ul>
                 </li>
 
-            </ul>
-        </nav>
+        </ul>
+    </nav>
 
-
+    <!-- linke Bar -->
     <div class="barLeft">
     </div>
 
@@ -53,7 +61,6 @@
 
 
 <script>
-
 </script>
 
 
