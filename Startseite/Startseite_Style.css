@@ -22,6 +22,12 @@ body{
     height: 100%;
 }
 
+.barLeft{
+    height: 100%;
+    width: 80px;
+    background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
+}
+
 nav{
     height: var(--navbar-height);
     background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
