@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMFA-Startseite</title>
+    <link rel="stylesheet" href="Startseite_Style.css">
+</head>
+<body>
+    <header>
+        <div class="barTopLogo">
+            <img src="/Icons/thm_logo.svg" alt="THM Logo Icon" height=75>
+        </div>
+
+        <div class="dropdown">
+        <ul class="navbar_links">
+            <!-- navbar buttons with onClick functions generated -->
+            <li><button onclick="showOptionsK()" class="dropbtn_K">Kurse</button></li>
+            <li><button onclick="showOptionsT()" class="dropbtn_T">Tools</button></li>
+            <li><button onclick="showOptionsF()" class="dropbtn_F">Foren</button></li>
+
+            <!-- "Kurse" dropdown options with links-->
+            <div id="kDrops" class="dropdown_content_K">
+                <a href="#">Kurs1</a>
+                <a href="#">Kurs2</a>
+                <a href="#">Kurs3</a>
+            </div>
+
+            <!-- "Tools" dropdown options with links-->
+            <div id="tDrops" class="dropdown_content_T">
+                <a href="https://webmail.thm.de/rc/?_task=mail&_mbox=INBOX#" target="_blank">Webmail</a>
+                <a href="https://www.thm.de/organizer/" target="_blank">Organizer</a>
+                <a href="https://www.thm.de/zqe/unsere-aufgaben/meinungsportal.html" target="_blank">Feedback</a>
+                <a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Support</a>
+            </div>
+
+            <!-- "Foren" dropwdown options with links -->
+            <div id="fDrops" class="dropdown_content_F">
+                <a href="https://www.thm.de/site/hochschule/campus/aktuelles.html" target="_blank">News</a>
+                <a href="https://www.asta.thm.de/" target="_blank">ASTA</a>
+                <a href="#" target="_blank">Lerngruppe</a>
+            </div>
+
+        </ul>
+        </div>
+
+
+        <div class="barTop">
+        </div>
+    </header>
+
+
+    <div class="barLeft">
+    </div>
+
+
+
+
+<script>
+
+    /* When the user clicks on the "Kurse"-button,
+toggle between hiding and showing the dropdown content */
+    function showOptionsK(){
+    document.getElementById("kDrops").classList.toggle("show");
+}
+    // Close the dropdown if the user clicks outside of it
+window.onclick = function (event){
+    if (!event.target.matches('.dropbtn_K')) {
+        var dropdowns = document.getElementsByClassName("dropdown_content_K");
+        var i;
+        for (i = 0; i < dropdowns.length; i++){
+            var openDropdown = dropdowns [i];
+            if (openDropdown.classList.contains('show')){
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+    /* When the user clicks on the "Tools"-button,
+    toggle between hiding and showing the dropdown content */
+function showOptionsT(){
+    document.getElementById("tDrops").classList.toggle("show");
+}
+    // Close the dropdown if the user clicks outside of it
+window.onclick = function (event){
+    if (!event.target.matches('.dropbtn_T')) {
+        var dropdowns = document.getElementsByClassName("dropdown_content_T");
+        var i;
+        for (i = 0; i < dropdowns.length; i++){
+            var openDropdown = dropdowns [i];
+            if (openDropdown.classList.contains('show')){
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+    /* When the user clicks on the "Tools"-button,
+    toggle between hiding and showing the dropdown content */
+    function showOptionsF(){
+        document.getElementById("fDrops").classList.toggle("show");
+    }
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event){
+        if (!event.target.matches('.dropbtn_F')) {
+            var dropdowns = document.getElementsByClassName("dropdown_content_F");
+            var i;
+            for (i = 0; i < dropdowns.length; i++){
+                var openDropdown = dropdowns [i];
+                if (openDropdown.classList.contains('show')){
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>
