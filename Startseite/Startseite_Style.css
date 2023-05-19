@@ -193,3 +193,49 @@ nav li:hover .dropdown_F{
     justify-content: center;
     align-items: center;
 }
+
+/* Suchfeldleiste-Einstellung*/
+.searchBar {
+    margin-left: 60px;
+    color: black;
+    display: flex;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+/* Suchfeld-Eingabe-Einstellung*/
+input[type="search"] {
+    background: transparent;
+    margin: 0;
+    padding: 7px 30px;
+    border: 1px solid transparent;
+    border-radius: inherit;
+}
+
+/* Suchfeld-Platzhalter-Einstellung*/
+input[type="search"]::placeholder {
+    color: white;
+}
+
+/* Suchfeld-Button-Einstellung*/
+button[type="submit"] {
+    text-indent: -999px;
+
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: transparent url("/Icons/loupe.png") no-repeat center;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* Einstellungen von fokussiertem Button und Suchfeldeingabe*/
+button[type="submit"]:focus,
+input[type="search"]:focus {
+    box-shadow: 0 0 3px 0 var(--accent-color);
+    border-color: var(--accent-color);
+    outline: none;
+}
