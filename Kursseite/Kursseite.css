@@ -1,2 +1,41 @@
-@import url("Loginseite/Loginseite_Style.css");
-@import url("Loginseite/Loginseite.html");
+.HeaderBackround {
+
+    position: relative;
+    margin-top:140px;
+    margin-bottom: 1px;
+    
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    font-family: 'Orbitron', sans-serif;
+    
+  
+}
+
+.BodyBackround {
+
+    position: relative;
+    
+    margin-bottom: 1px;
+    
+    height: 500px;
+       
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    font-family: 'Orbitron', sans-serif;
+    
+  
+}
+
+.gridCourse {
+    display: grid;
+    left: 10%;
+    right: 10%;
+    gap: 20px;
+    width: 80%;
+    height: 100%;
+ 
+    margin-bottom: 100px;
+  }
+
+

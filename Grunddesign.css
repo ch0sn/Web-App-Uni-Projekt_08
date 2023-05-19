@@ -6,6 +6,18 @@ body {
     display: flex;
     justify-content: center;
   }
+
+  .Info{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: 'Orbitron', sans-serif;
+    color: white; 
+  }
   
   .barTop {
   
@@ -28,6 +40,7 @@ body {
     top: 0px;
     background-image: linear-gradient(to bottom, rgb(62, 138, 209), rgb(0, 255, 0));
     z-index: -2;
+    position: fixed;
   }
   
   .barBottom {
@@ -39,7 +52,8 @@ body {
     left: 10%;
     right: 10%;
     background-color: rgb(74, 78, 97);
-    z-index: -3;
+    position: fixed;
+   
     
   }
    
@@ -59,5 +73,7 @@ body {
     left: 5px;
     top: 5px
   }
+
+  
   
   
