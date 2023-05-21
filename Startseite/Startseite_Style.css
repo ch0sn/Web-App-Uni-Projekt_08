@@ -26,6 +26,7 @@ body{
 
 /* left bar-Einstellung */
 .barLeft{
+    position:fixed;
     height: 100%;
     width: 80px;
     background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
