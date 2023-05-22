@@ -8,7 +8,8 @@
 
   --navbar-height: 95px;
   --dropdown-width: 200px;
-  --border-radius: 5px
+  --border-radius: 5px;
+  --profile-dd-width: 300px;
   
 }
 
@@ -289,6 +290,62 @@ input[type="search"]:focus {
     border-color: var(--accent-color);
     outline: none;
 }
-  
-  
+
+/* "Profilbild, -name,"-Label Zentrierung-Einstellung*/
+.expandable_li_P {
+    display:flex;
+    align-items: center;
+    margin-left: 250px;
+    width: var(--profile-dd-width);
+}
+/* Abstand zu Profilbild */
+.expandable_li_P label {
+    margin-right: 15px;
+}
+/* Abstand zum Pfeilrunter "Profilbereich" */
+.expandable_li_P [id="profileArrow"] {
+    margin-left: 5px;
+}
+
+/* "Profilbereich"-Dropdown-Einstellungen */
+.dropdown_P{
+    height: min-content;
+    width: var(--profile-dd-width);
+    background: var(--background-color);
+
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    left:0;
+    top: var(--navbar-height);
+    border-radius: var(--border-radius);
+}
+
+/* "Profil"-Dropdown-Eintragsgrößen-Einstellungen */
+.dropdown_P li{
+    height: 40px;
+    width: 100%;
+}
+
+/* "Profil"-Dropdown-Wortzentrierungseinstellungen */
+.dropdown_P li a{
+    justify-content: center;
+}
+
+/* "Profil"-Dropdown bei Hover-Einstellung */
+nav li:hover .dropdown_P{
+    display: flex;
+}
+
+/* "Profil"-Label Zentrierung-Einstellung*/
+.expandable_li_P{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.darkmode {
+    margin-left: 50px;
+}
   
