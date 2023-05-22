@@ -2,22 +2,31 @@
 <html lang="en">
 
 <head>
-
-
-    <link rel="stylesheet" href="../Grunddesign.css">
+    <meta charset="UTF-8">
+    <title>Kursbereich</title>
     <link rel="stylesheet" href="Kursseite.css">
+    <link rel="stylesheet" href="../Grunddesign.css">
 
 </head>
 
 <body>
 
+    <!-- Navbar-Sektion beginnt. -->
+    <nav>
+        <!-- Logo wird in Navbar hinzugefügt. -->
+        <a class="barTopLogo" href="Startseite.html"><img src="/Icons/thm_logo.svg" alt="THM Logo Icon" height=75> </a>
+
+    </nav>
+
+    <!-- linke Bar -->
+    <div class="barLeft">
+    </div>
+
     <div class="gridCourse">
-
-
 
         <div class="HeaderBackround">
 
-            
+
         </div>
 
         <div class="BodyBackround">
@@ -27,61 +36,29 @@
 
     </div>
 
+</div>
+<ul class="infoBar">
 
-    <div class="barTop">
+    <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
 
-        <div class="thmLogo">
-            <img src="/Icons/thm_logo.svg" alt="THM Logo Icon">
-        </div>
+    <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
 
-    </div>
+    <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
 
-    <div class="barLeft">
+    <img src="/Icons/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
 
-    </div>
+    <script>
+        var button = document.querySelector('.bitcoinLogo');
+        button.addEventListener('click', function () {
+            document.documentElement.scrollTop = 0;
+        });
+    </script>
 
-    <div class="barBottom">
-
-        <div class="barBottomLinks">
-
-            <div class="Impressum">
-
-                <a href="https://www.thm.de/site/impressum.html" style="color:rgb(255, 255, 255);"
-                    target="_blank">Impressum</a>
-
-            </div>
-
-            <div class="Hilfe">
-
-                <a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html"
-                    style="color:rgb(255, 255, 255);" target="_blank">Hilfe</a>
-
-            </div>
-
-            <div class="Datenschutz">
-
-                <a href="https://www.thm.de/datenschutz/" style="color:rgb(255, 255, 255);"
-                    target="_blank">Datenschutz</a>
-
-            </div>
-        </div>
-
-        <div class="bitcoinLogo">
+</ul>
+</div>
 
 
-            <img src="/Icons/bitcoin.svg" alt="THM Logo Icon">
 
-            <script>
-                var button = document.querySelector('.bitcoinLogo');
-                button.addEventListener('click', function () {
-                    document.documentElement.scrollTop = 0;
-                });
-            </script>
-
-        </div>
-
-
-    </div>
 
 
 
