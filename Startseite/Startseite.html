@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>BMFA-Startseite</title>
-    <link rel="stylesheet" href="Startseite_Style.css">
+    <link rel="stylesheet" href="Startseite_Style_DM.css">
     <link rel="stylesheet" href="../Grunddesign.css">
 </head>
 <body>
@@ -57,6 +57,24 @@
                 <button type="submit"> </button>
             </div>
 
+            <!-- 5. Listeneintrag "Profilbereich" -->
+            <li class="expandable_li_P">
+                <label>Goethe, Johann Wolfgang</label>
+                <img class= "profilePic" src="/Icons/32px_user_whitemode.png" alt="usericon_whitemode"/>
+                <input type="checkbox" id="profile_checkbox">
+                <label id="profileArrow" for="profile_checkbox" > <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
+
+                <ul class="dropdown_P">
+                    <li><a href="#" target="_blank">Profil</a></li>
+                    <li><a href="#" target="_blank">Mitteilungen</a></li>
+                    <li><a href="#" target="_blank">Einstellungen</a></li>
+                    <li><a href="#" target="_blank">Abmelden</a></li>
+                </ul>
+            </li>
+
+            <div class="darkmode">
+                <a href="http://localhost:63342/Web-App-Uni-Projekt_08/Startseite/Startseite_DM.html?_ijt=kfsqsir0ap2japip61e75pcb1i&_ij_reload=RELOAD_ON_SAVE"> <img src="/Icons/moon.png" alt="moon icon"/> </a>
+            </div>
         </ul>
     </nav>
 
@@ -64,26 +82,26 @@
     <div class="barLeft">
     </div>
 
-</div>
-<ul class="infoBar">
 
-    <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
 
-    <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
+    <div>
+        <ul class="infoBar">
+            <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
 
-    <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
+            <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
 
-    <img src="/Icons/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+            <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
 
-    <script>
-        var button = document.querySelector('.bitcoinLogo');
-        button.addEventListener('click', function () {
-            document.documentElement.scrollTop = 0;
-        });
-    </script>
+            <img src="/Icons/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
 
-</ul>
-</div>
+        <script>
+            var button = document.querySelector('.bitcoinLogo');
+            button.addEventListener('click', function () {
+                document.documentElement.scrollTop = 0;
+            });
+        </script>
+        </ul>
+    </div>
 
 
 
