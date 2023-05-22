@@ -1,88 +1,35 @@
-body {
-  background-color: white;
-  margin: 0;
-  padding: 0;  
-
-  display: flex;
-  justify-content: center;
-}
-
-.barTop {
-
-  position: absolute;
-  height: 95px;
-  width: 100%;
-  background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  z-index: -1;
-  
-}
-
-.barLeft {
-  position: absolute;
-  width: 80px;
-  height: 100%;
-  left: 0px;
-  top: 0px;
-  background-image: linear-gradient(to bottom, rgb(62, 138, 209), rgb(0, 255, 0));
-  z-index: -2;
-}
-
-.barBottom {
-
-  
-  position: absolute;
-  height: 50px;
-  bottom: 10px;
-  left: 10%;
-  right: 10%;
-  background-color: rgb(74, 78, 97);
-  z-index: -3;
-  
-}
-
-.Info{
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 12px;
-  margin-left: 10%;
-  margin-right: 10%;
-  font-family: 'Orbitron', sans-serif;
-  color: white; 
-}
-
-.bitcoinLogo{
- 
-  position: relative;  
-  width: 25px;
-  margin-top: -20px;
-  margin-right: 20px;
-  align-self: center;
-  float: right;      
-}
-
-.thmLogo {
-  position: relative;
-  width: 250px;
-  left: 5px;
-  top: 5px
-}
-
 .login {
-  position: relative;
-  margin-top:140px;
-  width: 680px;
-  /*left: 130px;*/
 
+  position: relative;
+  top: 350px;
+  width: 750px;
   border-radius: 10px;
   background-color: rgb(217, 217, 217);
   font-family: 'Orbitron', sans-serif;
-  border: 2px solid rgb(0, 0, 0)
+  border: 2px solid rgb(0, 0, 0);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
 
+.login h1{
+  font-family: 'Orbitron', sans-serif;
+  color: black;
+  font-size: 35px;
+  margin-left: 10px;
+  
+}
+
+.login b{
+  font-family: 'Orbitron', sans-serif;
+  color: black;
+  font-size: 20px;
+}
+
+.login a{
+  font-family: 'Orbitron', sans-serif;
+  color: black;
+  font-size: 15px;
 }
 
 .username {
@@ -93,6 +40,11 @@ body {
   font-size: 20px;  
 }
 
+.username_tf {
+  color: black;
+  font-size: 20px;
+}
+
 .passwort {
   display: flex;
   gap: 100px;
@@ -101,14 +53,16 @@ body {
   font-size: 20px;
 }
 
-.forgot_passwort { 
-  gap: 94px;
-  margin-top: 0;
-  margin-left: 20%;
-  font-size: 12px;
-  margin-bottom: 10%;  
+.password_tf {
+  color: black;
+  font-size: 20px;
 }
 
+.forgot_passwort {
+  
+  margin-left: 20%;
+    
+}
 
 input[type=submit] {
   background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
@@ -116,8 +70,9 @@ input[type=submit] {
   padding: 1%;
   margin-left: 25%;
   margin-bottom: 5%;
+  margin-top: 10%;
   font-family: 'Orbitron', sans-serif;  
+  cursor: pointer;
 }
-
 
 

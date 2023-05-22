@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+:root { /**/
+  --background-color: rgb(217, 217, 217);/**/
+  --darker-background-color: #243848;
+  --accent-color: #1183d6;
+  --text-color: #000000;
+
+  --navbar-height: 95px;
+  --dropdown-width: 200px;
+  --border-radius: 5px
+  
+}
+
+*{/**/
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: var(--text-color);
+}
+
+html{/**/
+  height: 100%;
+}
+body{/**/
+  height: 100%;
+}
+
+/* left bar-Einstellung */
+.barLeft{ 
+  position:fixed;
+  height: 100%;
+  width: 95px;
+  background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
+}
+
+/* Navbar-Einstellungen */
+nav{ 
+  height: var(--navbar-height);
+  background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+/* in der Navbar zugehörige Logo Einstellungen - Abstand zum Internetseitenrand */
+nav .barTopLogo{ /**/
+  margin-left: 10px;
+  margin-right: 50px;
+}
+
+
+.infoBar{ /**/
+  
+  position: fixed;
+  background: rgb(74,78,97);
+  height: 50px;
+  margin-left: 10%;
+  margin-right: calc(10% - 95px);
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  
+  bottom: 1%;
+  right: 0;
+  left: 0;
+  
+  
+  
+}
+
+.infoBar li { /**/
+  width: 80%;
+  text-align: right;
+  margin-right: 12%;
+  
+}
+
+.infoBar li a {/**/
+  font-family: 'Orbitron', sans-serif;
+  text-decoration: none;
+  color: white;
+}
+
+.bitcoinLogo{/**/
+  margin-right: 1%;
+  cursor: pointer;
+  align-self: center;
+}
+
+
+/* in der Navbar zugehörige ungeordnete Listenlayout-Einstellungen */
+nav ul {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+}
+
+/* in der Navbar zugehörige Listeneintrag-Einstellungen mit Hover-Einstellung */
+nav li {
+    height: 100%;
+    width: var(--dropdown-width);
+    text-align: center;
+    position: relative;
+}
+nav li:hover{
+    color: rgba(255,255,255,1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* in der Navbar zugehörige Dropdown-Listeneintrag-Einstellungen */
+nav ul a{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+/* "Kurse"-Dropdown-Einstellungen */
+.dropdown_K{
+    height: min-content;
+    width: var(--dropdown-width);
+    background: var(--background-color);
+
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    left:0;
+    top: var(--navbar-height);
+
+    border-radius: var(--border-radius);
+}
+
+/* "Kurse"-Dropdown-Eintragsgrößen-Einstellungen */
+.dropdown_K li{
+    height: 40px;
+    width: 100%;
+}
+/* "Kurse"-Dropdown-Wortzentrierungseinstellungen */
+.dropdown_K li a{
+    justify-content: center;
+}
+/* "Kurse"-Dropdown bei Hover-Einstellung */
+nav li:hover .dropdown_K{
+    display: flex;
+}
+
+/* Navbar-Einträge Checkboxen nicht darstellen */
+nav input[type="checkbox"]{
+    display: none;
+}
+
+/* "Kurse"-Label Zentrierung-Einstellung*/
+.expandable_li_K{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* "Tools"-Dropdown-Einstellungen */
+.dropdown_T{
+    height: min-content;
+    width: var(--dropdown-width);
+    background: var(--background-color);
+
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    left:0;
+    top: var(--navbar-height);
+    border-radius: var(--border-radius);
+}
+
+/* "Tools"-Dropdown-Eintragsgrößen-Einstellungen */
+.dropdown_T li{
+    height: 40px;
+    width: 100%;
+}
+
+/* "Tools"-Dropdown-Wortzentrierungseinstellungen */
+.dropdown_T li a{
+    justify-content: center;
+}
+
+/* "Tools"-Dropdown bei Hover-Einstellung */
+nav li:hover .dropdown_T{
+    display: flex;
+}
+
+/* "Tools"-Label Zentrierung-Einstellung*/
+.expandable_li_T{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* "Forum"-Dropdown-Einstellungen */
+.dropdown_F{
+    height: min-content;
+    width: var(--dropdown-width);
+    background: var(--background-color);
+
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    left:0;
+    top: var(--navbar-height);
+    border-radius: var(--border-radius);
+}
+
+/* "Forum"-Dropdown-Eintragsgrößen-Einstellungen */
+.dropdown_F li{
+    height: 40px;
+    width: 100%;
+}
+
+/* "Forum"-Dropdown-Wortzentrierungseinstellungen */
+.dropdown_F li a{
+    justify-content: center;
+}
+
+/* "Forum"-Dropdown bei Hover-Einstellung */
+nav li:hover .dropdown_F{
+    display: flex;
+}
+
+/* "Forum"-Label Zentrierung-Einstellung*/
+.expandable_li_F{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Suchfeldleiste-Einstellung*/
+.searchBar {
+    margin-left: 60px;
+    color: black;
+    display: flex;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+/* Suchfeld-Eingabe-Einstellung*/
+input[type="search"] {
+    background: transparent;
+    margin: 0;
+    padding: 7px 30px;
+    border: 1px solid transparent;
+    border-radius: inherit;
+}
+
+/* Suchfeld-Platzhalter-Einstellung*/
+input[type="search"]::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+/* Suchfeld-Button-Einstellung*/
+button[type="submit"] {
+    text-indent: -999px;
+
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: transparent url("/Icons/loupe.png") no-repeat center;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* Einstellungen von fokussiertem Button und Suchfeldeingabe*/
+button[type="submit"]:focus,
+input[type="search"]:focus {
+    box-shadow: 0 0 3px 0 var(--accent-color);
+    border-color: var(--accent-color);
+    outline: none;
+}
+  
+  
+  
