@@ -1,1 +1,79 @@
 
+
+
+.willkommensblock {
+    position: relative;
+    height:250px;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 10px;
+    background-color: lightgray;
+    margin-top:80px;
+    margin-left: 10%;
+    margin-right: calc(10% - 95px);
+}
+
+.willkommensblock h1 {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.willkommensblock p {
+    font-family: sans-serif;
+    margin-left: 20px;
+}
+
+
+.schwarzesbrett {
+    position: relative;
+    height:200px;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 10px;
+    background-color: lightgray;
+    margin-top:20px;
+    margin-left: 10%;
+    margin-right: calc(10% - 95px);
+}
+
+.schwarzesbrett h1 {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.schwarzesbrett ul {
+    font-family: bold;
+    margin-left: 40px;
+    list-style: none;
+}
+
+.schwarzesbrett ul li {
+    font-size: 18px;
+}
+
+.kursbereich{
+    position: relative;
+
+    border: 2px solid rgb(0,0,0);
+    border-radius: 10px;
+    background-color: lightgray;
+    margin-top:20px;
+    margin-left: 10%;
+    margin-right: calc(10% - 95px);
+}
+
+
+
+.kursbereich h1 {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.kursbereich ul {
+    font-family: bold;
+    margin-left: 40px;
+    list-style: none;
+    height:min-content;
+}
+
+.kursbereich ul li {
+    font-size: 18px;
+}
