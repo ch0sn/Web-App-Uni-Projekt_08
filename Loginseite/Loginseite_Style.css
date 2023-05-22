@@ -73,6 +73,7 @@ input[type=submit] {
   margin-top: 10%;
   font-family: 'Orbitron', sans-serif;  
   cursor: pointer;
+  border-radius: 5px;
 }
 
 

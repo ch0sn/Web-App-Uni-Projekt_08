@@ -1,0 +1,61 @@
+.HeaderCourseClass {
+
+    position: relative;
+    margin-top: 100px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    font-family: 'Orbitron', sans-serif;
+
+    margin-left: 10%;
+    margin-right: calc(10% - 95px);
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+
+}
+
+.BodyCourseClass {
+
+
+    border: 2px solid rgb(0, 0, 0);
+    position: relative;
+    height: 600px;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    margin-left: 10%;
+    margin-right: calc(10% - 95px);
+    top: 1px;
+    margin-bottom: 100px;
+    
+
+}
+
+.gridCoursesClass {
+
+    display: grid;
+    gap: 75px;
+
+}
+
+
+
+#courseNameHeaderId {
+
+    color: black;
+    font-size: 40px;
+    margin-left: 10px;
+    
+
+}
+
+
+
+#coursePathId {
+
+    color: black;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
