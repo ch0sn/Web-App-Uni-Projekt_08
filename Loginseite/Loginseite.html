@@ -13,7 +13,7 @@
     <nav>
         <!-- Logo wird in Navbar hinzugefügt. -->
         <a class="barTopLogo" href="Startseite.html"><img src="/Icons/thm_logo.svg" alt="THM Logo Icon" height=75> </a>
-        
+
     </nav>
 
     <!-- linke Bar -->
@@ -27,21 +27,24 @@
 
         <!-- Logindateneingabe -->
         <div class="username">
-            <b>THM-Kennung :</b>
-            <input type="text" class="username_tf" name="name" placeholder="mamu12" />
+            <!-- <b id= "kennungText">THM-Kennung: </b> -->
+            <input type="text" class="username_tf" name="name" placeholder="THM Kennung" />
         </div>
 
 
 
         <div class="passwort">
-            <b>Passwort :</b>
-            <input type="password" class="password_tf" name="password" required />
+            <!-- <b id= "passwortText">Passwort: </b> -->
+            <input type="password" class="password_tf" name="password" required placeholder="Passwort" />
         </div>
 
 
         <!-- Weiterleitung, falls Passwort vergessen. -->
-        <a href="https://www.thm.de/its/campusnetz/benutzerkonto/passwort-vergessen.html" class="forgot_passwort"
-            style="color:blue;" target="_blank">Passwort vergessen</a>
+        <div>
+            <a href="https://www.thm.de/its/campusnetz/benutzerkonto/passwort-vergessen.html" class="forgot_passwort"
+                style="color:blue;" target="_blank">Passwort vergessen
+            </a>
+        </div>
 
         <input type="submit" value="Anmelden" />
 
