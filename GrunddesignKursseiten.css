@@ -1,7 +1,7 @@
 .HeaderCourseClass {
 
     position: relative;
-    margin-top: 100px;
+    margin-top: 50px;
     height: 200px;
     border-radius: 10px;
     background-color: rgb(217, 217, 217);
@@ -24,8 +24,7 @@
     background-color: rgb(217, 217, 217);
     margin-left: 10%;
     margin-right: calc(10% - 95px);
-    top: 1px;
-    margin-bottom: 100px;
+    margin-top: 1px;
     
 
 }
@@ -33,7 +32,7 @@
 .gridCoursesClass {
 
     display: grid;
-    gap: 75px;
+    gap: 45px;
 
 }
 
