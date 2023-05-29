@@ -151,10 +151,10 @@ nav ul a {
     flex-direction: column;
 
     position: absolute;
-    left: 0;
     top: var(--navbar-height);
-
+    border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Kurse"-Dropdown-Eintragsgrößen-Einstellungen */
@@ -195,9 +195,10 @@ nav input[type="checkbox"] {
     flex-direction: column;
 
     position: absolute;
-    left: 0;
     top: var(--navbar-height);
+    border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Tools"-Dropdown-Eintragsgrößen-Einstellungen */
@@ -233,9 +234,10 @@ nav li:hover .dropdown_T {
     flex-direction: column;
 
     position: absolute;
-    left: 0;
     top: var(--navbar-height);
+    border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Forum"-Dropdown-Eintragsgrößen-Einstellungen */
@@ -333,9 +335,10 @@ input[type="search"]:focus {
     flex-direction: column;
 
     position: absolute;
-    left:0;
     top: var(--navbar-height);
+    border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Profil"-Dropdown-Eintragsgrößen-Einstellungen */

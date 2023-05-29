@@ -77,3 +77,52 @@
 .kursbereich ul li {
     font-size: 18px;
 }
+
+
+
+.collapsible {
+    background: lightgray;
+    margin-left: 95%;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.filterContent {
+    background: aliceblue;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.filterContent ul{
+    display:flex;
+}
+
+.fitlerContent li {
+    font-size: 15px;
+
+
+}
+
+.filterContent label {
+    font-size: 15px;
+}
+
+#enrolled label{
+    font-size: 15px;
+}
+
+#winter {
+    margin-top: 20px;
+}
+
+
+
+#semesternumber {
+    font-size: 15px;
+}
+
+#fachbereich {
+    font-size: 15px;
+}
