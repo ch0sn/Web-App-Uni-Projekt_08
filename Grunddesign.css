@@ -155,6 +155,7 @@ nav ul a {
     top: var(--navbar-height);
 
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Kurse"-Dropdown-Eintragsgrößen-Einstellungen */
@@ -198,6 +199,7 @@ nav input[type="checkbox"] {
     left: 0;
     top: var(--navbar-height);
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Tools"-Dropdown-Eintragsgrößen-Einstellungen */
@@ -236,6 +238,7 @@ nav li:hover .dropdown_T {
     left: 0;
     top: var(--navbar-height);
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Forum"-Dropdown-Eintragsgrößen-Einstellungen */
@@ -336,6 +339,7 @@ input[type="search"]:focus {
     left:0;
     top: var(--navbar-height);
     border-radius: var(--border-radius);
+    z-index: 5;
 }
 
 /* "Profil"-Dropdown-Eintragsgrößen-Einstellungen */
