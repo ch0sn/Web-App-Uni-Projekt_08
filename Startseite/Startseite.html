@@ -109,9 +109,39 @@
     <div class="kursbereich">
         <br>
         <h1>Kursbereiche</h1>
-        <input type="checkbox" id="filter_checkbox">
-        <label id="filterlabel" for="filter_checkbox"><img src="/Icons/24px_filter.png" alt="filter"/></label>
-        <br>
+        <!-- Collapsible button -->
+        <button type="button" class="collapsible"><img src="/Icons/24px_filter.png" alt="filter"/></button>
+
+        <!-- Filter-content for Collapsible -->
+        <div class="filterContent">
+            <ul>
+                <form>
+                    <li><input type="checkbox" id="enrolled">Angemeldet</input></li>
+                    <li><input type="radio" id="winter" name="semesterTime" value="winter"><label for="winter">Wintersemester</label></li>
+                    <li><input type="radio" id="summer" name="semesterTime" value="summer"><label for="summer">Sommersemester</label></li>
+                    <li><select id="semesternumber" name="semesternumber">
+                        <option value selected="selected">Alle Semester</option>
+                        <option value="#">1.Semester</option>
+                        <option value="#">2.Semester</option>
+                        <option value="#">3.Semester</option>
+                        <option value="#">4.Semester</option>
+                        <option value="#">5.Semester</option>
+                    </select></li>
+                    <li><select id="fachbereich" name="fachbereich">
+                        <option value selected="selected">Alle Fachbereiche</option>
+                        <option value="#">B (01)</option>
+                        <option value="#">EI (02)</option>
+                        <option value="#">ME (03)</option>
+                        <option value="#">LSE (04)</option>
+                        <option value="#">GES (05)</option>
+                        <option value="#">MNI (06)</option>
+                        <option value="#">W (07)</option>
+                        <option value="#">IEM (11)</option>
+                    </select></li>
+                </form>
+            </ul>
+        </div>
+
         <ul>
             <li>FB 01: B - Bauwesen (Gi)</li>
             <br>
