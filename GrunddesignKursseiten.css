@@ -24,7 +24,6 @@
     background-color: rgb(217, 217, 217);
     margin-left: 10%;
     margin-right: calc(10% - 95px);
-    margin-top: 1px;
     
 
 }
@@ -32,7 +31,7 @@
 .gridCoursesClass {
 
     display: grid;
-    gap: 45px;
+    gap: 20px;
 
 }
 
