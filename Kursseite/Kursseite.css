@@ -1,3 +1,24 @@
+.HeaderCourseClass{
+    display:flex;
+    flex-direction: column;
+}
 
+.HeaderCourseClass h1{
 
+}
+
+.HeaderCourseClass p {
+
+}
+.abmeldeClass {
+    dislay:block;
+    margin-left: 95%;
+    cursor:pointer;
+    border: 1px solid rgb(0,0,0);
+    list-style-type: none;
+}
+
+#abmelde_Checkbox {
+
+}
 
