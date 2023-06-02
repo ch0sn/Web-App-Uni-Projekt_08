@@ -1,11 +1,13 @@
 
+
+
 .willkommensblock {
-   position: relative;
+    position: relative;
     height:250px;
     border: 2px solid rgb(0,0,0);
     border-radius: 10px;
     background-color: lightgray;
-    margin-top:80px;
+    margin-top:  50px;
     margin-left: 10%;
     margin-right: calc(10% - 95px);
 }
@@ -77,6 +79,7 @@
 }
 
 
+
 .collapsible {
     background: lightgray;
     margin-left: 95%;
@@ -123,4 +126,3 @@
 #fachbereich {
     font-size: 15px;
 }
-

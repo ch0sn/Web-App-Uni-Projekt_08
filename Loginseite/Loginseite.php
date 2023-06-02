@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Einsschreiben</title>
-    <link rel="stylesheet" href="Einschreibeseite.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="Loginseite_Style.css">
     <link rel="stylesheet" href="../Grunddesign.css">
+    <link rel="icon" type="image/x-icon" href="/Icons/40px_BM_Favicon.png">
 </head>
 
 <body>
@@ -21,7 +22,34 @@
     </div>
 
 
-    
+    <div class="login">
+
+        <h1>Willkommen zur Loginseite der BMFA!</h1>
+
+        <!-- Logindateneingabe -->
+        <div class="username">
+            <!-- <b id= "kennungText">THM-Kennung: </b> -->
+            <input type="text" class="username_tf" name="name" placeholder="THM Kennung" />
+        </div>
+
+
+
+        <div class="passwort">
+            <!-- <b id= "passwortText">Passwort: </b> -->
+            <input type="password" class="password_tf" name="password" required placeholder="Passwort" />
+        </div>
+
+
+        <!-- Weiterleitung, falls Passwort vergessen. -->
+        <div>
+            <a href="https://www.thm.de/its/campusnetz/benutzerkonto/passwort-vergessen.html" class="forgot_passwort"
+                style="color:blue;" target="_blank">Passwort vergessen
+            </a>
+        </div>
+
+        <input type="submit" value="Anmelden" />
+
+    </div>
     <ul class="infoBar">
 
         <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>

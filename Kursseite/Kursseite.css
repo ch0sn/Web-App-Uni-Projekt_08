@@ -1,45 +1,24 @@
-.HeaderBackround {
-
-    position: relative;
-    
-    margin-top: 100px;
-
-    height: 200px;
-    border-radius: 10px;
-    background-color: rgb(217, 217, 217);
-    font-family: 'Orbitron', sans-serif;
-
-    margin-left: 10%;
-    margin-right: calc(10% - 95px);
-     
-  
+.HeaderCourseClass{
+    display:flex;
+    flex-direction: column;
 }
 
-.BodyBackround {
+.HeaderCourseClass h1{
 
-
-
-    position: relative;
-    height: 350px;
-    border-radius: 10px;
-    background-color: rgb(217, 217, 217);
-    font-family: 'Orbitron', sans-serif;
-    margin-left: 10%;
-    margin-right: calc(10% - 95px);
-    
-  
 }
 
-.gridCourse {
-    
-    display: grid; 
-    gap: 75px;
-    
+.HeaderCourseClass p {
 
-    
-    
-    
+}
+.abmeldeClass {
+    dislay:block;
+    margin-left: 95%;
+    cursor:pointer;
+    border: 1px solid rgb(0,0,0);
+    list-style-type: none;
+}
 
-  }
+#abmelde_Checkbox {
 
+}
 

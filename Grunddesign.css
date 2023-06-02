@@ -1,96 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-:root { /**/
-    --background-color: rgb(217, 217, 217);/**/
+:root {
+    /**/
+    --background-color: rgb(217, 217, 217);
+    /**/
     --darker-background-color: #243848;
     --accent-color: #1183d6;
     --text-color: #000000;
 
-    --navbar-height: 95px;
-    --dropdown-width: 200px;
-    --border-radius: 5px;
-    --profile-dd-width: 300px;
+  --navbar-height: 95px;
+  --dropdown-width: 200px;
+  --border-radius: 5px;
+  --profile-dd-width: 300px;
   
 }
 
-*{/**/
-  margin: 0px;
-  padding: 0px;
-  font-size: 16px;
-  font-family: sans-serif;
-  color: var(--text-color);
+* {
+    /**/
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: sans-serif;
+    color: var(--text-color);
 }
 
-html{/**/
-  height: 100%;
+html {
+    /**/
+    height: 120%;
 }
-body{/**/
-  height: 100%;
-    background-color:white;
+
+body {
+    /**/
+    height: 100%;
 }
 
 /* left bar-Einstellung */
-.barLeft{ 
-  position:fixed;
-  height: 100%;
-  width: 95px;
-  background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
+.barLeft {
+    position: fixed;
+    height: 100%;
+    width: 95px;
+    background-image: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
+    top: 0;
+    z-index: -1;
 }
 
 /* Navbar-Einstellungen */
-nav{ 
-  height: var(--navbar-height);
-  background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
-  display: flex;
-  align-items: center;
-  justify-content: start;
+nav {
+    height: var(--navbar-height);
+    background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
+    display: flex;
+    align-items: center;
+    justify-content: start;
 }
 
 /* in der Navbar zugehörige Logo Einstellungen - Abstand zum Internetseitenrand */
-nav .barTopLogo{ /**/
-  margin-left: 10px;
-  margin-right: 50px;
+nav .barTopLogo {
+    /**/
+    margin-left: 10px;
+    margin-right: 50px;
 }
 
 
-.infoBar{ /**/
-  
-  position: fixed;
-  background: rgb(74,78,97);
-  height: 50px;
-  margin-left: 10%;
-  margin-right: calc(10% - 95px);
-  display: flex;
-  align-items: center;
-  list-style: none;
-  text-decoration: none;
-  font-family: 'Orbitron', sans-serif;
-  
-  bottom: 1%;
-  right: 0;
-  left: 0;
-  
-  
-  
+.infoBar {
+    /**/
+
+    position: fixed;
+    background: rgb(74, 78, 97);
+    height: 50px;
+    margin-left: 10%;
+    margin-right: calc(10% - 95px);
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+
+    bottom: 1%;
+    right: 0;
+    left: 0;
+
+
+
 }
 
-.infoBar li { /**/
-  width: 80%;
-  text-align: right;
-  margin-right: 12%;
-  
+.infoBar li {
+    /**/
+    width: 80%;
+    text-align: right;
+    margin-right: 12%;
+
 }
 
-.infoBar li a {/**/
-  font-family: 'Orbitron', sans-serif;
-  text-decoration: none;
-  color: white;
+.infoBar li a {
+    /**/
+    font-family: 'Orbitron', sans-serif;
+    text-decoration: none;
+    color: white;
 }
 
-.bitcoinLogo{/**/
-  margin-right: 1%;
-  cursor: pointer;
-  align-self: center;
+.bitcoinLogo {
+    /**/
+    margin-right: 1%;
+    cursor: pointer;
+    align-self: center;
 }
 
 
@@ -111,13 +123,14 @@ nav li {
     text-align: center;
     position: relative;
 }
-nav li:hover{
-    color: rgba(255,255,255,1);
+
+nav li:hover {
+    color: rgba(255, 255, 255, 1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* in der Navbar zugehörige Dropdown-Listeneintrag-Einstellungen */
-nav ul a{
+nav ul a {
     height: 100%;
     width: 100%;
 
@@ -129,7 +142,7 @@ nav ul a{
 }
 
 /* "Kurse"-Dropdown-Einstellungen */
-.dropdown_K{
+.dropdown_K {
     height: min-content;
     width: var(--dropdown-width);
     background: var(--background-color);
@@ -141,37 +154,39 @@ nav ul a{
     top: var(--navbar-height);
     border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
-    z-index: 3;
+    z-index: 5;
 }
 
 /* "Kurse"-Dropdown-Eintragsgrößen-Einstellungen */
-.dropdown_K li{
+.dropdown_K li {
     height: 40px;
     width: 100%;
 }
+
 /* "Kurse"-Dropdown-Wortzentrierungseinstellungen */
-.dropdown_K li a{
+.dropdown_K li a {
     justify-content: center;
 }
+
 /* "Kurse"-Dropdown bei Hover-Einstellung */
-nav li:hover .dropdown_K{
+nav li:hover .dropdown_K {
     display: flex;
 }
 
 /* Navbar-Einträge Checkboxen nicht darstellen */
-nav input[type="checkbox"]{
+nav input[type="checkbox"] {
     display: none;
 }
 
 /* "Kurse"-Label Zentrierung-Einstellung*/
-.expandable_li_K{
+.expandable_li_K {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 /* "Tools"-Dropdown-Einstellungen */
-.dropdown_T{
+.dropdown_T {
     height: min-content;
     width: var(--dropdown-width);
     background: var(--background-color);
@@ -183,34 +198,34 @@ nav input[type="checkbox"]{
     top: var(--navbar-height);
     border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
-    z-index: 3;
+    z-index: 5;
 }
 
 /* "Tools"-Dropdown-Eintragsgrößen-Einstellungen */
-.dropdown_T li{
+.dropdown_T li {
     height: 40px;
     width: 100%;
 }
 
 /* "Tools"-Dropdown-Wortzentrierungseinstellungen */
-.dropdown_T li a{
+.dropdown_T li a {
     justify-content: center;
 }
 
 /* "Tools"-Dropdown bei Hover-Einstellung */
-nav li:hover .dropdown_T{
+nav li:hover .dropdown_T {
     display: flex;
 }
 
 /* "Tools"-Label Zentrierung-Einstellung*/
-.expandable_li_T{
+.expandable_li_T {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 /* "Forum"-Dropdown-Einstellungen */
-.dropdown_F{
+.dropdown_F {
     height: min-content;
     width: var(--dropdown-width);
     background: var(--background-color);
@@ -219,30 +234,31 @@ nav li:hover .dropdown_T{
     flex-direction: column;
 
     position: absolute;
+    left:0;
     top: var(--navbar-height);
     border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
-    z-index: 3;
+    z-index: 5;
 }
 
 /* "Forum"-Dropdown-Eintragsgrößen-Einstellungen */
-.dropdown_F li{
+.dropdown_F li {
     height: 40px;
     width: 100%;
 }
 
 /* "Forum"-Dropdown-Wortzentrierungseinstellungen */
-.dropdown_F li a{
+.dropdown_F li a {
     justify-content: center;
 }
 
 /* "Forum"-Dropdown bei Hover-Einstellung */
-nav li:hover .dropdown_F{
+nav li:hover .dropdown_F {
     display: flex;
 }
 
 /* "Forum"-Label Zentrierung-Einstellung*/
-.expandable_li_F{
+.expandable_li_F {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -294,22 +310,23 @@ input[type="search"]:focus {
     outline: none;
 }
 
-
+/* "Profilbild, -name,"-Label Zentrierung-Einstellung*/
 .expandable_li_P {
     display:flex;
     align-items: center;
     margin-left: 250px;
     width: var(--profile-dd-width);
 }
-
+/* Abstand zu Profilbild */
 .expandable_li_P label {
     margin-right: 15px;
 }
+/* Abstand zum Pfeilrunter "Profilbereich" */
 .expandable_li_P [id="profileArrow"] {
     margin-left: 5px;
 }
 
-
+/* "Profilbereich"-Dropdown-Einstellungen */
 .dropdown_P{
     height: min-content;
     width: var(--profile-dd-width);
@@ -319,29 +336,29 @@ input[type="search"]:focus {
     flex-direction: column;
 
     position: absolute;
-   border: 1px solid rgb(0,0,0);
     top: var(--navbar-height);
+    border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
-    z-index: 3;
+    z-index: 5;
 }
 
-/* "Forum"-Dropdown-Eintragsgrößen-Einstellungen */
+/* "Profil"-Dropdown-Eintragsgrößen-Einstellungen */
 .dropdown_P li{
     height: 40px;
     width: 100%;
 }
 
-/* "Forum"-Dropdown-Wortzentrierungseinstellungen */
+/* "Profil"-Dropdown-Wortzentrierungseinstellungen */
 .dropdown_P li a{
     justify-content: center;
 }
 
-/* "Forum"-Dropdown bei Hover-Einstellung */
+/* "Profil"-Dropdown bei Hover-Einstellung */
 nav li:hover .dropdown_P{
     display: flex;
 }
 
-/* "Forum"-Label Zentrierung-Einstellung*/
+/* "Profil"-Label Zentrierung-Einstellung*/
 .expandable_li_P{
     display: flex;
     justify-content: center;
@@ -351,6 +368,4 @@ nav li:hover .dropdown_P{
 .darkmode {
     margin-left: 50px;
 }
-
-  
   

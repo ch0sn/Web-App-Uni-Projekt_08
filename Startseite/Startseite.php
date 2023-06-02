@@ -5,6 +5,8 @@
     <title>BMFA-Startseite</title>
     <link rel="stylesheet" href="Startseite_Style.css">
     <link rel="stylesheet" href="../Grunddesign.css">
+    <link rel="icon" type="image/x-icon" href="/Icons/40px_BM_Favicon.png">
+
 </head>
 <body>
     <!-- Navbar-Sektion beginnt. -->
@@ -25,6 +27,8 @@
                         <li><a href="#">Kurs3</a></li>
                     </ul>
                 </li>
+
+                
 
             <!-- 2. Listeneintrag "Tools" in der ungeordneten Listenlayouts als "expandable_li_T" -->
                 <li class="expandable_li_T">
@@ -53,7 +57,7 @@
 
             <!-- 4. Listeneintrag "Suchfeld" -->
             <div class="searchBar">
-                <input type="search" id="suche" placeholder="Suchfeld" >
+                <label for="suche"></label><input type="search" id="suche" placeholder="Suchfeld">
                 <button type="submit"> </button>
             </div>
 
@@ -63,7 +67,7 @@
                 <img class= "profilePic" src="/Icons/32px_user_whitemode.png" alt="usericon_whitemode"/>
                 <input type="checkbox" id="profile_checkbox">
                 <label id="profileArrow" for="profile_checkbox" > <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
-
+                <!-- ungeordneten Listen-Layout als Dropdown für "Profilbereich" -->
                 <ul class="dropdown_P">
                     <li><a href="#" target="_blank">Profil</a></li>
                     <li><a href="#" target="_blank">Mitteilungen</a></li>
@@ -72,8 +76,9 @@
                 </ul>
             </li>
 
+            <!-- 6. Listeneintrag "Darkmode-Symbol/Button" -->
             <div class="darkmode">
-                <a href="http://localhost:63342/Web-App-Uni-Projekt_08/Startseite/Startseite_DM.html?_ijt=kfsqsir0ap2japip61e75pcb1i&_ij_reload=RELOAD_ON_SAVE"> <img src="/Icons/moon.png" alt="moon icon"/> </a>
+                <a href="#"> <img src="/Icons/16px_moon.png" alt="moon icon"/> </a>
             </div>
         </ul>
     </nav>
@@ -82,15 +87,15 @@
     <div class="barLeft">
     </div>
 
-    <!-- Willkommen-Panel -->
+    <!-- 1. Panel (Willkommen) -->
     <div class="willkommensblock">
         <br>
-            <h1>Willkommen</h1>
+        <h1>Willkommen</h1>
         <br>
-            <p id="willkommensText">Herzlichen Willkommen zu der "Besseres Moodle Für Alle" Website !</p>
+        <p id="willkommensText">Herzlichen Willkommen zu der "Besseres Moodle Für Alle" Website !</p>
     </div>
 
-    <!-- Schwarzes Brett-Panel -->
+    <!-- 2. Panel (Schwarzes Brett) -->
     <div class="schwarzesbrett">
         <br>
         <h1>Schwarzes Brett</h1>
@@ -104,11 +109,10 @@
         </ul>
     </div>
 
-    <!-- Kursbereich-Panel -->
+    <!-- 3. Panel (Kursbereich) -->
     <div class="kursbereich">
         <br>
         <h1>Kursbereiche</h1>
-
         <!-- Collapsible button -->
         <button type="button" class="collapsible"><img src="/Icons/24px_filter.png" alt="filter"/></button>
 
@@ -142,7 +146,6 @@
             </ul>
         </div>
 
-        <br>
         <ul>
             <li>FB 01: B - Bauwesen (Gi)</li>
             <br>
@@ -162,25 +165,19 @@
         </ul>
     </div>
 
-
-
-
+    <!-- untere Bar -->
     <div>
         <ul class="infoBar">
             <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
-
             <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
-
             <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
-
             <img src="/Icons/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
-
-        <script>
-            var button = document.querySelector('.bitcoinLogo');
-            button.addEventListener('click', function () {
-                document.documentElement.scrollTop = 0;
-            });
-        </script>
+            <script>
+                const button = document.querySelector('.bitcoinLogo');
+                button.addEventListener('click', function () {
+                    document.documentElement.scrollTop = 0;
+                });
+            </script>
         </ul>
     </div>
 
@@ -188,20 +185,7 @@
 
 
 <script>
-    function openFilterPanel(){
-        var downslidePanel = document.getElementById('downslide');
-        var filterChecker = document.getElementById('filter_checkbox');
-
-        if(filterChecker.checked == true){
-            downslidePanel.style.display = "block";
-        }else{
-            downslidePanel.style.display = "none";
-        }
-
-    }
-
-
-
+    /* Ausfahr-Effekt der FilterArea. */
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
