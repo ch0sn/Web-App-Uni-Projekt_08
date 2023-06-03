@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+global$conn; <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="Loginseite_Style.css">
-    <link rel="stylesheet" href="../Grunddesign.css">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="SignUp_Style.css">
     <link rel="icon" type="image/x-icon" href="/Icons/40px_BM_Favicon.png">
 </head>
 
@@ -22,33 +21,20 @@
     </div>
 
 
-    <div class="login">
+    <section class="signup-form">
 
-        <h1>Willkommen zur Loginseite der BMFA!</h1>
-        <form>
+        <h1>Sign Up</h1>
+        <form action="Loginseite/signup.php" method="post">
         <!-- Logindateneingabe -->
-        <div class="username">
-            <!-- <b id= "kennungText">THM-Kennung: </b> -->
-            <input type="text" class="username_tf" name="name" placeholder="THM Kennung" />
-        </div>
-
-
-
-        <div class="passwort">
-            <!-- <b id= "passwortText">Passwort: </b> -->
-            <input type="password" class="password_tf" name="password" required placeholder="Passwort" />
-        </div>
-
-
-        <!-- Weiterleitung, falls Passwort vergessen. -->
-        <div>
-            <a href="https://www.thm.de/its/campusnetz/benutzerkonto/passwort-vergessen.html" class="forgot_passwort"
-                style="color:blue;" target="_blank">Passwort vergessen
-            </a>
-        </div>
-            <input type="submit" name="submit" value="Anmelden" />
+            <input type="text" name="name" placeholder="Name..." />
+            <input type="text" name="email" placeholder="THM-Email..." />
+            <input type="text" name="uid" placeholder="THM-Kennung..." />
+            <input type="password" name="pwd" placeholder="Passwort..." />
+            <input type="password" name="pwdrepeat" placeholder="Passwort wiederholen..." />
+            <button class="signup-Button" type="submit" name="submit">Registrieren</button>
         </form>
-    </div>
+    </section>
+
     <ul class="infoBar">
 
         <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
