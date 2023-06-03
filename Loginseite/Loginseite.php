@@ -10,6 +10,16 @@
 </head>
 
 <body>
+
+<?php
+
+session_start();
+$_SESSION['loggedin'] = false;
+/* include '../config.php'; */
+
+echo $_SESSION['loggedin'] 
+?>
+    
     <!-- Navbar-Sektion beginnt. -->
     <nav>
         <!-- Logo wird in Navbar hinzugefügt. -->
@@ -24,30 +34,43 @@
 
     <div class="login">
 
-        <h1>Willkommen zur Loginseite der BMFA!</h1>
-
-        <!-- Logindateneingabe -->
-        <div class="username">
-            <!-- <b id= "kennungText">THM-Kennung: </b> -->
-            <input type="text" class="username_tf" name="name" placeholder="THM Kennung" />
-        </div>
 
 
 
-        <div class="passwort">
-            <!-- <b id= "passwortText">Passwort: </b> -->
-            <input type="password" class="password_tf" name="password" required placeholder="Passwort" />
-        </div>
+        <form method="POST" action="login.php">
 
 
-        <!-- Weiterleitung, falls Passwort vergessen. -->
-        <div>
-            <a href="https://www.thm.de/its/campusnetz/benutzerkonto/passwort-vergessen.html" class="forgot_passwort"
-                style="color:blue;" target="_blank">Passwort vergessen
-            </a>
-        </div>
+            <h1>Willkommen zur Loginseite der BMFA!</h1>
 
-        <input type="submit" value="Anmelden" />
+            <!-- Logindateneingabe -->
+            <div class="username">
+                <!-- <b id= "kennungText">THM-Kennung: </b> -->
+                <input type="text" class="username_tf" name="username" id= "username" placeholder="THM Kennung" />
+            </div>
+
+
+
+            <div class="password">
+                <!-- <b id= "passwortText">Passwort: </b> -->
+                <input type="password" class="password_tf" name="password" id= "password" required placeholder="Passwort" />
+            </div>
+
+            <!-- Weiterleitung, falls Passwort vergessen. -->
+            <div>
+                <a href="https://www.thm.de/its/campusnetz/benutzerkonto/passwort-vergessen.html" class="forgot_passwort" style="color:blue;" target="_blank">Passwort vergessen
+                </a>
+            </div>
+
+
+            <input type="submit" value="Anmelden" />
+
+        </form>
+
+
+
+
+
+
 
     </div>
     <ul class="infoBar">
@@ -62,7 +85,7 @@
 
         <script>
             var button = document.querySelector('.bitcoinLogo');
-            button.addEventListener('click', function () {
+            button.addEventListener('click', function() {
                 document.documentElement.scrollTop = 0;
             });
         </script>
