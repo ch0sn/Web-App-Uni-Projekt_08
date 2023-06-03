@@ -12,5 +12,6 @@ if ($_SESSION['loggedin'] === true) {
    
     header("Location: ../loginseite/loginseite.php");
         exit(); // Beenden des aktuellen Skripts
+        
 }
 ?>
