@@ -1,5 +1,13 @@
 <?php
 
+function emptyField($firstname,$lastname,$email,$username,$pwd,$pwdRepeat,$role){
+    $result = false;
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat) || empty($role)){
+        $result = true;
+    }
+    return $result;
+}
+
 function invalidUid($username) {
     $result = false;
     if (!preg_match("/^[a-zA-Z0-9]*$/", $username)){
@@ -79,7 +87,7 @@ function loginUser($conn, $username, $pwd){
     $checkPwd = password_verify($pwd,$pwdHashed);
 
     if($checkPwd === false){
-        header("location: ../pages/login.php?error=wrongpassword");
+        header("location: ../pages/login.php?error=wrongpassword&uid=$username");
         exit();
     }
     else if($checkPwd === true){

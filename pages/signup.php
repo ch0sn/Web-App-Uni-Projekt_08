@@ -13,16 +13,74 @@ include_once '../plainheader.php';
     <h1>Registrierung</h1>
     <form action="../includes/signup.inc.php" method="post">
         <!-- Logindateneingabe -->
-        <input type="text"  name="firstname" placeholder="Vorname..."/>
-        <input type="text" name="lastname" placeholder="Nachname..." />
-        <input type="text" name="email" placeholder="THM-Email..." />
-        <input type="text" name="uid" placeholder="THM-Kennung..." />
+        <?php
+            if(isset($_GET['firstname'])){
+                $first = $_GET['firstname'];
+               echo " <input type='text'  name='firstname' placeholder='Vorname...' value='$first'/> ";
+            }
+            else {
+                echo " <input type='text'  name='firstname' placeholder='Vorname...'/> ";
+
+            }
+
+        if(isset($_GET['lastname'])){
+            $last = $_GET['lastname'];
+            echo " <input type='text'  name='lastname' placeholder='Nachname...' value='$last'/> ";
+        }
+        else {
+            echo " <input type='text' name='lastname' placeholder='Nachname...' /> ";
+        }
+
+        if(isset($_GET['uid'])){
+            $uid = $_GET['uid'];
+            echo " <input type='text'  name='uid' placeholder='Username...' value='$uid'/> ";
+        }
+        else {
+            echo " <input type='text' name='uid' placeholder='Username...' /> ";
+        }
+
+        if(isset($_GET['email'])){
+            $email = $_GET['email'];
+            echo " <input type='text' name='email' placeholder='THM-Email...' value='$email'/> ";
+        }
+        else {
+            echo " <input type='text' name='email' placeholder='THM-Email...' /> ";
+        }
+        ?>
+
         <input type="password" name="pwd" placeholder="Passwort..." />
         <input type="password" name="pwdrepeat" placeholder="Passwort wiederholen..." />
-        <input type="radio" name="role" id="role_student" value="student"/>
-        <label for="role_student">Student</label>
-        <input type="radio" name="role" id="role_dozent" value="dozent"/>
-        <label for="role_dozent">Dozent</label>
+
+        <?php
+        if(isset($_GET['role'])){
+            $role = $_GET['role'];
+            if($role == "student") {
+                echo "<input type='radio' name='role' id='role_student' value='student' checked/> ";
+                echo '<label for="role_student">Student</label>';
+                echo "<input type='radio' name='role' id='role_dozent' value='dozent'/> ";
+                echo '<label for="role_dozent">Dozent</label>';
+            }
+            else if ($role == "dozent") {
+                echo "<input type='radio' name='role' id='role_student' value='student'/> ";
+                echo '<label for="role_student">Student</label>';
+                echo "<input type='radio' name='role' id='role_dozent' value='dozent' checked/> ";
+                echo '<label for="role_dozent">Dozent</label>';
+            }
+            else {
+                echo "<input type='radio' name='role' id='role_student' value='student'/> ";
+                echo '<label for="role_student">Student</label>';
+                echo "<input type='radio' name='role' id='role_dozent' value='dozent'/> ";
+                echo '<label for="role_dozent">Dozent</label>';
+            }
+        }
+        else {
+            echo "<input type='radio' name='role' id='role_student' value='student'/> ";
+            echo '<label for="role_student">Student</label>';
+            echo "<input type='radio' name='role' id='role_dozent' value='dozent'/> ";
+            echo '<label for="role_dozent">Dozent</label>';
+        }
+        ?>
+
 
         <button class="signup-Button" type="submit" name="submit" id="submit">Registrieren</button>
     </form>
@@ -32,8 +90,8 @@ include_once '../plainheader.php';
     }
     else{
         $errorCheck =$_GET['error'];
-        if($errorCheck == "emptyinput"){
-            echo "<p class='error' style='color:red' >You did not fill in all fields!</p>";
+        if($errorCheck == "emptyfield"){
+            echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
         }
         else if($errorCheck == "invalidUsername"){
             echo "<p class='error' style='color:red'>Invalid characters in the username!</p>";

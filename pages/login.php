@@ -18,14 +18,22 @@ include_once '../plainheader.php';
         <!-- Logindateneingabe -->
         <div class="username">
             <!-- <b id= "kennungText">THM-Kennung: </b> -->
-            <input type="text" class="username_tf" name="uid" placeholder="THM Kennung" />
+
+            <?php
+            if (isset($_GET['uid'])){
+                $uid = $_GET['uid'];
+                echo "<input type='text' class='username_tf' name='uid' placeholder='THM Kennung' value='$uid' />";
+            }else {
+                echo '<input type="text" class="username_tf" name="uid" placeholder="THM Kennung" />';
+            }
+            ?>
         </div>
 
 
 
         <div class="passwort">
             <!-- <b id= "passwortText">Passwort: </b> -->
-            <input type="password" class="password_tf" name="pwd" required placeholder="Passwort" />
+            <input type="password" class="password_tf" name="pwd" placeholder="Passwort" />
         </div>
 
 
@@ -41,11 +49,11 @@ include_once '../plainheader.php';
         }
         else{
             $errorCheck = $_GET['error'];
-            if($errorCheck == "emptyinput"){
-                echo "<p class='error' style='color:red' >You did not fill in all fields!</p>";
+            if($errorCheck == "emptyfields"){
+                echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
             }
             else if($errorCheck == "wronglogin"){
-                echo "<p class='error' style='color:red'>Username does not match with the password!</p>";
+                echo "<p class='error' style='color:red'>Username does not exist!</p>";
             }
             else if($errorCheck == "wrongpassword"){
                 echo "<p class='error' style='color:red'>Password wrong!</p>";
