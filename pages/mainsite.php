@@ -104,7 +104,7 @@ if(!isset($_SESSION['loggedin'])){
         <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
         <img src="../img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
         <script>
-            const button = document.querySelector(".bitcoinLogo');
+            const button = document.querySelector(".bitcoinLogo");
             button.addEventListener('click', function () {
                 document.documentElement.scrollTop = 0;
             });
