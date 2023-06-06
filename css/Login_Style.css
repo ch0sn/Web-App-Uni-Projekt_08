@@ -1,0 +1,116 @@
+.login {
+
+    position: relative;
+    margin-top: 50px;
+    height: 45%;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    font-family: 'Orbitron', sans-serif;
+    border: 2px solid rgb(0, 0, 0);
+    margin-left: 10%;
+    margin-right: calc(10% - 95px);
+
+    text-align: center;
+
+}
+
+.login h1{
+    font-family: 'Orbitron', sans-serif;
+    color: black;
+    font-size: 60px;
+margin: 10px auto auto;
+}
+
+.login b{
+    font-family: 'Orbitron', sans-serif;
+    color: black;
+    font-size: 20px;
+}
+
+.login a{
+    font-family: 'Orbitron', sans-serif;
+    color: black;
+    font-size: 15px;
+    margin:50px auto auto;
+}
+
+.login p {
+    font-size: 30px;
+    margin: 35px auto auto;
+}
+
+/* .username {
+  display: flex;
+  gap: 50px;
+  margin-top: 10%;
+  margin-left: 20%;
+  font-size: 20px;
+} */
+
+.username_tf {
+
+    position: relative;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
+
+}
+
+/* .passwort {
+  display: flex;
+  gap: 100px;
+  margin-top: 10%;
+  margin-left: 20%;
+  font-size: 20px;
+} */
+
+.password_tf {
+    position: relative;
+    margin-top: 55px;
+    font-size: 35px;
+    text-align: center;
+
+    margin-top: 55px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+
+input[type=submit] {
+    background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
+    width: 30%;
+    padding: 0.25%;
+    font-size: 35px;
+    display:block;
+    margin: 20px auto auto;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type=submit]:hover{
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+a[id=abbrechenButton]{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 25px;
+    padding:2px;
+    text-decoration: none;
+    margin-left: 190px;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 10px;
+    background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0)) ;
+}
+
+a[id=abbrechenButton]:hover{
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+
