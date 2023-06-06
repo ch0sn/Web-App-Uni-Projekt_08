@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Kursbereich</title>
-    <link rel="stylesheet" href="Kursseite.css">
+    <link rel="stylesheet" href="../css/Kursseite.css">
     <link rel="stylesheet" href="../css/Grunddesign.css">
-    <link rel="stylesheet" href="../GrunddesignKursseiten.css">
+    <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
     <link rel="icon" type="image/x-icon" href="/Icons/40px_BM_Favicon.png">
 
 </head>

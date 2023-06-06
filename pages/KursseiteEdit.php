@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Einsschreiben</title>
-    <link rel="stylesheet" href="Einschreibeseite.css">
+    <title>Kurssseite bearbeiten</title>
+    <link rel="stylesheet" href="../css/KurssseiteEdit.css">
     <link rel="stylesheet" href="../css/Grunddesign.css">
-    <link rel="stylesheet" href="../GrunddesignKursseiten.css">
+    <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
     <link rel="icon" type="image/x-icon" href="/Icons/40px_BM_Favicon.png">
+
 </head>
 
 <body>
@@ -91,27 +92,10 @@
 
         <div class="HeaderCourseClass">
             
-            <h1 id="courseNameHeaderId">WK_1100 Einführung in die Wirtschaftsinfromatik SoSe23</h1> 
-            
-            <p id= "coursePathId">Startseite
-                 / Kurse / Bachelor-Studiengang / Wirtschaftsinfromatik /
-                1. Semester / Einführung in dieWirtschaftsinfromatik / Einschreiben</p>
 
         </div>
 
         <div class="BodyCourseClass">
-
-            <h1 id="enrollmentOptionsId">Einschreibeoptionen</h1> 
-            
-            <p id="courseNameBodyId">WK_1100 Einführung in die Wirtschaftsinfromatik SoSe23</p>
-
-            <p id="teacherNameId">Prof. Hopfen</p>                       
-            
-            <input type="password" id="loginKeyPanel"placeholder="Einschreibeschlüssel"/>
-            
-            <input type="submit" value="Einschreiben" id="enrollButtonId"/>
-
-            <input type="submit" value="Abbrechen" id="cancelButtonId"/>
 
 
         </div>
