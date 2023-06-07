@@ -1,3 +1,36 @@
+/* Ausfahr-Effekt für NewsOfTheDay(NOTD) in der BlackboardArea. */
+var collnotd = document.getElementsByClassName("newsOfTheDay_collapsible");
+var inotd;
+
+for (inotd = 0; inotd < collnotd.length; inotd++) {
+    collnotd[inotd].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content_notd = this.nextElementSibling;
+        if (content_notd.style.maxHeight){
+            content_notd.style.maxHeight = null;
+        } else {
+            content_notd.style.maxHeight = content_notd.scrollHeight + "px";
+        }
+    });
+}
+
+
+/* Ausfahr-Effekt für UpcomingEvents(UE) in der BlackboardArea. */
+var collue = document.getElementsByClassName("upcomingEvents_collapsible");
+var iue;
+
+for (iue = 0; iue < collue.length; iue++) {
+    collue[iue].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content_ue = this.nextElementSibling;
+        if (content_ue.style.maxHeight){
+            content_ue.style.maxHeight = null;
+        } else {
+            content_ue.style.maxHeight = content_ue.scrollHeight + "px";
+        }
+    });
+}
+
 /* Ausfahr-Effekt der FilterArea. */
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -110,7 +143,7 @@ for (i6 = 0; i6 < coll6.length; i6++) {
     });
 }
 
-/* Ausfahr-Effekt für FB04. */
+/* Ausfahr-Effekt für FB13. */
 var coll13 = document.getElementsByClassName("fb13Collapsible");
 var i13;
 for (i13 = 0; i13 < coll13.length; i13++) {

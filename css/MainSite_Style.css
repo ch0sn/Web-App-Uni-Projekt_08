@@ -25,7 +25,7 @@
 }
 
 
-.schwarzesbrett {
+.blackboard {
     position: relative;
     height:min-content;
     border: 2px solid rgb(0,0,0);
@@ -36,20 +36,82 @@
     margin-right: var(--mainSiteBlocks-margin-right);
 }
 
-.schwarzesbrett h1 {
-    font-size: 20px;
-    margin-left: 10px;
+.blackboard h1 {
+    font-size: 40px;
+    margin-left: 25px;
+    margin-top:20px;
 }
 
-.schwarzesbrett ul {
+.blackboard ul {
     font-family: bold;
     margin-left: 40px;
     list-style: none;
 }
 
-.schwarzesbrett ul li {
+.blackboard ul li {
     font-size: 18px;
 }
+
+.blackboard_content button {
+    background: transparent;
+    cursor: pointer;
+    margin-top: 20px;
+    border:none;
+    font-size: 25px;
+}
+
+.blackboard_content li a{
+    text-decoration: none;
+}
+
+/* Style-Einstellung für NewsOfTheDay (NOTD). */
+.newsOfTheDay_collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.notd_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.notd_content li {
+    margin-top: 15px;
+}
+
+.notd_content li a {
+    text-decoration: none;
+    font-size: 22px;
+
+}
+
+/* Style-Einstellung für UpcomingEvents (UE). */
+.upcomingEvents_collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.ue_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.ue_content li p {
+    text-decoration: none;
+    font-size: 22px;
+    margin-top: 15px;
+}
+
 
 .kursbereich{
     height: min-content;
@@ -64,7 +126,7 @@
 
 
 .kursbereich h1 {
-    font-size: 20px;
+    font-size: 40px;
     margin-left: 10px;
 }
 

@@ -26,16 +26,18 @@ if(!isset($_SESSION['loggedin'])){
 </div>
 
 <!-- 2. Panel (Schwarzes Brett) -->
-<div class="schwarzesbrett">
-    <br>
+<div class="blackboard">
+
     <h1>Schwarzes Brett</h1>
-    <br>
-    <ul>
-        <li>Meldung des Tages</li>
-        <br>
-        <br>
-        <br>
-        <li>Aktuelle Termine</li>
+    <ul class="blackboard_content">
+        <button type="button" name="notd" class="newsOfTheDay_collapsible">Meldung des Tages</button>
+        <ul class="notd_content">
+            <li><a href="#">Wartung kommenden Montag, den 07.Juni!</a></li>
+        </ul>
+        <button type="button" name="ue" class="upcomingEvents_collapsible">Aktuelle Termine</button>
+            <ul class="ue_content">
+                <li><p>[Projekt-Abgabe] WebTech-Abgabe: 16.Juli.2023</p></li>
+            </ul>
     </ul>
 </div>
 
