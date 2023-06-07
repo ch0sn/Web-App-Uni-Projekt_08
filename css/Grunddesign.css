@@ -12,7 +12,8 @@
     --dropdown-width: 200px;
     --border-radius: 5px;
     --profile-dd-width: 300px;
-
+    --mainSiteBlocks-margin-left: calc(1% + 95px);
+    --mainSiteBlocks-margin-right: calc(10% - 95px);
 }
 
 * {

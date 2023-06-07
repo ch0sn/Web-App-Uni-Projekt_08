@@ -20,7 +20,7 @@ if(!isset($_SESSION['loggedin'])){
 <!-- 1. Panel (Willkommen) -->
 <div class="willkommensblock">
     <br>
-    <h1>    Willkommen <?php echo $_SESSION['firstName'] . " " . $_SESSION['lastName'];?></h1>
+    <h1>Willkommen <?php echo $_SESSION['firstName'] . " " . $_SESSION['lastName'];?></h1>
     <br>
     <p id="willkommensText">zu der "Besseres Moodle Für Alle" Website !</p>
 </div>
@@ -76,22 +76,71 @@ if(!isset($_SESSION['loggedin'])){
         </ul>
     </div>
 
-    <ul>
-        <li>FB 01: B - Bauwesen (Gi)</li>
-        <br>
-        <li>FB 02: EI - Elektro- und Informationstechnik</li>
-        <br>
-        <li>FB 03: ME - Maschinenbau und Energietechnik (Gi)</li>
-        <br>
-        <li>FB 04: LSE - Life Science Engineering (Gi)</li>
-        <br>
-        <li>FB 05: GES - Gesundheit</li>
-        <br>
-        <li>FB 06: MNI - Mathematik, Naturwissenschaften und Informatik (Gi)</li>
-        <br>
-        <li>FB 07: W - Wirtschaft (Gi)</li>
-        <br>
-        <li>FB 11: IEM - Informationstechnik - Elektrotechnik - Mechatronik (Fb)</li>
+    <ul class="alleKurse">
+        <button type="button" name="fb01" class="fb01Collapsible">FB 01: B - Bauwesen (Gi)</button>
+        <div class='fb01_content'>
+            <ul>
+                <li><a href="#">Bachelor</a></li>
+                <li><a href="#">Master</a></li>
+            </ul>
+        </div>
+
+        <button type="button" name="fb02" class="fb02Collapsible">FB 02: EI - Elektro- und Informationstechnik</button>
+        <form class="fb02_content">
+            <ul>
+                <li><a href="#">Bachelor</a></li>
+                    <li><a href="#">Master</a></li>
+            </ul>
+        </form>
+
+        <button type="button" name="fb03" class="fb03Collapsible">FB 03: ME - Maschinenbau und Energietechnik (Gi)</button>
+        <div class='fb03_content'>
+            <ul>
+                <li><a href="#">Bachelor</a></li>
+                <li><a href="#">Master</a></li>
+            </ul>
+        </div>
+
+        <button type="button" name="fb04" class="fb04Collapsible">FB 04: LSE - Life Science Engineering (Gi)</button>
+        <div class='fb04_content'>
+            <form >
+                <ul>
+                    <li><a href="#">Bachelor</a></li>
+                    <li><a href="#">Master</a></li>
+                </ul>
+            </form>
+        </div>
+
+        <button type="button" name="fb05" class="fb05Collapsible">FB 05: GES - Gesundheit</button>
+        <div class='fb05_content'>
+            <form >
+                <ul>
+                    <li><a href="#">Bachelor</a></li>
+                    <li><a href="#">Master</a></li>
+                </ul>
+            </form>
+        </div>
+
+        <button type="button" name="fb06" class="fb06Collapsible">FB 06: MNI - Mathematik, Naturwissenschaften und Informatik (Gi)</button>
+        <div class='fb06_content'>
+            <form >
+                <ul>
+                    <li><a href="#">Bachelor</a></li>
+                    <li><a href="#">Master</a></li>
+                </ul>
+            </form>
+        </div>
+
+        <button type="button" name="fb13" class="fb13Collapsible">FB 13: Mathematik, Naturwissenschaften und Datenverarbeitung (Fb)</button>
+        <div class='fb13_content'>
+            <form >
+                <ul>
+                    <li><a href="#">Bachelor</a></li>
+                    <li><a href="#">Master</a></li>
+                </ul>
+            </form>
+        </div>
+
     </ul>
 </div>
 
@@ -113,27 +162,7 @@ if(!isset($_SESSION['loggedin'])){
 </div>
 
 
-
-
-<script>
-    /* Ausfahr-Effekt der FilterArea. */
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight){
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    }
-</script>
-
-
 </body>
+<script src="../js/mainsite_scripts.js"></script>
 </html>
 

@@ -17,8 +17,6 @@ if (isset($_POST["submit"])) {
         header("Location: ../pages/signup.php?error=emptyfield&firstname=$firstname&lastname=$lastname&uid=$username&email=$email&role=$role");
         exit();
     }
-
-
     if(invalidUid($username) !== false){
         header("Location: ../pages/signup.php?error=invalidUsername&firstname=$firstname&lastname=$lastname&email=$email&role=$role");
         exit();

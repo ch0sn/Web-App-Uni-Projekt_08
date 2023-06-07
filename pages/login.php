@@ -49,7 +49,7 @@ include_once '../plainheader.php';
         }
         else{
             $errorCheck = $_GET['error'];
-            if($errorCheck == "emptyfields"){
+            if($errorCheck == "emptyfield"){
                 echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
             }
             else if($errorCheck == "wronglogin"){

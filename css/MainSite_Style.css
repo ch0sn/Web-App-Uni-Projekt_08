@@ -3,18 +3,20 @@
 
 .willkommensblock {
     position: relative;
-    height:250px;
+    height:min-content;
+
     border: 2px solid rgb(0,0,0);
     border-radius: 10px;
     background-color: lightgray;
-    margin-top:  50px;
-    margin-left: 10%;
-    margin-right: calc(10% - 95px);
+    padding: 5px;
+    margin-top:  20px;
+    margin-left: var(--mainSiteBlocks-margin-left);
+    margin-right: var(--mainSiteBlocks-margin-right);
 }
 
 .willkommensblock h1 {
     font-size: 40px;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .willkommensblock p {
@@ -25,13 +27,13 @@
 
 .schwarzesbrett {
     position: relative;
-    height:200px;
+    height:min-content;
     border: 2px solid rgb(0,0,0);
     border-radius: 10px;
     background-color: lightgray;
     margin-top:20px;
-    margin-left: 10%;
-    margin-right: calc(10% - 95px);
+    margin-left: var(--mainSiteBlocks-margin-left);
+    margin-right: var(--mainSiteBlocks-margin-right);
 }
 
 .schwarzesbrett h1 {
@@ -50,14 +52,13 @@
 }
 
 .kursbereich{
-    position: relative;
-
+    height: min-content;
     border: 2px solid rgb(0,0,0);
     border-radius: 10px;
     background-color: lightgray;
     margin-top:20px;
-    margin-left: 10%;
-    margin-right: calc(10% - 95px);
+    margin-left: var(--mainSiteBlocks-margin-left);
+    margin-right: var(--mainSiteBlocks-margin-right);
 }
 
 
@@ -74,8 +75,8 @@
     height:min-content;
 }
 
-.kursbereich ul li {
-    font-size: 18px;
+.kursbereich ul button {
+    font-size: 25px;
 }
 
 
@@ -90,6 +91,7 @@
 
 .filterContent {
     background: aliceblue;
+    height:min-content;
     transition: max-height 0.2s ease-out;
     max-height: 0;
     overflow: hidden;
@@ -101,8 +103,6 @@
 
 .fitlerContent li {
     font-size: 15px;
-
-
 }
 
 .filterContent label {
@@ -114,10 +114,7 @@
 }
 
 #winter {
-    margin-top: 20px;
 }
-
-
 
 #semesternumber {
     font-size: 15px;
@@ -125,4 +122,152 @@
 
 #fachbereich {
     font-size: 15px;
+}
+
+/* Style-Einstellung für FB01. */
+
+.fb01Collapsible {
+    background: transparent;
+    cursor:pointer;
+    border:none;
+    padding:5px;
+}
+
+.fb01_content {
+    background: transparent ;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fb01_content li a {
+    text-decoration: none;
+    font-size: 22px;
+}
+
+/* Style-Einstellung für FB02. */
+.fb02Collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.fb02_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fb02_content li a {
+    text-decoration: none;
+    font-size: 22px;
+}
+
+/* Style-Einstellung für FB03. */
+.fb03Collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.fb03_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fb03_content li a {
+    text-decoration: none;
+    font-size: 22px;
+}
+
+
+/* Style-Einstellung für FB04. */
+.fb04Collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.fb04_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fb04_content li a {
+    text-decoration: none;
+    font-size: 22px;
+}
+
+/* Style-Einstellung für FB05. */
+.fb05Collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.fb05_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fb05_content li a {
+    text-decoration: none;
+    font-size: 22px;
+}
+/* Style-Einstellung für FB06. */
+.fb06Collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.fb06_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fb06_content li a {
+    text-decoration: none;
+    font-size: 22px;
+}
+
+
+/* Style-Einstellung für FB13. */
+.fb13Collapsible {
+    background: lightgray;
+    height: min-content;
+    cursor:pointer;
+    border:none;
+    padding:3px;
+}
+
+.fb13_content {
+    background: transparent;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fb13_content li a {
+    text-decoration: none;
+    font-size: 22px;
 }

@@ -3,7 +3,7 @@
 global $conn;
 if (isset($_POST["submit"])) {
     if(empty($_POST["uid"]) || empty($_POST["pwd"])) {
-        header("Location: ../pages/login.php?error=emptyfields");
+        header("Location: ../pages/login.php?error=emptyfield");
         exit();
     }else{
         $username = $_POST["uid"];
