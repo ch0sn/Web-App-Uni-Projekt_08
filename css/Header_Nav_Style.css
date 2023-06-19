@@ -61,6 +61,15 @@ nav ul a {
     justify-content: center;
 }
 
+.dropdown_K button {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border:none;
+    text-align: center;
+    cursor: pointer;
+}
+
 /* "Kurse"-Dropdown bei Hover-Einstellung */
 nav li:hover .dropdown_K {
     display: flex;
@@ -182,7 +191,7 @@ input[type="search"]::placeholder {
 }
 
 /* Suchfeld-Button-Einstellung*/
-button[type="submit"] {
+button[id="searchButton"] {
     text-indent: -999px;
 
     width: 40px;

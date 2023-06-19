@@ -1,5 +1,5 @@
 <?php
-include_once '../plainheader.php';
+include '../plainheader.php';
 ?>
 <!-- Login-spezifische Titel und Css-Verlinkung -->
 <title>Login</title>

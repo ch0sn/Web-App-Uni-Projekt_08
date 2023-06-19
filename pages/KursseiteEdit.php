@@ -1,13 +1,8 @@
 <?php
-if(!isset($_SESSION['loggedin'])){
-    include_once '../header.php';
-}else{
-    header("Location: index.php");
-    exit();
-}
+
 ?>
-    <title>Kurssseite bearbeiten</title>
-    <link rel="stylesheet" href="../css/KurssseiteEdit.css">
+<title>Kurssseite bearbeiten</title>
+<link rel="stylesheet" href="../css/KurssseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
 
 
@@ -37,7 +32,7 @@ if(!isset($_SESSION['loggedin'])){
 
         <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
 
-        <img src="/Icons/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+        <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
 
         <script>
             var button = document.querySelector('.bitcoinLogo');

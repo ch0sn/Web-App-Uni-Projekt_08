@@ -27,10 +27,12 @@ session_start();
             <label for="kurse_checkbox">Kurse <img src="../img/WhiteDownArrow.png" alt="whitearrowdown"/></label>
             <!-- ungeordneten Listen-Layout als Dropdown für "Kurse" -->
             <ul class="dropdown_K">
-                <!--  <li><a href="#">Kurs1</a></li>
-                  <li><a href="#">Kurs2</a></li>
-                  <li><a href="#">Kurs3</a></li>-->
-              </ul>
+                <?php
+                if(isset($_SESSION["role"]) && $_SESSION['role'] == "dozent") {
+                    echo '<li><a href="../pages/KursseiteEdit.php">Kurs erstellen</a></li>';
+                }
+                ?>
+            </ul>
           </li>
 
           <!-- 2. Listeneintrag "Tools" in der ungeordneten Listenlayouts als "expandable_li_T" -->
@@ -61,7 +63,7 @@ session_start();
         <!-- 4. Listeneintrag "Suchfeld" -->
         <div class="searchBar">
             <label for="suche"></label><input type="search" id="suche" placeholder="Suchfeld">
-            <button type="submit"> </button>
+            <button type="submit" id="searchButton"> </button>
         </div>
 
         <!-- 5. Listeneintrag "Profilbereich" -->

@@ -1,10 +1,5 @@
 <?php
-if(!isset($_SESSION['loggedin'])){
     include_once '../header.php';
-}else{
-    header("Location: index.php");
-    exit();
-}
 ?>
 
 <!-- Main-Seite spezifischer Titel und Einstellungen -->
@@ -20,7 +15,7 @@ if(!isset($_SESSION['loggedin'])){
 <!-- 1. Panel (Willkommen) -->
 <div class="willkommensblock">
     <br>
-    <h1>Willkommen <?php echo $_SESSION['firstName'] . " " . $_SESSION['lastName'];?></h1>
+    <h1>Willkommen <?php echo $_SESSION['firstName'];?></h1>
     <br>
     <p id="willkommensText">zu der "Besseres Moodle Für Alle" Website !</p>
 </div>

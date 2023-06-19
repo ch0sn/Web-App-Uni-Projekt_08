@@ -49,8 +49,7 @@ function uidExists($conn, $username){
         return $row;
     }
     else{
-        $result = false;
-        return $result;
+        return false;
     }
 
     mysqli_stmt_close($stmt);
@@ -92,7 +91,7 @@ function loginUser($conn, $username, $pwd){
     }
     else if($checkPwd === true){
     session_start();
-        $sql = "SELECT usersFirstName, usersLastName FROM users WHERE usersUid = ?";
+        $sql = "SELECT usersFirstName, usersLastName, usersRole FROM users WHERE usersUid = ?";
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -116,6 +115,8 @@ function loginUser($conn, $username, $pwd){
             $_SESSION['role'] = $role;
             $_SESSION['loggedin'] = $uidExists["usersUid"];
 
+            include "includes/mainsite.inc.php";
+
             // Redirect the user to the mainsite after successful login
             header("Location: ../pages/mainsite.php");
             exit();
@@ -125,9 +126,7 @@ function loginUser($conn, $username, $pwd){
             header("Location: ../index.php");
             exit();
         }
-
-
-
-
     }
 }
+
+

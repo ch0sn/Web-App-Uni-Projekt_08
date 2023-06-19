@@ -1,13 +1,7 @@
 <?php
-session_start();
 
-
-
-if(isset($_GET["signedin"])){
-    header("Location: ../pages/mainsite.php?signedin=useruid");
-    exit();
-}
-else {
+if(!isset($_SESSION['loggedin'])){
     header("Location: ../index.php");
     exit();
 }
+header("Location: ../pages/mainsite.php");
