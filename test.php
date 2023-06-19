@@ -11,7 +11,7 @@
         .course-title {
             font-size: 24px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 21px;
         }
 
         #editButton {
