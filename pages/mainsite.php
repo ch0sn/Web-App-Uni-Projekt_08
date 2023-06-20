@@ -66,8 +66,7 @@
                         <option value="#">LSE (04)</option>
                         <option value="#">GES (05)</option>
                         <option value="#">MNI (06)</option>
-                        <option value="#">W (07)</option>
-                        <option value="#">IEM (11)</option>
+                        <option value="#">MND (13)</option>
                     </select></li>
             </form>
         </ul>
