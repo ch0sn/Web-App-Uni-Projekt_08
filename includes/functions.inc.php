@@ -129,4 +129,8 @@ function loginUser($conn, $username, $pwd){
     }
 }
 
+function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $coursepwd) {
+
+}
+
 

@@ -1,10 +1,37 @@
 <?php
     include "../header.php";
-
 ?>
 <title>Kurssseite bearbeiten</title>
 <link rel="stylesheet" href="../css/KurssseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
+
+<script>document.addEventListener("DOMContentLoaded", function() {
+  // Disable all clickable elements on the page except for the popup form
+  var elementsToDisable = document.querySelectorAll(
+    "a, li, label, textarea, button, input, img"
+  );
+
+  for (var i = 0; i < elementsToDisable.length; i++) {
+    if (!elementsToDisable[i].closest(".popup-form")) {
+      elementsToDisable[i].setAttribute("disabled", "disabled");
+      elementsToDisable[i].classList.add("blur-effect");
+    }
+  }
+
+  // Enable the website and remove the blur effect when the button is clicked
+  document.getElementById("course_completion_btn").addEventListener("click", function() {
+    // Remove the disabled attribute from the elements
+    for (var i = 0; i < elementsToDisable.length; i++) {
+      elementsToDisable[i].removeAttribute("disabled");
+        elementsToDisable[i].classList.remove("blur-effect");
+    }
+    // Hide the popup form
+
+      var popupForm = document.querySelector(".popup-form");
+      popupForm.style.visibility = 'hidden';
+      popupForm.style.pointerEvents = 'none';
+  });
+});</script>
 
 
 <!-- linke Bar -->
@@ -25,10 +52,10 @@
 
 </div>
 
-<div class='popup-form'>
+<form class='popup-form' action="../includes/courseEdit.inc.php" method="post" >
     <h1>Kurserstellung</h1>
     <!-- Kursname-Eingabefeld -->
-    <input type='text' id="course_name" placeholder="Kursname eingeben"/>
+    <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben"/>
     <!-- Fachbereich-Auswahl -->
     <select id="course_subjectarea" name="course_subjectarea">
         <option selected="selected">Alle Fachbereiche</option>
@@ -59,7 +86,9 @@
     <!-- Einschreibeschlüssel-Eingabe -->
     <button type="submit" id="course_completion_btn">Erstellen</button>
 
-    </div>
+    <button id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
+
+</form>
     
     <ul class="infoBar">
 
