@@ -131,3 +131,67 @@ function loginUser($conn, $username, $pwd){
 
     }
 }
+
+function updateCourseContent($conn, $courseid, $contentArray)
+{
+    
+    
+    // Das Array wird in einen JSON-String konvertiert
+    $jsonContent = json_encode($contentArray);
+
+    // SQL-Abfrage zum Aktualisieren des Kurses
+    $sql = "UPDATE courses SET courseContent = ? WHERE coursesId = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+
+        
+
+        return false;
+        
+    }
+    
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "si", $jsonContent, $courseid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    // Erfolgreiches Update
+    return true;
+}
+
+function getCourseContent($conn, $courseid)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT courseContent FROM courses WHERE coursesId = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $courseid);
+    mysqli_stmt_execute($stmt);
+
+    // Kursinhalt aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $courseContent);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    // Kursinhalt zurückgeben
+    return $courseContent;
+}

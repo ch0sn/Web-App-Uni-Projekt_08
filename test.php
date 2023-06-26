@@ -87,7 +87,6 @@
     </form>
 
     <script>
-
         let savedHtml = '';
 
         var count = 0;
@@ -167,17 +166,16 @@
             document.getElementById('saveButton').style.display = 'inline-block';
 
             const contentForm = document.getElementById('content')
-                     
-            if (savedHtml != '')
-            {
-                
+
+            if (savedHtml != '') {
+
                 contentForm.innerHTML = ''
                 contentForm.appendChild(savedHtml);
-   
+
                 console.log(savedHtml);
 
-                 
-            }            
+
+            }
 
         }
 
@@ -312,9 +310,7 @@
 
                 });
 
-            }
-
-            else {
+            } else {
 
                 var match = buttonId.match(/\d+/);
                 var numberOfButton = match ? parseInt(match[0]) : null;
@@ -380,9 +376,7 @@
                     button.disabled = false;
 
                 });
-            }
-
-            else {
+            } else {
 
                 var match = buttonId.match(/\d+/);
                 var numberOfButton = match ? parseInt(match[0]) : null;
@@ -451,9 +445,7 @@
 
                 });
 
-            }
-
-            else {
+            } else {
 
 
                 var match = buttonId.match(/\d+/);
@@ -462,6 +454,8 @@
 
                 const newLine = document.createElement('hr')
                 newLine.id = "dividingLine" + numberOfButton.toString();
+                newLine.style.color = "black";
+                newLine.style.height = "24px"
 
                 var contenDiv = document.getElementById('singleContent' + numberOfButton.toString());
 
@@ -502,7 +496,7 @@
 
             contenDiv.remove();
 
-        }  
+        }
 
         function arrayToWebsite(array) {
 
@@ -511,10 +505,10 @@
             var originalDiv = document.getElementById('content');
 
             // Div-Element klonen
-            savedHtml = originalDiv.cloneNode(true);                
+            savedHtml = originalDiv.cloneNode(true);
 
             elementsContainer.innerHTML = '';
-            
+
 
             array.forEach((item) => {
                 if (item.hasOwnProperty('id')) {
@@ -578,7 +572,6 @@
 
 
         }
-
     </script>
 </body>
 
