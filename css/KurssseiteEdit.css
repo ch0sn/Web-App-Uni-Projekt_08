@@ -94,3 +94,9 @@
 .popup-form #course_completion_cancel_btn:hover {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
+
+.popup-form p {
+    font-size: 13px;
+    margin-left: 35%;
+    margin-top: 15px;
+}

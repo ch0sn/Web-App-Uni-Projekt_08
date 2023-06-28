@@ -1,37 +1,25 @@
 <?php
-    include "../header.php";
+    include_once "../header.php";
 ?>
 <title>Kurssseite bearbeiten</title>
 <link rel="stylesheet" href="../css/KurssseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
+ <script> document.addEventListener("DOMContentLoaded", function() {
+         // Disable all clickable elements on the page except for the popup form
+         var elementsToDisable = document.querySelectorAll(
+             "a, li, label, textarea, button, input, img");
+         for (var i = 0; i < elementsToDisable.length; i++) {
+             if (!elementsToDisable[i].closest(".popup-form")) {
+                 elementsToDisable[i].setAttribute("disabled", "disabled");
+                 elementsToDisable[i].classList.add("blur-effect");
+             }
+         }
+ });
+ </script>
 
-<script>document.addEventListener("DOMContentLoaded", function() {
-  // Disable all clickable elements on the page except for the popup form
-  var elementsToDisable = document.querySelectorAll(
-    "a, li, label, textarea, button, input, img"
-  );
 
-  for (var i = 0; i < elementsToDisable.length; i++) {
-    if (!elementsToDisable[i].closest(".popup-form")) {
-      elementsToDisable[i].setAttribute("disabled", "disabled");
-      elementsToDisable[i].classList.add("blur-effect");
-    }
-  }
 
-  // Enable the website and remove the blur effect when the button is clicked
-  document.getElementById("course_completion_btn").addEventListener("click", function() {
-    // Remove the disabled attribute from the elements
-    for (var i = 0; i < elementsToDisable.length; i++) {
-      elementsToDisable[i].removeAttribute("disabled");
-        elementsToDisable[i].classList.remove("blur-effect");
-    }
-    // Hide the popup form
 
-      var popupForm = document.querySelector(".popup-form");
-      popupForm.style.visibility = 'hidden';
-      popupForm.style.pointerEvents = 'none';
-  });
-});</script>
 
 
 <!-- linke Bar -->
@@ -41,7 +29,9 @@
 <div class="gridCoursesClass">
 
     <div class="HeaderCourseClass">
-            
+            <?php
+
+            ?>
 
     </div>
 
@@ -49,6 +39,8 @@
 
 
     </div>
+
+
 
 </div>
 
@@ -86,7 +78,43 @@
     <!-- Einschreibeschlüssel-Eingabe -->
     <button type="submit" id="course_completion_btn">Erstellen</button>
 
-    <button id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
+    <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
+
+    <?php
+    if (!isset($_GET['error'])){
+    }
+    else{
+        $errorCheck = $_GET['error'];
+        if($errorCheck == "emptyfield"){
+            echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
+        }
+    }
+
+    if(!isset($_GET['courseCreated'])){
+    }
+    else {
+        $courseCreation = $_GET['courseCreated'];
+        if($courseCreation == 'successful'){
+            echo '<script> 
+               document.addEventListener("DOMContentLoaded", function() {
+         // Disable all clickable elements on the page except for the popup form
+         var elementsToDisable = document.querySelectorAll(
+             "a, li, label, textarea, button, input, img");
+        
+         // Remove the disabled attribute from the elements
+
+         for (var i = 0; i < elementsToDisable.length; i++) {
+                  elementsToDisable[i].removeAttribute("disabled");
+                  elementsToDisable[i].classList.remove("blur-effect");
+              }                 
+ });
+              // Hide the popup form
+              var popupForm = document.querySelector(".popup-form");
+              popupForm.style.visibility = "hidden";
+              popupForm.style.pointerEvents = "none";</script>';
+        }
+    }
+    ?>
 
 </form>
     

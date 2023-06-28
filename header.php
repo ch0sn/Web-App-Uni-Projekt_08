@@ -68,7 +68,7 @@ session_start();
 
         <!-- 5. Listeneintrag "Profilbereich" -->
         <li class="expandable_li_P">
-            <label><?php echo $_SESSION["firstName"] . "," . $_SESSION["lastName"];?></label>
+            <label><?php echo $_SESSION["firstName"].",".$_SESSION["lastName"];?></label>
             <img class= "profilePic" src="../img/32px_user_whitemode.png" alt="usericon_whitemode"/>
             <input type="checkbox" id="profile_checkbox">
             <label id="profileArrow" for="profile_checkbox" > <img src="../img/WhiteDownArrow.png" alt="whitearrowdown"/></label>
