@@ -25,25 +25,13 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="BodyCourseClass">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>
         <button id="addButton" hidden onclick="addButtons()">Abschnitt hinzufügen</button>
-        <button id="saveButton" hidden onclick="saveContentInArray(); arrayToWebsite();">Speichern und Bearbeitungsmodus verlassen</button>
+        <button id="saveButton" hidden onclick="saveContentInArray(); GetArrayFromDatabase();
+        
+                document.getElementById('addButton').style.display = 'none';
+                document.getElementById('saveButton').style.display = 'none';
+                ">Speichern und Bearbeitungsmodus verlassen</button>
 
         <br>
         <br>
@@ -53,11 +41,14 @@ if (!isset($_SESSION['loggedin'])) {
 
             <div id="singleContent">
 
-                <button id="textField" onclick="addTextfield(this.id)">Text</button>
-                <button id="studentsFileUpload" onclick="addStudentFileUpload(this.id)">Abgabe Studenten</button>
-                <button id="fileUpload" onclick="addFileUpload(this.id)">Datei hochladen</button>
-                <button id="dividingLine" onclick="addDividingLine(this.id)">Trennlinie</button>
-                <button id="deleteButton" onclick="deleteCurrentDiv(this.id)">X</button>
+
+                <button id="textArea" onclick="addTextfield(this.id);">Text</button>
+                <button id="studentsFileUpload" onclick="addStudentFileUpload(this.id); ">Abgabe Studenten</button>
+                <button id="fileUpload" onclick="addFileUpload(this.id); ">Datei hochladen</button>
+                <button id="dividingLine" onclick="addDividingLine(this.id);">Trennlinie</button>
+                <button id="deleteButton" onclick="deleteCurrentDiv(this.id); ">X</button>
+
+
 
             </div>
 
@@ -68,7 +59,18 @@ if (!isset($_SESSION['loggedin'])) {
 
             var count = 0;
 
-            let combinedArray = [];
+            let contentArray = [];
+
+            GetArrayFromDatabase()
+
+
+            function addEmptyLine(id) {
+
+                const elementsContainer = document.getElementById(id);
+                const emptyLine = document.createElement('div');
+                emptyLine.classList.add('empty-line');
+                elementsContainer.appendChild(emptyLine);
+            }
 
             function addTextfield(buttonId) {
                 event.preventDefault();
@@ -152,21 +154,147 @@ if (!isset($_SESSION['loggedin'])) {
 
             function toggleEdit() {
 
+
+                count = 0;
+
                 event.preventDefault();
                 document.getElementById('addButton').style.display = 'inline-block';
                 document.getElementById('saveButton').style.display = 'inline-block';
 
-                const contentForm = document.getElementById('content')
+                const contentForm = document.getElementById('content');
+                const firstElement = contentForm.querySelector(':first-child');
 
-                if (savedHtml != '') {
+                contentForm.innerHTML = firstElement.outerHTML;
 
-                    contentForm.innerHTML = ''
-                    contentForm.appendChild(savedHtml);
+                var tes = document.getElementById('content');
 
-                    console.log(savedHtml);
+                console.log(tes.outerHTML);
 
 
+                contentArray.forEach(item => {
+                    var button = document.getElementById('addButton');
+                    button.click(); // Klick auf den Button auslösen 
+                });
+
+
+
+
+                createEditElements(contentArray);
+                console.log(contentArray);
+
+
+
+
+            }
+
+            function createEditElements(data) {
+                data.forEach(item => {
+                    if (item.id.includes("textArea")) {
+
+                        var button = document.getElementById(item.id);;
+                        button.click(); // Klick auf den Button auslösen
+
+                        const containerId = item.id; // Erzeuge die ID des Containers basierend auf der ID des Objekts
+
+                        console.log(containerId);
+                        const container = document.getElementById(containerId); // Finde den Container anhand der ID
+
+
+                        container.value = item.value || "";
+
+
+                    }
+
+                    if (item.id.includes("dividingLine")) {
+
+                        var button = document.getElementById(item.id);;
+                        button.click(); // Klick auf den Button auslösen
+
+                    }
+
+                    if (item.id.includes("fileUpload")) {
+
+
+                        var button = document.getElementById(item.id);;
+                        button.click();
+
+
+
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getTeacherData", false);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+
+
+
+                                    var fileInput = document.getElementById(item.id);
+
+
+                                    var response = xhr.responseText;
+
+                                    response = response.replace("connected", "");
+
+                                    var base64Blob = response;
+
+                                    var blob = base64ToBlob(base64Blob);
+
+                                    console.log(blob)
+
+                                    var blobUrl = URL.createObjectURL(blob);
+
+                                    console.log(blobUrl)
+
+
+                                    var downloadLink = document.createElement('a');
+                                    downloadLink.href = blobUrl;
+                                    downloadLink.download = item.file;
+                                    downloadLink.textContent = item.file;
+
+                                    fileInput.parentNode.appendChild(downloadLink);
+
+
+
+
+                                } else {
+                                    console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
+                                }
+                            }
+                        };
+                        var data = "courseid=1&dataName=" + item.file // Passen Sie hier die Werte entsprechend an
+                        xhr.send(data);
+
+
+
+
+
+
+                    }
+
+
+
+
+
+
+
+                });
+            }
+
+            function base64ToBlob(base64String) {
+                var byteCharacters = atob(base64String.split(",")[1]);
+                var byteArrays = [];
+                for (var i = 0; i < byteCharacters.length; i++) {
+                    byteArrays.push(byteCharacters.charCodeAt(i));
                 }
+                return new Blob([new Uint8Array(byteArrays)], {
+                    type: 'image/png'
+                });
+            }
+
+            function ContentArrayInFields() {
+
 
             }
 
@@ -238,10 +366,14 @@ if (!isset($_SESSION['loggedin'])) {
                 fileInputElments.forEach((fileInput) => {
 
                     const fileObject = {
-                        id: fileInput.id,
-                        file: fileInput.files[0],
-
+                        id: fileInput.id
                     };
+
+                    if (!fileObject.id.includes("student")) {
+
+                        console.log(fileInput.id);
+                        fileObject.file = fileInput.files[0].name;
+                    }
                     fileInputList.push(fileObject);
 
                 });
@@ -257,18 +389,31 @@ if (!isset($_SESSION['loggedin'])) {
                     hrList.push(hrObject);
                 });
 
-                combinedArray = textareaList.concat(fileInputList).concat(hrList);
+                contentArray = textareaList.concat(fileInputList).concat(hrList);
 
-                combinedArray.sort((a, b) => {
+
+                for (var i = 0; i < contentArray.length; i++) {
+                    var currentItem = contentArray[i];
+                    var id = currentItem.id;
+                    var prefix = id.match(/[A-Za-z]+/)[0];
+                    var newId = prefix + i;
+                    currentItem.id = newId;
+                }
+
+                contentArray.sort((a, b) => {
                     const numA = parseInt(a.id.match(/\d+/)[0]);
                     const numB = parseInt(b.id.match(/\d+/)[0]);
 
                     return numA - numB;
                 });
 
+                console.log(contentArray)
+                console.log("Arrayyyy");
+
+
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "../includes/KursseiteEdit.inc.post.php", true);
+                xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=saveContentArray", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4) {
@@ -276,7 +421,8 @@ if (!isset($_SESSION['loggedin'])) {
 
 
                             var response = xhr.responseText;
-                            console.log(response);
+
+
 
 
                         } else {
@@ -284,7 +430,7 @@ if (!isset($_SESSION['loggedin'])) {
                         }
                     }
                 };
-                var data = "courseid=1&contentArray=" + JSON.stringify(combinedArray);
+                var data = "courseid=1&contentArray=" + JSON.stringify(contentArray);
                 xhr.send(data);
 
 
@@ -292,21 +438,37 @@ if (!isset($_SESSION['loggedin'])) {
 
 
 
+                const fileInputElements = div.querySelectorAll('input:not([id*="student"])');
+                xhr = new XMLHttpRequest();
 
+                for (let i = 0; i < fileInputElements.length; i++) {
+                    const fileInput = fileInputElements[i];
+                    const file = fileInput.files[0];
 
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const base64Data = event.target.result.split(',')[1];
+                        const courseid = 1; // Setze hier den entsprechenden Kurs-ID-Wert
 
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', '../includes/kursseiteEdit.inc.php?method=saveTeacherData', true);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    console.log('Datei erfolgreich hochgeladen.');
+                                } else {
+                                    console.log('Fehler beim Hochladen der Datei. Fehlercode: ' + xhr.status);
+                                }
+                            }
+                        };
 
+                        const data = 'courseid=1' + '&dataName=' + file.name + '&base64Image=' + encodeURIComponent(base64Data);
+                        xhr.send(data);
+                    };
 
-
-
-
-
-
-
-
-
-
-
+                    reader.readAsDataURL(file);
+                }
 
             }
 
@@ -391,7 +553,15 @@ if (!isset($_SESSION['loggedin'])) {
 
                     var contenDiv = document.getElementById('singleContent' + numberOfButton.toString());
 
-                    contenDiv.lastChild.remove();
+                    for (var i = contenDiv.children.length - 1; i >= 0; i--) {
+                        var child = contenDiv.children[i];
+
+                        // Überprüfe, ob das Kind ein <a>- oder <input>-Element ist
+                        if (child.tagName === 'A' || child.tagName === 'INPUT') {
+                            // Entferne das Kind aus dem Container
+                            contenDiv.removeChild(child);
+                        }
+                    }
 
                     var buttonOfTextField = document.getElementById(buttonId);
                     buttonOfTextField.id = buttonOfTextField.id.replace("true", "");
@@ -528,27 +698,40 @@ if (!isset($_SESSION['loggedin'])) {
 
             }
 
-            function arrayToWebsite() {
 
-                var array = [];
+            function GetArrayFromDatabase() {
+
 
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "../includes/kursseiteEdit.inc.get.php", true);
+                xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getCourseContent", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
                             var response = xhr.responseText;
-                            console.log(response);
+
+
+                            if (response == "connected") {
+                                return;
+                            }
+
+
+
 
                             var response = xhr.responseText;
                             var jsonStartIndex = response.indexOf("[");
                             var jsonEndIndex = response.lastIndexOf("]");
                             var jsonSubstring = response.substring(jsonStartIndex, jsonEndIndex + 1);
-                            var array = JSON.parse(jsonSubstring);
 
-                            console.log(array);
+                            var array = JSON.parse(jsonSubstring);
+                            arrayToWebsite(array)
+                            contentArray = array;
+
+                            console.log(contentArray)
+
+
+
 
                         } else {
                             console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
@@ -557,6 +740,13 @@ if (!isset($_SESSION['loggedin'])) {
                 };
                 var data = "courseid=1";
                 xhr.send(data);
+            }
+
+
+
+            function arrayToWebsite(array) {
+
+
 
 
 
@@ -566,69 +756,135 @@ if (!isset($_SESSION['loggedin'])) {
 
 
                 const elementsContainer = document.getElementById('content');
+                const firstElement = elementsContainer.querySelector(':first-child');
 
-                var originalDiv = document.getElementById('content');
+                elementsContainer.innerHTML = firstElement.outerHTML;
 
-                // Div-Element klonen
-                savedHtml = originalDiv.cloneNode(true);
 
-                elementsContainer.innerHTML = '';
 
 
                 for (let i = 0; i < array.length; i++) {
                     const item = array[i];
-                    if (item.hasOwnProperty('id')) {
-
-                        if (item.id.includes('textArea')) {
-                            // Erstelle ein <div>-Element
-                            const div = document.createElement('div');
-                            div.id = item.id;
-                            div.innerHTML = item.value.replace(/\n/g, '<br>'); // Ersetze Zeilenumbrüche mit <br>-Tags
-                            elementsContainer.appendChild(div);
-                            elementsContainer.innerHTML += '<br>';
-                        }
-
-                        if (item.id.includes('studentFileUpload')) {
-                            // Erstelle ein File-Input-Element
-                            const fileInput = document.createElement('input');
-                            fileInput.type = 'file';
-                            fileInput.id = item.id;
-                            elementsContainer.appendChild(fileInput)
-                            elementsContainer.innerHTML += '<br>';
-                        }
-
-                        if (item.id.includes('fileUpload') && !item.id.includes('student')) {
-
-                            if (item.file && item.file.name != null) {
-                                // Create a link to display and download the file
-                                const fileLink = document.createElement('a');
-                                fileLink.href = URL.createObjectURL(item.file);
-                                fileLink.download = item.file.name;
-                                fileLink.textContent = item.file.name;
-
-                                elementsContainer.appendChild(fileLink);
-                                elementsContainer.innerHTML += '<br>';
-                            }
-                        }
-
-                        if (item.id.includes('dividingLine')) {
-                            // Erstelle eine Trennlinie
-                            const divideLineContainer = document.createElement('div');
 
 
-                            // Erstelle eine Trennlinie
-                            const divideLine = document.createElement('hr');
+                    if (item.id.includes('textArea')) {
+                        // Erstelle ein <div>-Element
+                        const div = document.createElement('div');
+                        div.id = item.id;
+                        div.innerHTML = item.value.replace(/\n/g, '<br>'); // Ersetze Zeilenumbrüche mit <br>-Tags
+                        elementsContainer.appendChild(div);
+                        const emptyLine = document.createElement('div');
+                        emptyLine.classList.add('empty-line');
+                        elementsContainer.appendChild(emptyLine);
 
-                            // Füge die Trennlinie dem Container hinzu
-                            divideLineContainer.appendChild(divideLine);
 
-                            // Füge den Container mit der Trennlinie zu elementsContainer hinzu
-                            elementsContainer.appendChild(divideLineContainer);
-                            elementsContainer.innerHTML += '<br>';
 
-                        }
+
+
+
+
 
                     }
+
+                    if (item.id.includes('studentFileUpload')) {
+                        // Erstelle ein File-Input-Element
+                        const fileInput = document.createElement('input');
+                        fileInput.type = 'file';
+                        fileInput.id = item.id;
+                        elementsContainer.appendChild(fileInput)
+                        const emptyLine = document.createElement('div');
+                        emptyLine.classList.add('empty-line');
+                        elementsContainer.appendChild(emptyLine);
+                    }
+
+                    if (item.id.includes('fileUpload') && !item.id.includes('student')) {
+
+
+
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getTeacherData", false);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+
+
+                                    var response = xhr.responseText;
+
+                                    if (!response.includes('data:')) {
+                                        return;
+                                    }
+
+                                    response = response.substring(response.indexOf('data'));
+
+
+
+                                    // Erstellen der URL für den Blob
+                                    // Decodiere das Base64-Bild in einen Byte-Array
+                                    var byteCharacters = atob(response.split(',')[1]);
+
+                                    // Erstelle ein Byte-Array
+                                    var byteArrays = [];
+
+                                    for (var j = 0; j < byteCharacters.length; j++) {
+                                        byteArrays.push(byteCharacters.charCodeAt(j));
+                                    }
+
+                                    // Konvertiere das Byte-Array in ein Blob
+                                    var blob = new Blob([new Uint8Array(byteArrays)], {
+                                        type: 'image/png'
+                                    });
+
+                                    // Erstelle die URL für das Blob
+                                    var blobUrl = URL.createObjectURL(blob);
+
+                                    // Erstelle den Download-Link
+                                    var downloadLink = document.createElement('a');
+                                    downloadLink.href = blobUrl;
+                                    downloadLink.download = item.file; // Dateiname für den Download
+                                    downloadLink.textContent = item.file;
+
+                                    // Füge den Download-Link zum Dokument hinzu
+                                    elementsContainer.appendChild(downloadLink);
+
+
+                                    // Verwenden Sie 'blobUrl' für Ihren Dateilink oder andere Zwecke
+
+                                } else {
+                                    console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
+                                }
+                            }
+                        };
+                        var data = "courseid=1&dataName=" + item.file // Passen Sie hier die Werte entsprechend an
+                        xhr.send(data);
+
+
+
+
+
+                    }
+
+                    if (item.id.includes('dividingLine')) {
+                        // Erstelle eine Trennlinie
+                        const divideLineContainer = document.createElement('div');
+
+
+                        // Erstelle eine Trennlinie
+                        const divideLine = document.createElement('hr');
+
+                        // Füge die Trennlinie dem Container hinzu
+                        divideLineContainer.appendChild(divideLine);
+
+                        // Füge den Container mit der Trennlinie zu elementsContainer hinzu
+                        elementsContainer.appendChild(divideLineContainer);
+                        const emptyLine = document.createElement('div');
+                        emptyLine.classList.add('empty-line');
+                        elementsContainer.appendChild(emptyLine);
+
+                    }
+
+
 
 
                 }
@@ -637,37 +893,10 @@ if (!isset($_SESSION['loggedin'])) {
                 elementsContainer.style.flexDirection = "column";
 
 
-                document.getElementById('addButton').style.display = 'none';
-                document.getElementById('saveButton').style.display = 'none';
 
 
             }
         </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -683,7 +912,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
 
-    <img src="/Icons/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+    <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
 
     <script>
         var button = document.querySelector('.bitcoinLogo');

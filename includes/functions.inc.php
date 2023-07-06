@@ -1,30 +1,34 @@
 <?php
 
-function emptyField($firstname,$lastname,$email,$username,$pwd,$pwdRepeat,$role){
+function emptyField($firstname, $lastname, $email, $username, $pwd, $pwdRepeat, $role)
+{
     $result = false;
-    if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat) || empty($role)){
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat) || empty($role)) {
         $result = true;
     }
     return $result;
 }
 
-function invalidUid($username) {
+function invalidUid($username)
+{
     $result = false;
-    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)){
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $result = true;
     }
     return $result;
 }
 
-function invalidEmail($email) {
+function invalidEmail($email)
+{
     $result = false;
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
     }
     return $result;
 }
 
-function pwdMatch($pwd, $pwdRepeat) {
+function pwdMatch($pwd, $pwdRepeat)
+{
     $result = false;
     if ($pwd !== $pwdRepeat) {
         $result = true;
@@ -32,11 +36,12 @@ function pwdMatch($pwd, $pwdRepeat) {
     return $result;
 }
 
-function uidExists($conn, $username){
+function uidExists($conn, $username)
+{
     $sql = "SELECT * FROM users WHERE usersUid = ?;";
     $stmt = mysqli_stmt_init($conn);
 
-    if(!mysqli_stmt_prepare($stmt, $sql)){
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../pages/signup.php?error=stmtfailed");
         exit();
     }
@@ -45,57 +50,56 @@ function uidExists($conn, $username){
 
     $resultData = mysqli_stmt_get_result($stmt);
 
-    if($row = mysqli_fetch_assoc($resultData)){
+    if ($row = mysqli_fetch_assoc($resultData)) {
         return $row;
-    }
-    else{
+    } else {
         $result = false;
         return $result;
     }
 
     mysqli_stmt_close($stmt);
-
 }
 
-function createUser($conn, $firstname, $lastname, $email, $username, $pwd, $role){
+function createUser($conn, $firstname, $lastname, $email, $username, $pwd, $role)
+{
     $sql = "INSERT INTO users (usersFirstName, usersLastName, usersEmail, usersUid, usersPwd, usersRole) VALUES (?,?,?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
 
-    if(!mysqli_stmt_prepare($stmt, $sql)){
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../signup.php?error=stmtfailed");
         exit();
     }
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssssss",$firstname, $lastname, $email, $username, $hashedPwd, $role);
+    mysqli_stmt_bind_param($stmt, "ssssss", $firstname, $lastname, $email, $username, $hashedPwd, $role);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
     header("Location: ../pages/login.php");
 }
 
-function loginUser($conn, $username, $pwd){
-    $uidExists = uidExists($conn,$username);
+function loginUser($conn, $username, $pwd)
+{
+    $uidExists = uidExists($conn, $username);
 
-    if($uidExists === false){
+    if ($uidExists === false) {
         header("location: ../pages/login.php?error=wronglogin");
         exit();
     }
 
     $pwdHashed = $uidExists["usersPwd"];
-    $checkPwd = password_verify($pwd,$pwdHashed);
+    $checkPwd = password_verify($pwd, $pwdHashed);
 
-    if($checkPwd === false){
+    if ($checkPwd === false) {
         header("location: ../pages/login.php?error=wrongpassword&uid=$username");
         exit();
-    }
-    else if($checkPwd === true){
-    session_start();
+    } else if ($checkPwd === true) {
+        session_start();
         $sql = "SELECT usersFirstName, usersLastName FROM users WHERE usersUid = ?";
         $stmt = mysqli_stmt_init($conn);
 
-        if(!mysqli_stmt_prepare($stmt, $sql)){
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../pages/login.php?error=stmtfailed");
             exit();
         }
@@ -119,23 +123,18 @@ function loginUser($conn, $username, $pwd){
             // Redirect the user to the mainsite after successful login
             header("Location: ../pages/mainsite.php");
             exit();
-        }
-        else{
+        } else {
             // Redirect the user to the index page when no successful login
             header("Location: ../index.php");
             exit();
         }
-
-
-
-
     }
 }
 
 function updateCourseContent($conn, $courseid, $contentArray)
 {
-    
-    
+
+
     // Das Array wird in einen JSON-String konvertiert
     $jsonContent = json_encode($contentArray);
 
@@ -149,12 +148,11 @@ function updateCourseContent($conn, $courseid, $contentArray)
         // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
         // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
 
-        
+
 
         return false;
-        
     }
-    
+
     // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
     mysqli_stmt_bind_param($stmt, "si", $jsonContent, $courseid);
     mysqli_stmt_execute($stmt);
@@ -193,5 +191,141 @@ function getCourseContent($conn, $courseid)
     mysqli_stmt_close($stmt);
 
     // Kursinhalt zurückgeben
-    return $courseContent;
+    echo $courseContent;
+}
+
+
+/* function updateTeacherDataUpload($conn, $id, $idCourse, $dataName, $dataBlob)
+{
+    // SQL-Abfrage zum Aktualisieren der Tabelle
+    $sql = "UPDATE tableName SET idCourse = ?, dataName = ?, dataBlob = ? WHERE id = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "issb", $idCourse, $dataName, $dataBlob, $id);
+    mysqli_stmt_send_long_data($stmt, 2, $dataBlob); // Übergeben des BLOB-Datentyps
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    // Erfolgreiches Update
+    return true;
+} */
+
+
+function insertTeacherData($conn, $idCourse, $dataName, $base64Image)
+{
+    // Base64-Bild in einen Blob umwandeln
+    $blobData = base64_decode($base64Image);
+
+    // SQL-Abfrage zum Einfügen der Daten in die Tabelle
+    $sql = "INSERT INTO coursesteacherdata (idCourse, dataName, dataBlob) VALUES (?, ?, ?)";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Fehlerbehandlung bei der Vorbereitung der SQL-Anweisung
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "iss", $idCourse, $dataName, $blobData);
+    mysqli_stmt_execute($stmt);
+
+    // Überprüfen, ob das Einfügen erfolgreich war
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "Data inserted successfully";
+    } else {
+        echo "Failed to insert data";
+    }
+
+    // Statement schließen
+    mysqli_stmt_close($stmt);
+}
+
+
+function getTeacherData($conn, $idCourse, $dataName)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ? AND dataName = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Fehlerbehandlung bei der Vorbereitung der SQL-Anweisung
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "is", $idCourse, $dataName);
+    mysqli_stmt_execute($stmt);
+
+    // Ergebnis abrufen
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Überprüfen, ob ein Ergebnis vorhanden ist
+    if (mysqli_num_rows($result) > 0) {
+        // Blob-Daten aus dem Ergebnis abrufen
+        $row = mysqli_fetch_assoc($result);
+        $dataBlob = $row['dataBlob'];
+
+        // Blob-Daten als Base64-codierten String senden
+        echo 'data:image/png;base64,' . base64_encode($row['dataBlob']) . '';
+    } else {
+
+        $bindParamsString = var_export(array("is", $idCourse, $dataName), true);
+
+        // Kein Ergebnis gefunden
+        echo "No data found " . $idCourse . " " . $dataName . $bindParamsString;
+    }
+
+    // Statement schließen
+    mysqli_stmt_close($stmt);
+}
+
+
+function getAllTeacherData($conn, $idCourse)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ?";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Fehlerbehandlung bei der Vorbereitung der SQL-Anweisung
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $idCourse, $dataName);
+    mysqli_stmt_execute($stmt);
+
+    // Ergebnis abrufen
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Überprüfen, ob ein Ergebnis vorhanden ist
+    if (mysqli_num_rows($result) > 0) {
+        // Blob-Daten aus dem Ergebnis abrufen
+        $row = mysqli_fetch_assoc($result);
+        $dataBlob = $row['dataBlob'];
+
+        // Blob-Daten als Base64-codierten String senden
+        echo 'data:image/png;base64,' . base64_encode($row['dataBlob']) . '';
+    } else {
+
+        $bindParamsString = var_export(array("is", $idCourse, $dataName), true);
+
+        // Kein Ergebnis gefunden
+        echo "No data found " . $idCourse . " " . $dataName . $bindParamsString;
+    }
+
+    // Statement schließen
+    mysqli_stmt_close($stmt);
 }
