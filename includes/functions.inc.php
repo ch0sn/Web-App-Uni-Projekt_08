@@ -329,3 +329,36 @@ function getAllTeacherData($conn, $idCourse)
     // Statement schließen
     mysqli_stmt_close($stmt);
 }
+
+
+function getCourseNameById($conn, $id)
+{
+    // SQL-Abfrage zum Abrufen des Kursnamens basierend auf der Kurs-ID
+    $sql = "SELECT coursesName FROM courses WHERE id = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    // Kursnamen aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $courseName);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    // Kursnamen zurückgeben
+    return $courseName;
+}
