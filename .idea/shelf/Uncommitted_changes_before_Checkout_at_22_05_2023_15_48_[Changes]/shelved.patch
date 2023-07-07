@@ -1,0 +1,35 @@
+Index: Startseite/Startseite.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"de\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>BMFA-Startseite</title>\r\n    <link rel=\"stylesheet\" href=\"Startseite_Style.css\">\r\n    <link rel=\"stylesheet\" href=\"../Grunddesign.css\">\r\n</head>\r\n<body>\r\n    <!-- Navbar-Sektion beginnt. -->\r\n    <nav>\r\n        <!-- Logo wird in Navbar hinzugefügt. -->\r\n        <a  class=\"barTopLogo\" href=\"Startseite.html\"><img src=\"/Icons/thm_logo.svg\" alt=\"THM Logo Icon\" height=75> </a>\r\n\r\n        <!-- Ungeordnete Listen-Layout Sektion -->\r\n        <ul>\r\n            <!-- 1. Listeneintrag \"Kurse\" in der ungeordneten Listenlayouts als \"expandable_li_K\" -->\r\n                <li class=\"expandable_li_K\">\r\n                    <input type=\"checkbox\" id=\"kurse_checkbox\">\r\n                    <label for=\"kurse_checkbox\">Kurse <img src=\"/Icons/WhiteDownArrow.png\" alt=\"whitearrowdown\"/></label>\r\n                    <!-- ungeordneten Listen-Layout als Dropdown für \"Kurse\" -->\r\n                    <ul class=\"dropdown_K\">\r\n                        <li><a href=\"#\">Kurs1</a></li>\r\n                        <li><a href=\"#\">Kurs2</a></li>\r\n                        <li><a href=\"#\">Kurs3</a></li>\r\n                    </ul>\r\n                </li>\r\n\r\n            <!-- 2. Listeneintrag \"Tools\" in der ungeordneten Listenlayouts als \"expandable_li_T\" -->\r\n                <li class=\"expandable_li_T\">\r\n                    <input type=\"checkbox\" id=\"tools_checkbox\">\r\n                    <label for=\"tools_checkbox\">Tools <img src=\"/Icons/WhiteDownArrow.png\" alt=\"whitearrowdown\"/></label>\r\n                    <!-- ungeordneten Listen-Layout als Dropdown für \"Tools\" -->\r\n                    <ul class=\"dropdown_T\">\r\n                        <li><a href=\"https://webmail.thm.de/rc/?_task=mail&_mbox=INBOX#\" target=\"_blank\">Webmail</a></li>\r\n                        <li> <a href=\"https://www.thm.de/organizer/\" target=\"_blank\">Organizer</a></li>\r\n                        <li> <a href=\"https://www.thm.de/zqe/unsere-aufgaben/meinungsportal.html\" target=\"_blank\">Feedback</a></li>\r\n                        <li> <a href=\"https://www.thm.de/site/hochschule/service/infocenter-thm.html\" target=\"_blank\">Support</a></li>\r\n                    </ul>\r\n                </li>\r\n\r\n            <!-- 3. Listeneintrag \"Tools\" in der ungeordneten Listenlayouts als \"expandable_li_F\" -->\r\n                <li class=\"expandable_li_F\">\r\n                    <input type=\"checkbox\" id=\"forum_checkbox\">\r\n                    <label for=\"forum_checkbox\">Forum <img src=\"/Icons/WhiteDownArrow.png\" alt=\"whitearrowdown\"/></label>\r\n                    <!-- ungeordneten Listen-Layout als Dropdown für \"Forum\" -->\r\n                    <ul class=\"dropdown_F\">\r\n                        <li><a href=\"https://www.thm.de/site/hochschule/campus/aktuelles.html\" target=\"_blank\">News</a></li>\r\n                        <li><a href=\"https://www.asta.thm.de/\" target=\"_blank\">ASTA</a></li>\r\n                        <li><a href=\"#\" target=\"_blank\">Lerngruppe</a></li>\r\n                    </ul>\r\n                </li>\r\n\r\n            <!-- 4. Listeneintrag \"Suchfeld\" -->\r\n            <div class=\"searchBar\">\r\n                <input type=\"search\" id=\"suche\" placeholder=\"Suchfeld\" >\r\n                <button type=\"submit\"> </button>\r\n            </div>\r\n\r\n        </ul>\r\n    </nav>\r\n\r\n    <!-- linke Bar -->\r\n    <div class=\"barLeft\">\r\n    </div>\r\n\r\n</div>\r\n<ul class=\"infoBar\">\r\n\r\n    <li><a href=\"https://www.thm.de/site/impressum.html\" target=\"_blank\">Impressum</a></li>\r\n\r\n    <li><a href=\"https://www.thm.de/site/hochschule/service/infocenter-thm.html\" target=\"_blank\">Hilfe</a></li>\r\n\r\n    <li><a href=\"https://www.thm.de/datenschutz/\" target=\"_blank\">Datenschutz</a></li>\r\n\r\n    <img src=\"/Icons/bitcoin.svg\" class=\"bitcoinLogo\" alt=\"THM Logo Icon\" height=\"32px\" width=\"32px\">\r\n\r\n    <script>\r\n        var button = document.querySelector('.bitcoinLogo');\r\n        button.addEventListener('click', function () {\r\n            document.documentElement.scrollTop = 0;\r\n        });\r\n    </script>\r\n\r\n</ul>\r\n</div>\r\n\r\n\r\n\r\n\r\n<script>\r\n</script>\r\n\r\n\r\n</body>\r\n</html>\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Startseite/Startseite.html b/Startseite/Startseite.html
+--- a/Startseite/Startseite.html	
++++ b/Startseite/Startseite.html	
+@@ -57,6 +57,24 @@
+                 <button type="submit"> </button>
+             </div>
+ 
++            <!-- 5. Listeneintrag "Profilbereich" -->
++            <li class="expandable_li_P">
++                <label>Goethe, Johann Wolfgang</label>
++                <img class= "profilePic" src="/Icons/32px_user_whitemode.png" alt="usericon_whitemode"/>
++                <input type="checkbox" id="profile_checkbox">
++                <label id="profileArrow" for="profile_checkbox" > <img src="/Icons/WhiteDownArrow.png" alt="whitearrowdown"/></label>
++
++                <ul class="dropdown_P">
++                    <li><a href="#" target="_blank">Profil</a></li>
++                    <li><a href="#" target="_blank">Mitteilungen</a></li>
++                    <li><a href="#" target="_blank">Einstellungen</a></li>
++                    <li><a href="#" target="_blank">Abmelden</a></li>
++                </ul>
++            </li>
++
++            <div class="darkmode">
++                <a href="#"> <img src="/Icons/moon.png" alt="moon icon"/> </a>
++            </div>
+         </ul>
+     </nav>
+ 

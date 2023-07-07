@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f534180d-bd04-4967-8289-cba623b10156" name="Changes" comment="Dummys created, and a few" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main#1_OFFICIAL" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="9e1e26b5-268c-404e-8f32-3faa6b180453" />
+        <option name="url" value="https://github.com/ch0sn/Web-App-Uni-Projekt_08.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/../../../../xampp/htdocs/WebTech_Projekt" />
+    </include_path>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2PQ4UWTLGVRaH3YMuB6IgvVEt5J" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sontek/IntelliJIDEAProjects/Web-App-Uni-Projekt/courses&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sontek\IntelliJIDEAProjects\Web-App-Uni-Projekt\courses" />
+      <recent name="C:\Users\Sontek\IntelliJIDEAProjects\Web-App-Uni-Projekt\sql_database" />
+      <recent name="C:\Users\Sontek\IdeaProjects\Web-App-Uni-Projekt_08\Icons" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sontek\IntelliJIDEAProjects\Web-App-Uni-Projekt" />
+      <recent name="C:\Users\Sontek\IntelliJIDEAProjects\Web-App-Uni-Projekt\css" />
+      <recent name="C:\Users\Sontek\IntelliJIDEAProjects\Web-App-Uni-Projekt\pages" />
+      <recent name="C:\Users\Sontek\IdeaProjects\Web-App-Uni-Projekt_08" />
+      <recent name="C:\Users\Sontek\IdeaProjects\Web-App-Uni-Projekt_08\Icons" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f534180d-bd04-4967-8289-cba623b10156" name="Changes" comment="" />
+      <created>1683375988240</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683375988240</updated>
+      <workItem from="1683375990275" duration="3268000" />
+      <workItem from="1683402981085" duration="607000" />
+      <workItem from="1683549141991" duration="8782000" />
+      <workItem from="1683808696866" duration="11541000" />
+      <workItem from="1684155762135" duration="10881000" />
+      <workItem from="1684314469554" duration="14953000" />
+      <workItem from="1684499956232" duration="11946000" />
+      <workItem from="1684684449702" duration="351000" />
+      <workItem from="1684756791273" duration="11770000" />
+      <workItem from="1684938293224" duration="5751000" />
+      <workItem from="1684956282959" duration="601000" />
+      <workItem from="1685005258188" duration="3988000" />
+      <workItem from="1685098029987" duration="7812000" />
+      <workItem from="1685363741846" duration="9900000" />
+      <workItem from="1685433644823" duration="1179000" />
+      <workItem from="1685552117008" duration="595000" />
+      <workItem from="1685707227761" duration="1415000" />
+      <workItem from="1685710325122" duration="1083000" />
+      <workItem from="1685712140210" duration="15364000" />
+      <workItem from="1685777662425" duration="1399000" />
+      <workItem from="1685782939222" duration="20000" />
+      <workItem from="1685898456978" duration="1485000" />
+      <workItem from="1685962061970" duration="1218000" />
+      <workItem from="1685993786252" duration="452000" />
+      <workItem from="1686039091172" duration="3077000" />
+      <workItem from="1686056752200" duration="6794000" />
+      <workItem from="1686124982858" duration="15671000" />
+      <workItem from="1686563294210" duration="10178000" />
+      <workItem from="1686919980492" duration="4590000" />
+      <workItem from="1687161321017" duration="15118000" />
+      <workItem from="1687262629555" duration="12441000" />
+      <workItem from="1687290209044" duration="335000" />
+      <workItem from="1687526696788" duration="9153000" />
+      <workItem from="1687537584954" duration="5014000" />
+      <workItem from="1687870523175" duration="17008000" />
+      <workItem from="1687944993597" duration="12436000" />
+      <workItem from="1688316750481" duration="1588000" />
+      <workItem from="1688373373050" duration="8647000" />
+      <workItem from="1688479631018" duration="4457000" />
+      <workItem from="1688492051635" duration="306000" />
+      <workItem from="1688547383214" duration="20556000" />
+      <workItem from="1688632155974" duration="10691000" />
+      <workItem from="1688723756655" duration="3147000" />
+      <workItem from="1688736054159" duration="356000" />
+    </task>
+    <task id="LOCAL-00001" summary="Loginseite updated">
+      <created>1683555543581</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683555543581</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Startseite.html + Startseite_Style.css initial commit #1">
+      <created>1683558955148</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683558955148</updated>
+    </task>
+    <task id="LOCAL-00003" summary="navigation Top bar added + dropdown menu added + first dropdown menu function added.">
+      <created>1683820384097</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683820384097</updated>
+    </task>
+    <task id="LOCAL-00004" summary="errors/warning solved for Loginseite.html #1">
+      <created>1683820879983</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683820879983</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Startseite_renewed">
+      <created>1684319391005</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684319391005</updated>
+    </task>
+    <task id="LOCAL-00006" summary="unused code deleted">
+      <created>1684319567233</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684319567233</updated>
+    </task>
+    <task id="LOCAL-00007" summary="&quot;left Bar&quot; added to Startseite">
+      <created>1684320106368</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684320106368</updated>
+    </task>
+    <task id="LOCAL-00008" summary="&quot;left Bar&quot; added to Startseite">
+      <created>1684320440294</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684320440294</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Comments added + &quot;Sans-Serif&quot; added to Startseite (Orbitron does not work with labels)">
+      <created>1684333532980</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684333532980</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Lupen-Icon added + search bar with CSS styling added">
+      <created>1684504188780</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684504188780</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Lupen-Icon added + search bar with CSS styling added #1">
+      <created>1684504493018</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684504493018</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Loginseite structure update #1">
+      <created>1684511410261</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684511410261</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Loginseite structure update #1 on main branch">
+      <created>1684511551981</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684511551981</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Startseite barLeft position:fixed added">
+      <created>1684684658461</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684684658461</updated>
+    </task>
+    <task id="LOCAL-00015" summary="unofficial &quot;Darkmode&quot; added.">
+      <created>1684763158373</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684763158373</updated>
+    </task>
+    <task id="LOCAL-00016" summary="sun and moon icons deleted.">
+      <created>1684763460559</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1684763460559</updated>
+    </task>
+    <task id="LOCAL-00017" summary="16px user icons deleted.">
+      <created>1684763496485</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1684763496485</updated>
+    </task>
+    <task id="LOCAL-00018" summary="16px sun icon deleted.">
+      <created>1684763530735</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1684763530735</updated>
+    </task>
+    <task id="LOCAL-00019" summary="new sun, moon, user Icons added.">
+      <created>1684763763532</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1684763763532</updated>
+    </task>
+    <task id="LOCAL-00020" summary="profile area added #1 + some comments added to new addition">
+      <created>1684764228061</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1684764228061</updated>
+    </task>
+    <task id="LOCAL-00021" summary="remaining panels added + filter button not finished (TODO)">
+      <created>1684770010601</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1684770010601</updated>
+    </task>
+    <task id="LOCAL-00022" summary="remaining panels added + filter button not finished (TODO) + filter icon added">
+      <created>1684770173752</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1684770173752</updated>
+    </task>
+    <task id="LOCAL-00023" summary="solving warnings #1">
+      <created>1684770619600</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1684770619600</updated>
+    </task>
+    <task id="LOCAL-00024" summary="filterArea für Kurssuche">
+      <created>1685363874180</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1685363874180</updated>
+    </task>
+    <task id="LOCAL-00025" summary="filterArea-CSS added für Kurssuche">
+      <created>1685364211831</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1685364211831</updated>
+    </task>
+    <task id="LOCAL-00026" summary="filterArea-HTML added für Kurssuche">
+      <created>1685364295487</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1685364295487</updated>
+    </task>
+    <task id="LOCAL-00027" summary="filterArea-HTML script-part added für Kurssuche">
+      <created>1685364546805</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1685364546805</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Startseite z-Index for dropdown menu added">
+      <created>1685364715932</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1685364715932</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Startseite border for dropdown menus added">
+      <created>1685364821422</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1685364821422</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Kursseite + KursseiteEdit navBar added">
+      <created>1685365691117</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1685365691117</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Einschreibeseite navBar added">
+      <created>1685366001414</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1685366001414</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Favicon added + Kursseite little change (Boxes added and little text) + two icons added">
+      <created>1685434363609</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1685434363609</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Favicon added">
+      <created>1685710739452</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1685710739453</updated>
+    </task>
+    <task id="LOCAL-00034" summary="BIG UPDATE">
+      <created>1686055940488</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1686055940488</updated>
+    </task>
+    <task id="LOCAL-00035" summary="BIG UPDATE #2">
+      <created>1686056939679</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1686056939679</updated>
+    </task>
+    <task id="LOCAL-00036" summary="BIG UPDATE #3">
+      <created>1686057078333</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1686057078333</updated>
+    </task>
+    <task id="LOCAL-00037" summary="includes header.php added">
+      <created>1686061118549</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1686061118549</updated>
+    </task>
+    <task id="LOCAL-00038" summary="SignUp and Login Quality of Life (QoL) added and updated.">
+      <created>1686064693403</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1686064693403</updated>
+    </task>
+    <task id="LOCAL-00039" summary="SQL with 3 tables added to the project.">
+      <created>1686065661357</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1686065661357</updated>
+    </task>
+    <task id="LOCAL-00040" summary="some fixes + Kursbereich works as intended (Scrolling down).">
+      <created>1686156714876</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1686156714876</updated>
+    </task>
+    <task id="LOCAL-00041" summary="SchwarzesBrett modified and example lines added - works as Kursbereich by pressing button to show smooth scrolling out panel.">
+      <created>1686158276997</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1686158276997</updated>
+    </task>
+    <task id="LOCAL-00042" summary="sign up / login Logo-click fixed +&#10;&quot;Kurs erstellen&quot; button changed +&#10;KursseiteEdit little changes +">
+      <created>1687198510621</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1687198510621</updated>
+    </task>
+    <task id="LOCAL-00043" summary="mainsite.php: minor change in &quot;fachbereich&quot;-select (Filterarea) +&#10;KursseiteEdit.php: pop up window (default) created">
+      <created>1687290537329</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1687290537329</updated>
+    </task>
+    <task id="LOCAL-00044" summary="KursseiteEdit.php: pop up window (default) works as intended -&gt; blurry background and only popup form is active ; cancel-option added to return mainsite">
+      <created>1687549027982</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1687549027982</updated>
+    </task>
+    <task id="LOCAL-00045" summary="KursseiteEdit.php saving course information on the sql &quot;courses&quot; table and making after course is successfully saved,  website not blurry anymore">
+      <created>1687959687774</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1687959687774</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Dummys created, and a few">
+      <created>1688735794793</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1688735794793</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main#1_OFFICIAL" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Daniel's_Spielwiese" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Daniel's_TestingGround" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="remaining panels added + filter button not finished (TODO) + filter icon added" />
+    <MESSAGE value="solving warnings #1" />
+    <MESSAGE value="filterArea für Kurssuche" />
+    <MESSAGE value="filterArea-CSS added für Kurssuche" />
+    <MESSAGE value="filterArea-HTML added für Kurssuche" />
+    <MESSAGE value="filterArea-HTML script-part added für Kurssuche" />
+    <MESSAGE value="Startseite z-Index for dropdown menu added" />
+    <MESSAGE value="Startseite border for dropdown menus added" />
+    <MESSAGE value="Kursseite + KursseiteEdit navBar added" />
+    <MESSAGE value="Einschreibeseite navBar added" />
+    <MESSAGE value="Favicon added + Kursseite little change (Boxes added and little text) + two icons added" />
+    <MESSAGE value="Favicon added" />
+    <MESSAGE value="BIG UPDATE" />
+    <MESSAGE value="BIG UPDATE #2" />
+    <MESSAGE value="BIG UPDATE #3" />
+    <MESSAGE value="includes header.php added" />
+    <MESSAGE value="SignUp and Login Quality of Life (QoL) added and updated." />
+    <MESSAGE value="SQL with 3 tables added to the project." />
+    <MESSAGE value="some fixes + Kursbereich works as intended (Scrolling down)." />
+    <MESSAGE value="SchwarzesBrett modified and example lines added - works as Kursbereich by pressing button to show smooth scrolling out panel." />
+    <MESSAGE value="sign up / login Logo-click fixed +&#10;&quot;Kurs erstellen&quot; button changed +&#10;KursseiteEdit little changes +" />
+    <MESSAGE value="mainsite.php: minor change in &quot;fachbereich&quot;-select (Filterarea) +&#10;KursseiteEdit.php: pop up window (default) created" />
+    <MESSAGE value="KursseiteEdit.php: pop up window (default) works as intended -&gt; blurry background and only popup form is active ; cancel-option added to return mainsite" />
+    <MESSAGE value="KursseiteEdit.php saving course information on the sql &quot;courses&quot; table and making after course is successfully saved,  website not blurry anymore" />
+    <MESSAGE value="Dummys created, and a few" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dummys created, and a few" />
+  </component>
+</project>
