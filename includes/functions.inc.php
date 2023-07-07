@@ -203,3 +203,234 @@ function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemest
     exit();
 }
 
+function updateCourseContent($conn, $courseid, $contentArray)
+{
+
+
+    // Das Array wird in einen JSON-String konvertiert
+    $jsonContent = json_encode($contentArray);
+
+    // SQL-Abfrage zum Aktualisieren des Kurses
+    $sql = "UPDATE courses SET courseContent = ? WHERE coursesId = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+
+
+
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "si", $jsonContent, $courseid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    // Erfolgreiches Update
+    return true;
+}
+
+function getCourseContent($conn, $courseid)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT courseContent FROM courses WHERE coursesId = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $courseid);
+    mysqli_stmt_execute($stmt);
+
+    // Kursinhalt aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $courseContent);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    // Kursinhalt zurückgeben
+    echo $courseContent;
+}
+
+
+/* function updateTeacherDataUpload($conn, $id, $idCourse, $dataName, $dataBlob)
+{
+    // SQL-Abfrage zum Aktualisieren der Tabelle
+    $sql = "UPDATE tableName SET idCourse = ?, dataName = ?, dataBlob = ? WHERE id = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "issb", $idCourse, $dataName, $dataBlob, $id);
+    mysqli_stmt_send_long_data($stmt, 2, $dataBlob); // Übergeben des BLOB-Datentyps
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    // Erfolgreiches Update
+    return true;
+} */
+
+
+function insertTeacherData($conn, $idCourse, $dataName, $base64Image)
+{
+    // Base64-Bild in einen Blob umwandeln
+    $blobData = base64_decode($base64Image);
+
+    // SQL-Abfrage zum Einfügen der Daten in die Tabelle
+    $sql = "INSERT INTO coursesteacherdata (idCourse, dataName, dataBlob) VALUES (?, ?, ?)";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Fehlerbehandlung bei der Vorbereitung der SQL-Anweisung
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "iss", $idCourse, $dataName, $blobData);
+    mysqli_stmt_execute($stmt);
+
+    // Überprüfen, ob das Einfügen erfolgreich war
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "Data inserted successfully";
+    } else {
+        echo "Failed to insert data";
+    }
+
+    // Statement schließen
+    mysqli_stmt_close($stmt);
+}
+
+
+function getTeacherData($conn, $idCourse, $dataName)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ? AND dataName = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Fehlerbehandlung bei der Vorbereitung der SQL-Anweisung
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "is", $idCourse, $dataName);
+    mysqli_stmt_execute($stmt);
+
+    // Ergebnis abrufen
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Überprüfen, ob ein Ergebnis vorhanden ist
+    if (mysqli_num_rows($result) > 0) {
+        // Blob-Daten aus dem Ergebnis abrufen
+        $row = mysqli_fetch_assoc($result);
+        $dataBlob = $row['dataBlob'];
+
+        // Blob-Daten als Base64-codierten String senden
+        echo 'data:image/png;base64,' . base64_encode($row['dataBlob']) . '';
+    } else {
+
+        $bindParamsString = var_export(array("is", $idCourse, $dataName), true);
+
+        // Kein Ergebnis gefunden
+        echo "No data found " . $idCourse . " " . $dataName . $bindParamsString;
+    }
+
+    // Statement schließen
+    mysqli_stmt_close($stmt);
+}
+
+
+function getAllTeacherData($conn, $idCourse)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ?";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Fehlerbehandlung bei der Vorbereitung der SQL-Anweisung
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $idCourse, $dataName);
+    mysqli_stmt_execute($stmt);
+
+    // Ergebnis abrufen
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Überprüfen, ob ein Ergebnis vorhanden ist
+    if (mysqli_num_rows($result) > 0) {
+        // Blob-Daten aus dem Ergebnis abrufen
+        $row = mysqli_fetch_assoc($result);
+        $dataBlob = $row['dataBlob'];
+
+        // Blob-Daten als Base64-codierten String senden
+        echo 'data:image/png;base64,' . base64_encode($row['dataBlob']) . '';
+    } else {
+
+        $bindParamsString = var_export(array("is", $idCourse, $dataName), true);
+
+        // Kein Ergebnis gefunden
+        echo "No data found " . $idCourse . " " . $dataName . $bindParamsString;
+    }
+
+    // Statement schließen
+    mysqli_stmt_close($stmt);
+}
+
+
+function getCourseNameById($conn, $id)
+{
+    // SQL-Abfrage zum Abrufen des Kursnamens basierend auf der Kurs-ID
+    $sql = "SELECT coursesName FROM courses WHERE id = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    // Kursnamen aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $courseName);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    // Kursnamen zurückgeben
+    return $courseName;
+}
