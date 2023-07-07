@@ -170,7 +170,7 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
     }
 
     $hashedPwd = password_hash($coursepwd, PASSWORD_DEFAULT);
-    $courseEmptyContent = "[]";
+    $courseEmptyContent = "[{}]";
 
     mysqli_stmt_bind_param($stmt, "sssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid,$courseEmptyContent);
     mysqli_stmt_execute($stmt);
@@ -191,21 +191,54 @@ function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemest
         exit();
     }
 
-    $courseEmptyContent = "[]";
+    $courseEmptyContent = "[{}]";
 
     mysqli_stmt_bind_param($stmt, "ssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid, $courseEmptyContent);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    $_SESSION['courseID'] = getCourseID($conn,$coursename);
+    $_SESSION['courseName'] = $coursename;
 
-
-    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=$coursename");
+    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']);
     exit();
 }
 
+function getCourseID($conn, $coursename)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT coursesId FROM courses WHERE coursesName = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "s", $coursename);
+    mysqli_stmt_execute($stmt);
+
+    // Kursinhalt aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $coursesId);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    // Kursinhalt zurückgeben
+    return $coursesId;
+}
+
+
 function updateCourseContent($conn, $courseid, $contentArray)
 {
-
+    $courseid = $_SESSION['courseID'];
 
     // Das Array wird in einen JSON-String konvertiert
     $jsonContent = json_encode($contentArray);
@@ -236,6 +269,8 @@ function updateCourseContent($conn, $courseid, $contentArray)
 
 function getCourseContent($conn, $courseid)
 {
+    $courseid = $_SESSION['courseID'];
+
     // SQL-Abfrage zum Abrufen des Kursinhalts
     $sql = "SELECT courseContent FROM courses WHERE coursesId = ?;";
 
@@ -294,6 +329,9 @@ function getCourseContent($conn, $courseid)
 
 function insertTeacherData($conn, $idCourse, $dataName, $base64Image)
 {
+
+    $idCourse = $_SESSION['courseID'];
+
     // Base64-Bild in einen Blob umwandeln
     $blobData = base64_decode($base64Image);
 
@@ -325,6 +363,9 @@ function insertTeacherData($conn, $idCourse, $dataName, $base64Image)
 
 function getTeacherData($conn, $idCourse, $dataName)
 {
+
+    $idCourse = $_SESSION['courseID'];
+
     // SQL-Abfrage zum Abrufen des Kursinhalts
     $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ? AND dataName = ?;";
 
@@ -365,6 +406,9 @@ function getTeacherData($conn, $idCourse, $dataName)
 
 function getAllTeacherData($conn, $idCourse)
 {
+
+    $idCourse = $_SESSION['courseID'];
+
     // SQL-Abfrage zum Abrufen des Kursinhalts
     $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ?";
 
@@ -405,6 +449,9 @@ function getAllTeacherData($conn, $idCourse)
 
 function getCourseNameById($conn, $id)
 {
+
+    $id = $_SESSION['courseID'];
+
     // SQL-Abfrage zum Abrufen des Kursnamens basierend auf der Kurs-ID
     $sql = "SELECT coursesName FROM courses WHERE id = ?;";
 
