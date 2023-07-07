@@ -1,21 +1,22 @@
 <?php
-    include_once "../header.php";
+include_once "../header.php";
 ?>
 <title>Kurssseite bearbeiten</title>
 <link rel="stylesheet" href="../css/KurssseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
- <script> document.addEventListener("DOMContentLoaded", function() {
-         // Disable all clickable elements on the page except for the popup form
-         var elementsToDisable = document.querySelectorAll(
-             "a, li, label, textarea, button, input, img");
-         for (var i = 0; i < elementsToDisable.length; i++) {
-             if (!elementsToDisable[i].closest(".popup-form")) {
-                 elementsToDisable[i].setAttribute("disabled", "disabled");
-                 elementsToDisable[i].classList.add("blur-effect");
-             }
-         }
- });
- </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Disable all clickable elements on the page except for the popup form
+        var elementsToDisable = document.querySelectorAll(
+            "a, li, label, textarea, button, input, img");
+        for (var i = 0; i < elementsToDisable.length; i++) {
+            if (!elementsToDisable[i].closest(".popup-form")) {
+                elementsToDisable[i].setAttribute("disabled", "disabled");
+                elementsToDisable[i].classList.add("blur-effect");
+            }
+        }
+    });
+</script>
 
 
 
@@ -33,10 +34,10 @@
 
     </div>
 
-    <form class='popup-form' action="../includes/courseEdit.inc.php" method="post" >
+    <form class='popup-form' action="../includes/courseEdit.inc.php" method="post">
         <h1>Kurserstellung</h1>
         <!-- Kursname-Eingabefeld -->
-        <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben"/>
+        <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben" />
         <!-- Fachbereich-Auswahl -->
         <select id="course_subjectarea" name="course_subjectarea">
             <option selected="selected">Alle Fachbereiche</option>
@@ -70,20 +71,18 @@
         <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
 
         <?php
-        if (!isset($_GET['error'])){
-        }
-        else{
+        if (!isset($_GET['error'])) {
+        } else {
             $errorCheck = $_GET['error'];
-            if($errorCheck == "emptyfield"){
+            if ($errorCheck == "emptyfield") {
                 echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
             }
         }
 
-        if(!isset($_GET['courseCreated'])){
-        }
-        else {
+        if (!isset($_GET['courseCreated'])) {
+        } else {
             $courseCreation = $_GET['courseCreated'];
-            if($courseCreation == 'successful'){
+            if ($courseCreation == 'successful') {
                 echo '<script> 
                document.addEventListener("DOMContentLoaded", function() {
          // Disable all clickable elements on the page except for the popup form
@@ -809,6 +808,8 @@
                             var jsonEndIndex = response.lastIndexOf("]");
                             var jsonSubstring = response.substring(jsonStartIndex, jsonEndIndex + 1);
 
+
+                            console.log(response);
                             var array = JSON.parse(jsonSubstring);
                             arrayToWebsite(array)
                             contentArray = array;
@@ -997,7 +998,7 @@
 
     <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
 
-        <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+    <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
 
     <script>
         var button = document.querySelector('.bitcoinLogo');
