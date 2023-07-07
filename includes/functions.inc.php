@@ -138,3 +138,25 @@ function loginUser($conn, $username, $pwd)
     }
 }
 
+function getUserId ($firstName, $lastName){
+    global $conn;
+
+    $sql = "SELECT usersID FROM users WHERE usersFirstName = ? AND usersLastName = ?";
+    $stmt = mysqli_prepare($conn,$sql);
+
+    mysqli_stmt_bind_param($stmt,"ss", $firstName, $lastName);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $usersId = $row["usersID"];
+
+        return $usersId;
+    }else{
+        return null;
+    }
+    mysqli_close($stmt);
+}
+
