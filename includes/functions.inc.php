@@ -160,3 +160,43 @@ function getUserId ($firstName, $lastName){
     mysqli_close($stmt);
 }
 
+function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $coursepwd, $courseteacherid) {
+
+    $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher) VALUES (?,?,?,?,?,?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("Location: ../pages/KursseiteEdit.php?error=stmtfailed");
+        exit();
+    }
+
+    $hashedPwd = password_hash($coursepwd, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "ssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+
+    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseName=$coursename");
+    exit();
+}
+
+function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid) {
+
+    $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, courseTeacher) VALUES (?,?,?,?,?);";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("Location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "sssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+
+
+    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=$coursename");
+    exit();
+}
+
