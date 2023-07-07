@@ -172,12 +172,18 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
     $hashedPwd = password_hash($coursepwd, PASSWORD_DEFAULT);
     $courseEmptyContent = "[{}]";
 
-    mysqli_stmt_bind_param($stmt, "sssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid,$courseEmptyContent);
+    mysqli_stmt_bind_param($stmt, "ssissis",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    $_SESSION['courseID'] = getCourseID($conn,$coursename);
+    $_SESSION['courseName'] = $coursename;
+    $_SESSION['courseSubjectArea'] = $coursesubjectarea;
+    $_SESSION['courseSemester'] = $coursesemesternr;
+    $_SESSION['courseSemesterSeason'] = $coursesemestertime;
+    $_SESSION['courseTeacher'] = getCourseTeacher($conn,$courseteacherid);
 
-    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseName=$coursename");
+    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID'] . "&coursename=" . $_SESSION['courseName'] . ' ' . $hashedPwd);
     exit();
 }
 
@@ -199,9 +205,45 @@ function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemest
 
     $_SESSION['courseID'] = getCourseID($conn,$coursename);
     $_SESSION['courseName'] = $coursename;
+    $_SESSION['courseSubjectArea'] = $coursesubjectarea;
+    $_SESSION['courseSemester'] = $coursesemesternr;
+    $_SESSION['courseSemesterSeason'] = $coursesemestertime;
+    $_SESSION['courseTeacher'] = getCourseTeacher($conn,$courseteacherid);
 
-    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']);
+    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']. "&coursename=" . $_SESSION['courseName']);
     exit();
+}
+
+function getCourseTeacher($conn, $courseteacherid)
+{
+    // SQL-Abfrage zum Abrufen des Kursinhalts
+    $sql = "SELECT usersFirstName, usersLastName FROM users u, courses c WHERE u.usersID = ?;";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $courseteacherid);
+    mysqli_stmt_execute($stmt);
+
+    // Kursinhalt aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $courseTeacherFirstName, $courseTeacherLastName);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    // Kursinhalt zurückgeben
+    $courseTeacherName = $courseTeacherFirstName . ", " . $courseTeacherLastName;
+    return $courseTeacherName;
 }
 
 function getCourseID($conn, $coursename)

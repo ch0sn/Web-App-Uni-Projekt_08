@@ -29,7 +29,19 @@
 <div class="gridCoursesClass">
 
     <div class="HeaderCourseClass">
-
+        <?php
+        if (!isset($_GET['courseCreated'])) {
+            echo '<h1></h1>';
+        } else {
+            $creationSuccess = $_GET['courseCreated'];
+            $passwordNeeded = $_GET['passwordNeeded'];
+            if ($creationSuccess == "successful") {
+                echo '<h1>' . $_SESSION["courseName"] . '</h1>';
+                echo '<p>' . 'Fachbereich:' . $_SESSION["courseSubjectArea"] . ' / ' . $_SESSION["courseSemesterSeason"] .
+                    ' / ab dem: ' . $_SESSION["courseSemester"] . '.Semester / Dozent: ' . $_SESSION["courseTeacher"] . '</p>';
+            }
+        }
+        ?>
 
     </div>
 
@@ -59,11 +71,11 @@
         </select>
         <!-- Semesterzeit-Auswahl -->
         <div class="rg_course_semestertime">
-            <input type="radio" id="winter" name="course_semestertime" value="winter"><label for="winter">Wintersemester</label>
-            <input type="radio" id="summer" name="course_semestertime" value="summer"><label for="summer">Sommersemester</label>
+            <input type="radio" id="winter" name="course_semestertime" value="Winter"><label for="winter">Wintersemester</label>
+            <input type="radio" id="summer" name="course_semestertime" value="Sommer"><label for="summer">Sommersemester</label>
         </div>
         <!-- Einschreibeschlüssel-Eingabe -->
-        <input type="password" id="course_pwd" placeholder="(optional) Einschreibeschlüssel eingeben">
+        <input type="password" id="course_pwd">
         <!-- Einschreibeschlüssel-Eingabe -->
         <button type="submit" id="course_completion_btn">Erstellen</button>
 
@@ -108,7 +120,6 @@
     </form>
 
     <div class="BodyCourseClass">
-
 
         <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>
         <button id="addButton" hidden onclick="addButtons()">Abschnitt hinzufügen</button>
@@ -808,7 +819,7 @@
                             var jsonStartIndex = response.indexOf("[");
                             var jsonEndIndex = response.lastIndexOf("]");
                             var jsonSubstring = response.substring(jsonStartIndex, jsonEndIndex + 1);
-
+                            console.log(response);
                             var array = JSON.parse(jsonSubstring);
                             arrayToWebsite(array)
                             contentArray = array;

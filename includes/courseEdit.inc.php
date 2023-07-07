@@ -6,7 +6,7 @@ global $conn;
         || empty($_POST["course_semesternumber"]) || empty($_POST["course_semestertime"])) {
         header("Location: ../pages/KursseiteEdit.php?error=emptyfield");
         exit();
-    }else if (empty($_POST["course_pwd"])){
+    }else if ($_POST["course_pwd"] == null){
         $coursename = $_POST["course_name"];
         $coursesubjectarea = $_POST["course_subjectarea"];
         $coursesemesternr = $_POST["course_semesternumber"];
@@ -18,7 +18,7 @@ global $conn;
         $uID = getUserId($_SESSION['firstName'],$_SESSION['lastName']);
 
         createCourseWOPwd($conn,$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $uID);
-    }else{
+    }else if(!empty($_POST['course_pwd'])){
         $coursename = $_POST["course_name"];
         $coursesubjectarea = $_POST["course_subjectarea"];
         $coursesemesternr = $_POST["course_semesternumber"];
