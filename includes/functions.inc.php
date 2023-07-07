@@ -162,7 +162,7 @@ function getUserId ($firstName, $lastName){
 
 function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $coursepwd, $courseteacherid) {
 
-    $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher) VALUES (?,?,?,?,?,?);";
+    $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher, courseContent) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("Location: ../pages/KursseiteEdit.php?error=stmtfailed");
@@ -170,8 +170,9 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
     }
 
     $hashedPwd = password_hash($coursepwd, PASSWORD_DEFAULT);
+    $courseEmptyContent = "[]";
 
-    mysqli_stmt_bind_param($stmt, "ssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid);
+    mysqli_stmt_bind_param($stmt, "sssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid,$courseEmptyContent);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
@@ -182,7 +183,7 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
 
 function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid) {
 
-    $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, courseTeacher) VALUES (?,?,?,?,?);";
+    $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, courseTeacher, courseContent) VALUES (?,?,?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -190,7 +191,9 @@ function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemest
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "sssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid);
+    $courseEmptyContent = "[]";
+
+    mysqli_stmt_bind_param($stmt, "ssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid, $courseEmptyContent);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
