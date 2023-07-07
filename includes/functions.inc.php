@@ -170,7 +170,7 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
     }
 
     $hashedPwd = password_hash($coursepwd, PASSWORD_DEFAULT);
-    $courseEmptyContent = "[{}]";
+    $courseEmptyContent = "[]";
 
     mysqli_stmt_bind_param($stmt, "ssissis",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
     mysqli_stmt_execute($stmt);
@@ -197,12 +197,13 @@ function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemest
         exit();
     }
 
-    $courseEmptyContent = "[{}]";
+    $courseEmptyContent = '[]';
 
     mysqli_stmt_bind_param($stmt, "ssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid, $courseEmptyContent);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    session_start();
     $_SESSION['courseID'] = getCourseID($conn,$coursename);
     $_SESSION['courseName'] = $coursename;
     $_SESSION['courseSubjectArea'] = $coursesubjectarea;
@@ -280,6 +281,7 @@ function getCourseID($conn, $coursename)
 
 function updateCourseContent($conn, $courseid, $contentArray)
 {
+    session_start();
     $courseid = $_SESSION['courseID'];
 
     // Das Array wird in einen JSON-String konvertiert
@@ -311,6 +313,7 @@ function updateCourseContent($conn, $courseid, $contentArray)
 
 function getCourseContent($conn, $courseid)
 {
+    session_start();
     $courseid = $_SESSION['courseID'];
 
     // SQL-Abfrage zum Abrufen des Kursinhalts
@@ -371,6 +374,7 @@ function getCourseContent($conn, $courseid)
 
 function insertTeacherData($conn, $idCourse, $dataName, $base64Image)
 {
+    session_start();
 
     $idCourse = $_SESSION['courseID'];
 
@@ -405,7 +409,7 @@ function insertTeacherData($conn, $idCourse, $dataName, $base64Image)
 
 function getTeacherData($conn, $idCourse, $dataName)
 {
-
+    session_start();
     $idCourse = $_SESSION['courseID'];
 
     // SQL-Abfrage zum Abrufen des Kursinhalts
@@ -448,7 +452,7 @@ function getTeacherData($conn, $idCourse, $dataName)
 
 function getAllTeacherData($conn, $idCourse)
 {
-
+    session_start();
     $idCourse = $_SESSION['courseID'];
 
     // SQL-Abfrage zum Abrufen des Kursinhalts
@@ -491,7 +495,7 @@ function getAllTeacherData($conn, $idCourse)
 
 function getCourseNameById($conn, $id)
 {
-
+    session_start();
     $id = $_SESSION['courseID'];
 
     // SQL-Abfrage zum Abrufen des Kursnamens basierend auf der Kurs-ID

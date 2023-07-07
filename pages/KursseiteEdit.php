@@ -75,7 +75,7 @@
             <input type="radio" id="summer" name="course_semestertime" value="Sommer"><label for="summer">Sommersemester</label>
         </div>
         <!-- Einschreibeschlüssel-Eingabe -->
-        <input type="password" id="course_pwd">
+        <input type="password" id="course_pwd" placeholder="(optional) Einschreibeschlüssel eingeben">
         <!-- Einschreibeschlüssel-Eingabe -->
         <button type="submit" id="course_completion_btn">Erstellen</button>
 
@@ -819,6 +819,8 @@
                             var jsonStartIndex = response.indexOf("[");
                             var jsonEndIndex = response.lastIndexOf("]");
                             var jsonSubstring = response.substring(jsonStartIndex, jsonEndIndex + 1);
+
+
                             console.log(response);
                             var array = JSON.parse(jsonSubstring);
                             arrayToWebsite(array)
