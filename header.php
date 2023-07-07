@@ -27,6 +27,7 @@ session_start();
             <label for="kurse_checkbox">Kurse <img src="../img/WhiteDownArrow.png" alt="whitearrowdown"/></label>
             <!-- ungeordneten Listen-Layout als Dropdown für "Kurse" -->
             <ul class="dropdown_K">
+
                 <?php
                 if(isset($_SESSION["role"]) && $_SESSION['role'] == "dozent") {
                     echo '<li><a href="../pages/KursseiteEdit.php">Kurs erstellen</a></li>';

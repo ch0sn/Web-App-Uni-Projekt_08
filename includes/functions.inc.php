@@ -117,8 +117,6 @@ function loginUser($conn, $username, $pwd){
             $_SESSION['role'] = $role;
             $_SESSION['loggedin'] = $uidExists["usersUid"];
 
-            include "includes/mainsite.inc.php";
-
             // Redirect the user to the mainsite after successful login
             header("Location: ../pages/mainsite.php");
             exit();
@@ -193,6 +191,66 @@ function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemest
     exit();
 }
 
-function checkCourses(){
+function checkEnrollment($conn, $userId){
+    include_once "dbh.inc.php";
+
+    $userID = $userId;
+
+    $sql = "SELECT c.coursesName
+            FROM enrollment e
+            JOIN users u ON e.usersId = u.usersID
+            JOIN courses c ON c.coursesId = e.coursesId
+            WHERE u.usersID = ?";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("Location: ../pages/mainsite.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $userID);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+
+    // Bind the result variable
+    mysqli_stmt_bind_result($stmt, $courseName);
+
+    // Output the course names
+    while (mysqli_stmt_fetch($stmt)) {
+        echo $courseName . "<br>";
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+
+function enrolledCourses($conn, $userId){
+    $sql = "SELECT c.coursesName
+            FROM courses c
+            JOIN users u ON e.usersId = u.usersID
+            JOIN enrollment e ON c.coursesId = e.coursesId
+            WHERE u.usersID = ?";
+
+    $stmt = mysqli_stmt_init($sql);
+
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+        header("Location: ../pages/mainsite.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+
+    // Bind the result variable
+    mysqli_stmt_bind_result($stmt, $courseName);
+
+    // Output the course names
+    while (mysqli_stmt_fetch($stmt)) {
+        echo '<li><a'.$courseName . '<br>';
+    }
+
+    mysqli_stmt_close($stmt);
 
 }

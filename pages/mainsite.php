@@ -45,55 +45,86 @@
 
     <!-- Filter-content for Collapsible -->
     <div class='filterContent'>
-        <ul>
-            <form>
-                <li><input type="checkbox" id="enrolled">Angemeldet</input></li>
-                <li><input type="radio" id="winter" name="semesterTime" value="winter"><label for="winter">Wintersemester</label></li>
-                <li><input type="radio" id="summer" name="semesterTime" value="summer"><label for="summer">Sommersemester</label></li>
+        <form action="../includes/mainsite.inc.php" method="post">
+            <ul>
+                <li><input type="checkbox" id="enrolled"><label for="enrolled">Angemeldet</label></li>
+                <li><input type="radio" id="winter" name="semesterTime" value="winter">
+                    <label for="winter">Wintersemester</label></li>
+                <li><input type="radio" id="summer" name="semesterTime" value="summer">
+                    <label for="summer">Sommersemester</label></li>
                 <li><select id="semesternumber" name="semesternumber">
                         <option value selected="selected">Alle Semester</option>
-                        <option value="#">1.Semester</option>
-                        <option value="#">2.Semester</option>
-                        <option value="#">3.Semester</option>
-                        <option value="#">4.Semester</option>
-                        <option value="#">5.Semester</option>
+                        <option value="1">1.Semester</option>
+                        <option value="2">2.Semester</option>
+                        <option value="3">3.Semester</option>
+                        <option value="4">4.Semester</option>
+                        <option value="5">5.Semester</option>
                     </select></li>
                 <li><select id="fachbereich" name="fachbereich">
                         <option value selected="selected">Alle Fachbereiche</option>
-                        <option value="#">B (01)</option>
-                        <option value="#">EI (02)</option>
-                        <option value="#">ME (03)</option>
-                        <option value="#">LSE (04)</option>
-                        <option value="#">GES (05)</option>
-                        <option value="#">MNI (06)</option>
-                        <option value="#">MND (13)</option>
+                        <option value="B">B (01)</option>
+                        <option value="EI">EI (02)</option>
+                        <option value="ME">ME (03)</option>
+                        <option value="LSE">LSE (04)</option>
+                        <option value="GES">GES (05)</option>
+                        <option value="MNI">MNI (06)</option>
+                        <option value="MND">MND (13)</option>
                     </select></li>
-            </form>
-        </ul>
+            </ul>
+
+            <script>
+                let checkBox = document.getElementById("enrolled");
+                checkBox.addEventListener("change", function (){
+                    if (this.checked){
+                        console.log("Passt");
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "../includes/mainsite.inc.php?method=checkEnrollment", true);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+
+
+                                    var response = xhr.responseText;
+                                    console.log (response);
+
+
+
+                                } else {
+                                    console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
+                                }
+                            }
+                        };
+                        var data = "" ;
+                        xhr.send(data);
+                    }
+                });
+
+
+            </script>
+            <button type="submit" id="filtern">Filtern</button>
+        </form>
     </div>
 
     <ul class="alleKurse">
         <button type="button" name="fb01" class="fb01Collapsible">FB 01: B - Bauwesen (Gi)</button>
         <div class='fb01_content'>
             <ul>
-                <li><a href="#">Bachelor</a></li>
-                <li><a href="#">Master</a></li>
+
             </ul>
         </div>
 
         <button type="button" name="fb02" class="fb02Collapsible">FB 02: EI - Elektro- und Informationstechnik</button>
         <form class="fb02_content">
             <ul>
-                <li><a href="#">Bachelor</a></li>
-                    <li><a href="#">Master</a></li>
+
             </ul>
         </form>
 
         <button type="button" name="fb03" class="fb03Collapsible">FB 03: ME - Maschinenbau und Energietechnik (Gi)</button>
         <div class='fb03_content'>
             <ul>
-                <li><a href="#">Bachelor</a></li>
-                <li><a href="#">Master</a></li>
+
             </ul>
         </div>
 
@@ -101,8 +132,7 @@
         <div class='fb04_content'>
             <form >
                 <ul>
-                    <li><a href="#">Bachelor</a></li>
-                    <li><a href="#">Master</a></li>
+
                 </ul>
             </form>
         </div>
@@ -111,8 +141,7 @@
         <div class='fb05_content'>
             <form >
                 <ul>
-                    <li><a href="#">Bachelor</a></li>
-                    <li><a href="#">Master</a></li>
+
                 </ul>
             </form>
         </div>
@@ -121,8 +150,7 @@
         <div class='fb06_content'>
             <form >
                 <ul>
-                    <li><a href="#">Bachelor</a></li>
-                    <li><a href="#">Master</a></li>
+
                 </ul>
             </form>
         </div>
@@ -131,8 +159,10 @@
         <div class='fb13_content'>
             <form >
                 <ul>
-                    <li><a href="#">Bachelor</a></li>
-                    <li><a href="#">Master</a></li>
+                    <li><a href="../courses/Dummy_Mathe3.php">Mathe 3</a></li>
+                    <li><a href="../courses/Dummy_Management.php">Management</a></li>
+                    <li><a href="../courses/Dummy_Finanzwirtschaft.php">Finanzwirtschaft</a></li>
+                    <li><a href="../courses/Dummy_Einschreiben_Big%20Data.php">Big Data</a></li>
                 </ul>
             </form>
         </div>

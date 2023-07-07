@@ -132,13 +132,13 @@
 
 .kursbereich ul {
     font-family: bold;
-    margin-left: 40px;
-    list-style: none;
+
     height:min-content;
 }
 
 .kursbereich ul button {
     font-size: 25px;
+    margin-left: 40px;
 }
 
 
@@ -153,37 +153,43 @@
 
 .filterContent {
     background: aliceblue;
-    height:min-content;
     transition: max-height 0.2s ease-out;
-    max-height: 0;
+    max-height: 0px;
     overflow: hidden;
 }
 
-.filterContent ul{
-    display:flex;
+.filterContent ul li {
+    list-style: none;
+    display: inline;
+    margin-left: 45px;
 }
 
 .fitlerContent li {
-    font-size: 15px;
+   margin-left:15px;
 }
 
 .filterContent label {
-    font-size: 15px;
+    font-size: 18px;
+    margin-right: 50px;
 }
 
 #enrolled label{
     font-size: 15px;
 }
 
-#winter {
-}
-
 #semesternumber {
-    font-size: 15px;
+    margin-top:15px;
+    margin-right:50px;
+    font-size: 18px;
 }
 
 #fachbereich {
-    font-size: 15px;
+    font-size: 18px;
+}
+
+#filtern {
+    margin-top: 15px;
+    margin-left: 45px;
 }
 
 /* Style-Einstellung für FB01. */
@@ -200,6 +206,7 @@
     transition: max-height 0.2s ease-out;
     max-height: 0;
     overflow: hidden;
+    margin-left: 45px;
 }
 
 .fb01_content li a {
@@ -221,6 +228,7 @@
     transition: max-height 0.2s ease-out;
     max-height: 0;
     overflow: hidden;
+    margin-left: 45px;
 }
 
 .fb02_content li a {
@@ -242,6 +250,7 @@
     transition: max-height 0.2s ease-out;
     max-height: 0;
     overflow: hidden;
+    margin-left: 45px;
 }
 
 .fb03_content li a {
@@ -264,6 +273,7 @@
     transition: max-height 0.2s ease-out;
     max-height: 0;
     overflow: hidden;
+    margin-left: 45px;
 }
 
 .fb04_content li a {
@@ -285,6 +295,7 @@
     transition: max-height 0.2s ease-out;
     max-height: 0;
     overflow: hidden;
+    margin-left: 45px;
 }
 
 .fb05_content li a {
@@ -305,6 +316,7 @@
     transition: max-height 0.2s ease-out;
     max-height: 0;
     overflow: hidden;
+    margin-left: 45px;
 }
 
 .fb06_content li a {
@@ -332,4 +344,6 @@
 .fb13_content li a {
     text-decoration: none;
     font-size: 22px;
+    margin-left: 45px;
+
 }
