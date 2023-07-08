@@ -160,60 +160,49 @@ function getUserId ($firstName, $lastName){
     mysqli_close($stmt);
 }
 
-function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $coursepwd, $courseteacherid) {
+function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid) {
 
     $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher, courseContent) VALUES (?,?,?,?,?,?,?);";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
+    $stmt = mysqli_prepare($conn, $sql);
+
+    if(!$stmt){
         header("Location: ../pages/KursseiteEdit.php?error=stmtfailed");
         exit();
     }
+    if($coursePassword === ''){
+        mysqli_stmt_bind_param($stmt, "ssissis",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid, $courseEmptyContent);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
 
-    $hashedPwd = password_hash($coursepwd, PASSWORD_DEFAULT);
-    $courseEmptyContent = "[]";
+        $_SESSION['courseID'] = getCourseID($conn,$coursename);
+        $_SESSION['courseName'] = $coursename;
+        $_SESSION['courseSubjectArea'] = $coursesubjectarea;
+        $_SESSION['courseSemester'] = $coursesemesternr;
+        $_SESSION['courseSemesterSeason'] = $coursesemesterseason;
+        $_SESSION['courseTeacher'] = getCourseTeacher($conn,$courseteacherid);
 
-    mysqli_stmt_bind_param($stmt, "ssissis",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+        header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']);
+        exit();
+    }else {
+        $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
+        $courseEmptyContent = "[]";
 
-    $_SESSION['courseID'] = getCourseID($conn,$coursename);
-    $_SESSION['courseName'] = $coursename;
-    $_SESSION['courseSubjectArea'] = $coursesubjectarea;
-    $_SESSION['courseSemester'] = $coursesemesternr;
-    $_SESSION['courseSemesterSeason'] = $coursesemestertime;
-    $_SESSION['courseTeacher'] = getCourseTeacher($conn,$courseteacherid);
+        mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
 
-    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID'] . "&coursename=" . $_SESSION['courseName'] . ' ' . $hashedPwd);
-    exit();
-}
+        $_SESSION['courseID'] = getCourseID($conn, $coursename);
+        $_SESSION['courseName'] = $coursename;
+        $_SESSION['courseSubjectArea'] = $coursesubjectarea;
+        $_SESSION['courseSemester'] = $coursesemesternr;
+        $_SESSION['courseSemesterSeason'] = $coursesemestertime;
+        $_SESSION['courseTeacher'] = getCourseTeacher($conn, $courseteacherid);
 
-function createCourseWOPwd($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid) {
-
-    $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, courseTeacher, courseContent) VALUES (?,?,?,?,?,?);";
-    $stmt = mysqli_stmt_init($conn);
-
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("Location: ../signup.php?error=stmtfailed");
+        header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']);
         exit();
     }
-
-    $courseEmptyContent = '[]';
-
-    mysqli_stmt_bind_param($stmt, "ssssss",$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $courseteacherid, $courseEmptyContent);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    session_start();
-    $_SESSION['courseID'] = getCourseID($conn,$coursename);
-    $_SESSION['courseName'] = $coursename;
-    $_SESSION['courseSubjectArea'] = $coursesubjectarea;
-    $_SESSION['courseSemester'] = $coursesemesternr;
-    $_SESSION['courseSemesterSeason'] = $coursesemestertime;
-    $_SESSION['courseTeacher'] = getCourseTeacher($conn,$courseteacherid);
-
-    header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']. "&coursename=" . $_SESSION['courseName']);
-    exit();
 }
+
 
 function getCourseTeacher($conn, $courseteacherid)
 {

@@ -34,7 +34,6 @@
             echo '<h1></h1>';
         } else {
             $creationSuccess = $_GET['courseCreated'];
-            $passwordNeeded = $_GET['passwordNeeded'];
             if ($creationSuccess == "successful") {
                 echo '<h1>' . $_SESSION["courseName"] . '</h1>';
                 echo '<p>' . 'Fachbereich:' . $_SESSION["courseSubjectArea"] . ' / ' . $_SESSION["courseSemesterSeason"] .
@@ -45,7 +44,7 @@
 
     </div>
 
-    <form class='popup-form' action="../includes/courseEdit.inc.php" method="post" >
+    <form class='popup-form' action="../includes/courseEdit.inc.php" method="post">
         <h1>Kurserstellung</h1>
         <!-- Kursname-Eingabefeld -->
         <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben"/>
@@ -75,8 +74,7 @@
             <input type="radio" id="summer" name="course_semestertime" value="Sommer"><label for="summer">Sommersemester</label>
         </div>
         <!-- Einschreibeschlüssel-Eingabe -->
-        <input type="password" id="course_pwd" placeholder="(optional) Einschreibeschlüssel eingeben">
-        <!-- Einschreibeschlüssel-Eingabe -->
+        <input type="password" id="coursePassword" placeholder="(optional) Einschreibeschlüssel eingeben">
         <button type="submit" id="course_completion_btn">Erstellen</button>
 
         <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>

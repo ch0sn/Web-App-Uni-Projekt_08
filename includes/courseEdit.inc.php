@@ -6,29 +6,31 @@ global $conn;
         || empty($_POST["course_semesternumber"]) || empty($_POST["course_semestertime"])) {
         header("Location: ../pages/KursseiteEdit.php?error=emptyfield");
         exit();
-    }else if ($_POST["course_pwd"] == null){
-        $coursename = $_POST["course_name"];
-        $coursesubjectarea = $_POST["course_subjectarea"];
-        $coursesemesternr = $_POST["course_semesternumber"];
-        $coursesemestertime = $_POST["course_semestertime"];
-
+    }else if (empty($_POST["coursePassword"])) {
         require_once 'dbh.inc.php';
         require_once 'functions.inc.php';
 
-        $uID = getUserId($_SESSION['firstName'],$_SESSION['lastName']);
-
-        createCourseWOPwd($conn,$coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $uID);
-    }else if(!empty($_POST['course_pwd'])){
         $coursename = $_POST["course_name"];
         $coursesubjectarea = $_POST["course_subjectarea"];
         $coursesemesternr = $_POST["course_semesternumber"];
-        $coursesemestertime = $_POST["course_semestertime"];
-        $coursepwd = $_POST["course_pwd"];
+        $coursesemesterseason = $_POST["course_semestertime"];
+        $coursePassword = '';
 
+        $uID = getUserId($_SESSION['firstName'], $_SESSION['lastName']);
+
+        createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $uID);
+
+    }else {
         require_once 'dbh.inc.php';
         require_once 'functions.inc.php';
 
-        $uID = getUserId($_SESSION['firstName'],$_SESSION['lastName']);
+        $coursename = $_POST["course_name"];
+        $coursesubjectarea = $_POST["course_subjectarea"];
+        $coursesemesternr = $_POST["course_semesternumber"];
+        $coursesemesterseason = $_POST["course_semestertime"];
+        $coursePassword = $_POST["coursePassword"];
 
-        createCourse($conn, $coursename ,$coursesubjectarea,$coursesemesternr,$coursesemestertime, $coursepwd, $uID);
+        $uID = getUserId($_SESSION['firstName'], $_SESSION['lastName']);
+
+        createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $uID);
     }
