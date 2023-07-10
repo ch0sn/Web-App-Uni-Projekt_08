@@ -117,7 +117,21 @@
 
     </form>
 
+    <?php
+    if (!isset($_GET['enrolled'])){
+    }
+    else{
+        $enrolled = $_GET['enrolled'];
+        if($enrolled== "no"){
+            include "Einschreibeseite.php";
+            exit();
+        }
+    }
+    ?>
+
     <div class="BodyCourseClass">
+
+
 
         <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>
         <button id="addButton" hidden onclick="addButtons()">Abschnitt hinzufügen</button>

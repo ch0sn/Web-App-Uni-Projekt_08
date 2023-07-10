@@ -1,31 +1,13 @@
-<?php
-if(!isset($_SESSION['loggedin'])){
-    include_once '../header.php';
-}else{
-    header("Location: index.php");
-    exit();
-}
-?>
+
 
     <title>Einsschreiben_MUSTER</title>
     <link rel="stylesheet" href="../css/Einschreibeseite.css">
     <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
 
-    <!-- linke Bar -->
-    <div class="barLeft">
-    </div>
+
 
     <div class="gridCoursesClass">
 
-        <div class="HeaderCourseClass">
-            
-            <h1 id="courseNameHeaderId">WK_1100 Einführung in die Wirtschaftsinfromatik SoSe23</h1> 
-            
-            <p id= "coursePathId">Startseite
-                 / Kurse / Bachelor-Studiengang / Wirtschaftsinfromatik /
-                1. Semester / Einführung in dieWirtschaftsinfromatik / Einschreiben</p>
-
-        </div>
 
         <div class="BodyCourseClass">
 
