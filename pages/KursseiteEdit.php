@@ -30,22 +30,19 @@
 
     <div class="HeaderCourseClass">
         <?php
-        if (!isset($_GET['courseCreated'])) {
+        if (!isset($_GET['courseid'])) {
             echo '<h1></h1>';
         } else {
-            $creationSuccess = $_GET['courseCreated'];
-            $passwordNeeded = $_GET['passwordNeeded'];
-            if ($creationSuccess == "successful") {
-                echo '<h1>' . $_SESSION["courseName"] . '</h1>';
-                echo '<p>' . 'Fachbereich:' . $_SESSION["courseSubjectArea"] . ' / ' . $_SESSION["courseSemesterSeason"] .
-                    ' / ab dem: ' . $_SESSION["courseSemester"] . '.Semester / Dozent: ' . $_SESSION["courseTeacher"] . '</p>';
-            }
+            include_once "../includes/functions.inc.php";
+            $courseIdNr = $_GET['courseid'];
+            getExistingCourseInfo($courseIdNr);
+
         }
         ?>
 
     </div>
 
-    <form class='popup-form' action="../includes/courseEdit.inc.php" method="post" >
+    <form class='popup-form' action="../includes/courseEdit.inc.php" method="post">
         <h1>Kurserstellung</h1>
         <!-- Kursname-Eingabefeld -->
         <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben"/>
@@ -75,8 +72,7 @@
             <input type="radio" id="summer" name="course_semestertime" value="Sommer"><label for="summer">Sommersemester</label>
         </div>
         <!-- Einschreibeschlüssel-Eingabe -->
-        <input type="password" id="course_pwd" placeholder="(optional) Einschreibeschlüssel eingeben">
-        <!-- Einschreibeschlüssel-Eingabe -->
+        <input type="password" id="coursePassword" placeholder="(optional) Einschreibeschlüssel eingeben">
         <button type="submit" id="course_completion_btn">Erstellen</button>
 
         <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
@@ -91,11 +87,11 @@
             }
         }
 
-        if(!isset($_GET['courseCreated'])){
+        if(!isset($_GET['courseid'])){
         }
         else {
-            $courseCreation = $_GET['courseCreated'];
-            if($courseCreation == 'successful'){
+            $courseExists = $_GET['courseid'];
+            if($courseExists){
                 echo '<script> 
                document.addEventListener("DOMContentLoaded", function() {
          // Disable all clickable elements on the page except for the popup form

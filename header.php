@@ -29,6 +29,8 @@ session_start();
             <ul class="dropdown_K">
 
                 <?php
+                include_once "includes/functions.inc.php";
+                showEnrolledCourses($_SESSION['usersID']);
                 if(isset($_SESSION["role"]) && $_SESSION['role'] == "dozent") {
                     echo '<li><a href="../pages/KursseiteEdit.php">Kurs erstellen</a></li>';
                 }
