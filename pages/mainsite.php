@@ -155,7 +155,7 @@
                 <ul>
                     <?php
                     include_once "../includes/functions.inc.php";
-                    showAvailableCourses("FB", $_SESSION['firstName'], $_SESSION['lastName']);
+                    showAvailableCourses("GES", $_SESSION['firstName'], $_SESSION['lastName']);
                     ?>
                 </ul>
             </form>

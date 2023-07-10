@@ -377,11 +377,6 @@ function updateCourseContent($conn, $courseid, $contentArray)
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
-        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
-
-
-
         return false;
     }
 
@@ -588,9 +583,6 @@ function getCourseNameById($conn, $id)
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
-        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
-
         return false;
     }
 
@@ -628,17 +620,16 @@ function showAvailableCourses($courseSubjectArea, $firstName, $lastName){
     mysqli_stmt_execute($stmt);
 
     // Kursnamen aus der Datenbank abrufen
-    mysqli_stmt_bind_result($stmt, $coursesIDNr, $courseName);
-
+     /*mysqli_stmt_bind_result($stmt, $coursesIDNr, $courseName, $courseCount);*/
+     $result = mysqli_stmt_get_result($stmt);
     // Fetchen des Ergebnisses
-    mysqli_stmt_fetch($stmt);
-
-    // Schließen des Statements
-    mysqli_stmt_close($stmt);
-
+    /*mysqli_stmt_fetch($stmt);*/
     $userIdNr = getUserId($firstName, $lastName);
 
-    if(!empty($courseName)){
+    while ($row = mysqli_fetch_assoc($result)) {
+        $coursesIDNr =$row['coursesId'];
+        $courseName = $row['coursesName'];
+
         if (checkEnroll($userIdNr, $coursesIDNr)){
             echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=yes">'.$courseName .'</a></li>';
 
@@ -648,6 +639,8 @@ function showAvailableCourses($courseSubjectArea, $firstName, $lastName){
         }
     }
 
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
 
 }
 
