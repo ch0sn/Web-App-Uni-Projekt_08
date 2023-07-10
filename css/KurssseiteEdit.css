@@ -4,6 +4,7 @@
     pointer-events: none;
 }
 
+
 .popup-form {
     position: absolute;
     display:flex;
@@ -116,6 +117,7 @@
 .HeaderCourseClass p {
     font-size: 30px;
     margin-top: 21px;
+    
 }
 
  #editButton {
