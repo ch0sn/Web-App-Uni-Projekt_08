@@ -317,6 +317,7 @@ function showEnrolledCourses($userId) {
     while ($row = mysqli_fetch_assoc($result)) {
         $courseName = $row['coursesName'];
         $courseId = $row['coursesId'];
+        $_SESSION['courseID'] = $courseId;
         echo '<li><a href="../pages/KursseiteEdit.php?courseid='.$courseId.'">'.$courseName.'</a></li>';
     }
 
@@ -326,6 +327,7 @@ function showEnrolledCourses($userId) {
 
 function getExistingCourseInfo($courseIdNr){
     global $conn;
+    
 
     $sql = "SELECT coursesName, courseSubjectArea, courseSemesterNr , courseSeason , courseTeacher
             FROM courses WHERE coursesId = ?";
@@ -351,6 +353,7 @@ function getExistingCourseInfo($courseIdNr){
     $courseSemesterNumber = $row['courseSemesterNr'];
     $courseSeason = $row['courseSeason'];
     $courseTeacher = getCourseTeacher($row['courseTeacher']);
+    $_SESSION['courseID'] = getCourseID($conn, $courseName);
 
     echo '<h1>' . $courseName . '</h1>';
     echo '<p>' . 'Fachbereich:' . $courseSA . ' / ' . $courseSeason .
