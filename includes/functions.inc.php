@@ -639,24 +639,21 @@ function showAvailableCourses($courseSubjectArea, $firstName, $lastName){
     $userIdNr = getUserId($firstName, $lastName);
 
     if(!empty($courseName)){
-        echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=no">'.$courseName .'</a></li>';
+        if (checkEnroll($userIdNr, $coursesIDNr)){
+            echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=yes">'.$courseName .'</a></li>';
 
-    }
-
-    /*if (checkEnroll($userIdNr)){
+        }else{
             echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=no">'.$courseName .'</a></li>';
 
-    }else{
-        echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=no&WTF">'.$courseName .'</a></li>';
+        }
+    }
 
-    }*/
 
 }
 
-function checkEnroll($userID){
+function checkEnroll($userID, $courseID){
     global $conn;
-
-    $sql = "SELECT * FROM enrollment e WHERE e.usersID = ?";
+    $sql = "SELECT enrollmentId FROM enrollment e WHERE e.usersId = ? AND e.coursesId = ?";
 
     // Vorbereiten der SQL-Anweisung
     $stmt = mysqli_stmt_init($conn);
@@ -666,7 +663,7 @@ function checkEnroll($userID){
     }
 
     // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
-    mysqli_stmt_bind_param($stmt, "i", $userID);
+    mysqli_stmt_bind_param($stmt, "ii", $userID, $courseID);
     mysqli_stmt_execute($stmt);
 
     // Kursnamen aus der Datenbank abrufen
