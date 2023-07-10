@@ -30,15 +30,13 @@
 
     <div class="HeaderCourseClass">
         <?php
-        if (!isset($_GET['courseCreated'])) {
+        if (!isset($_GET['courseid'])) {
             echo '<h1></h1>';
         } else {
-            $creationSuccess = $_GET['courseCreated'];
-            if ($creationSuccess == "successful") {
-                echo '<h1>' . $_SESSION["courseName"] . '</h1>';
-                echo '<p>' . 'Fachbereich:' . $_SESSION["courseSubjectArea"] . ' / ' . $_SESSION["courseSemesterSeason"] .
-                    ' / ab dem: ' . $_SESSION["courseSemester"] . '.Semester / Dozent: ' . $_SESSION["courseTeacher"] . '</p>';
-            }
+            include_once "../includes/functions.inc.php";
+            $courseIdNr = $_GET['courseid'];
+            getExistingCourseInfo($courseIdNr);
+
         }
         ?>
 
@@ -89,11 +87,11 @@
             }
         }
 
-        if(!isset($_GET['courseCreated'])){
+        if(!isset($_GET['courseid'])){
         }
         else {
-            $courseCreation = $_GET['courseCreated'];
-            if($courseCreation == 'successful'){
+            $courseExists = $_GET['courseid'];
+            if($courseExists){
                 echo '<script> 
                document.addEventListener("DOMContentLoaded", function() {
          // Disable all clickable elements on the page except for the popup form

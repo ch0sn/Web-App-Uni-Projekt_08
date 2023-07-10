@@ -1,5 +1,5 @@
 <?php
-
+include_once "dbh.inc.php";
 function emptyField($firstname, $lastname, $email, $username, $pwd, $pwdRepeat, $role)
 {
     $result = false;
@@ -161,7 +161,6 @@ function getUserId ($firstName, $lastName){
 }
 
 function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid) {
-
     $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher, courseContent) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_prepare($conn, $sql);
 
@@ -179,9 +178,11 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
         $_SESSION['courseSubjectArea'] = $coursesubjectarea;
         $_SESSION['courseSemester'] = $coursesemesternr;
         $_SESSION['courseSemesterSeason'] = $coursesemesterseason;
-        $_SESSION['courseTeacher'] = getCourseTeacher($conn,$courseteacherid);
+        $_SESSION['courseTeacher'] = getCourseTeacher($courseteacherid);
 
-        header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']);
+        enrollToNewCourses($conn,$courseteacherid, $_SESSION['courseID']);
+
+        header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID']);
         exit();
     }else {
         $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
@@ -196,16 +197,39 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
         $_SESSION['courseSubjectArea'] = $coursesubjectarea;
         $_SESSION['courseSemester'] = $coursesemesternr;
         $_SESSION['courseSemesterSeason'] = $coursesemestertime;
-        $_SESSION['courseTeacher'] = getCourseTeacher($conn, $courseteacherid);
+        $_SESSION['courseTeacher'] = getCourseTeacher($courseteacherid);
 
-        header("Location: ../pages/KursseiteEdit.php?courseCreated=successful&courseid=" . $_SESSION['courseID']);
+        enrollToNewCourses($conn,$courseteacherid, $_SESSION['courseID']);
+
+        header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID']);
         exit();
     }
 }
 
+function enrollToNewCourses($conn, $userId, $courseId){
 
-function getCourseTeacher($conn, $courseteacherid)
+    $sql = "INSERT INTO enrollment (usersId ,coursesId) VALUES(?,?)";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "ii", $userId, $courseId);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+}
+
+function getCourseTeacher($courseteacherid)
 {
+    global $conn;
+
     // SQL-Abfrage zum Abrufen des Kursinhalts
     $sql = "SELECT usersFirstName, usersLastName FROM users u, courses c WHERE u.usersID = ?;";
 
@@ -267,6 +291,77 @@ function getCourseID($conn, $coursename)
     return $coursesId;
 }
 
+function showEnrolledCourses($userId) {
+    global $conn;
+
+    $sql = "SELECT c.coursesName, c.coursesId
+            FROM enrollment e
+            INNER JOIN courses c ON e.coursesId = c.coursesId
+            WHERE e.usersId = ?";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+
+    // Kursinhalt aus der Datenbank abrufen
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Kurse anzeigen
+    while ($row = mysqli_fetch_assoc($result)) {
+        $courseName = $row['coursesName'];
+        $courseId = $row['coursesId'];
+        echo '<li><a href="../pages/KursseiteEdit.php?courseid='.$courseId.'">'.$courseName.'</a></li>';
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+
+function getExistingCourseInfo($courseIdNr){
+    global $conn;
+
+    $sql = "SELECT coursesName, courseSubjectArea, courseSemesterNr , courseSeason , courseTeacher
+            FROM courses WHERE coursesId = ?";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
+        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $courseIdNr);
+    mysqli_stmt_execute($stmt);
+
+    // Kursinhalt aus der Datenbank abrufen
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Kurse anzeigen
+    $row = mysqli_fetch_assoc($result);
+    $courseName = $row['coursesName'];
+    $courseSA = $row['courseSubjectArea'];
+    $courseSemesterNumber = $row['courseSemesterNr'];
+    $courseSeason = $row['courseSeason'];
+    $courseTeacher = getCourseTeacher($row['courseTeacher']);
+
+    echo '<h1>' . $courseName . '</h1>';
+    echo '<p>' . 'Fachbereich:' . $courseSA . ' / ' . $courseSeason .
+        ' / ab dem: ' . $courseSemesterNumber . '.Semester / Dozent: ' . $courseTeacher . '</p>';
+
+    mysqli_stmt_close($stmt);
+}
 
 function updateCourseContent($conn, $courseid, $contentArray)
 {
