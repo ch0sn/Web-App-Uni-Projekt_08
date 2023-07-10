@@ -163,6 +163,7 @@ function getUserId ($firstName, $lastName){
 function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid) {
     $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher, courseContent) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_prepare($conn, $sql);
+    $courseEmptyContent = "[]";
 
     if(!$stmt){
         header("Location: ../pages/KursseiteEdit.php?error=stmtfailed");
@@ -186,7 +187,6 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
         exit();
     }else {
         $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
-        $courseEmptyContent = "[]";
 
         mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
         mysqli_stmt_execute($stmt);
@@ -303,8 +303,6 @@ function showEnrolledCourses($userId) {
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
-        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
         return false;
     }
 
@@ -336,8 +334,6 @@ function getExistingCourseInfo($courseIdNr){
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        // Überprüfen, ob die SQL-Anweisung erfolgreich vorbereitet wurde
-        // Falls nicht, kannst du hier entsprechenden Fehlercode hinzufügen oder eine geeignete Fehlerbehandlung durchführen
         return false;
     }
 
