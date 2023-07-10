@@ -562,7 +562,7 @@ function getAllTeacherData($conn, $idCourse)
         echo "No data found " . $idCourse . " " . $dataName . $bindParamsString;
     }
 
-    // Statement schließen
+    
     mysqli_stmt_close($stmt);
 }
 
