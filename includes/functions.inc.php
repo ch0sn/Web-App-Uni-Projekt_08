@@ -183,7 +183,7 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
 
         enrollToNewCourses($conn,$courseteacherid, $_SESSION['courseID']);
 
-        header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID']);
+        header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID']. "&enrolled=yes");
         exit();
     }else {
         $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
@@ -201,7 +201,7 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
 
         enrollToNewCourses($conn,$courseteacherid, $_SESSION['courseID']);
 
-        header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID']);
+        header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID']. "&enrolled=yes");
         exit();
     }
 }
@@ -318,7 +318,7 @@ function showEnrolledCourses($userId) {
         $courseName = $row['coursesName'];
         $courseId = $row['coursesId'];
         $_SESSION['courseID'] = $courseId;
-        echo '<li><a href="../pages/KursseiteEdit.php?courseid='.$courseId.'">'.$courseName.'</a></li>';
+        echo '<li><a href="../pages/KursseiteEdit.php?courseid='.$courseId.'&enrolled=yes">'.$courseName.'</a></li>';
     }
 
     mysqli_stmt_close($stmt);
@@ -609,4 +609,78 @@ function getCourseNameById($conn, $id)
 
     // Kursnamen zurückgeben
     return $courseName;
+}
+
+function showAvailableCourses($courseSubjectArea, $firstName, $lastName){
+    global $conn;
+
+    $sql = "SELECT coursesId, coursesName FROM courses WHERE courseSubjectArea = ?";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "s", $courseSubjectArea);
+    mysqli_stmt_execute($stmt);
+
+    // Kursnamen aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $coursesIDNr, $courseName);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    $userIdNr = getUserId($firstName, $lastName);
+
+    if(!empty($courseName)){
+        echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=no">'.$courseName .'</a></li>';
+
+    }
+
+    /*if (checkEnroll($userIdNr)){
+            echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=no">'.$courseName .'</a></li>';
+
+    }else{
+        echo '<li><a href="../pages/KursseiteEdit.php?courseid='. $coursesIDNr.'&enrolled=no&WTF">'.$courseName .'</a></li>';
+
+    }*/
+
+}
+
+function checkEnroll($userID){
+    global $conn;
+
+    $sql = "SELECT * FROM enrollment e WHERE e.usersID = ?";
+
+    // Vorbereiten der SQL-Anweisung
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    // Parameter an die SQL-Anweisung binden und die Anweisung ausführen
+    mysqli_stmt_bind_param($stmt, "i", $userID);
+    mysqli_stmt_execute($stmt);
+
+    // Kursnamen aus der Datenbank abrufen
+    mysqli_stmt_bind_result($stmt, $checkedEnroll);
+
+    // Fetchen des Ergebnisses
+    mysqli_stmt_fetch($stmt);
+
+    // Schließen des Statements
+    mysqli_stmt_close($stmt);
+
+    if ($checkedEnroll){
+        return true;
+    }else {
+        return false;
+    }
 }

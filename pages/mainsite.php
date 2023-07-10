@@ -110,21 +110,30 @@
         <button type="button" name="fb01" class="fb01Collapsible">FB 01: B - Bauwesen (Gi)</button>
         <div class='fb01_content'>
             <ul>
-
+                <?php
+                include_once "../includes/functions.inc.php";
+                showAvailableCourses("B", $_SESSION['firstName'], $_SESSION['lastName']);
+                ?>
             </ul>
         </div>
 
         <button type="button" name="fb02" class="fb02Collapsible">FB 02: EI - Elektro- und Informationstechnik</button>
         <form class="fb02_content">
             <ul>
-
+                <?php
+                include_once "../includes/functions.inc.php";
+                showAvailableCourses("EI", $_SESSION['firstName'], $_SESSION['lastName']);
+                ?>
             </ul>
         </form>
 
         <button type="button" name="fb03" class="fb03Collapsible">FB 03: ME - Maschinenbau und Energietechnik (Gi)</button>
         <div class='fb03_content'>
             <ul>
-
+                <?php
+                include_once "../includes/functions.inc.php";
+                showAvailableCourses("ME", $_SESSION['firstName'], $_SESSION['lastName']);
+                ?>
             </ul>
         </div>
 
@@ -132,7 +141,10 @@
         <div class='fb04_content'>
             <form >
                 <ul>
-
+                    <?php
+                    include_once "../includes/functions.inc.php";
+                    showAvailableCourses("LSE", $_SESSION['firstName'], $_SESSION['lastName']);
+                    ?>
                 </ul>
             </form>
         </div>
@@ -141,7 +153,10 @@
         <div class='fb05_content'>
             <form >
                 <ul>
-
+                    <?php
+                    include_once "../includes/functions.inc.php";
+                    showAvailableCourses("FB", $_SESSION['firstName'], $_SESSION['lastName']);
+                    ?>
                 </ul>
             </form>
         </div>
@@ -150,19 +165,22 @@
         <div class='fb06_content'>
             <form >
                 <ul>
-
+                    <?php
+                    include_once "../includes/functions.inc.php";
+                    showAvailableCourses("MNI", $_SESSION['firstName'], $_SESSION['lastName']);
+                    ?>
                 </ul>
             </form>
         </div>
 
-        <button type="button" name="fb13" class="fb13Collapsible">FB 13: Mathematik, Naturwissenschaften und Datenverarbeitung (Fb)</button>
+        <button type="button" name="fb13" class="fb13Collapsible">FB 13: MND - Mathematik, Naturwissenschaften und Datenverarbeitung (Fb)</button>
         <div class='fb13_content'>
             <form >
                 <ul>
-                    <li><a href="../courses/Dummy_Mathe3.php">Mathe 3</a></li>
-                    <li><a href="../courses/Dummy_Management.php">Management</a></li>
-                    <li><a href="../courses/Dummy_Finanzwirtschaft.php">Finanzwirtschaft</a></li>
-                    <li><a href="../courses/Dummy_Einschreiben_Big%20Data.php">Big Data</a></li>
+                    <?php
+                    include_once "../includes/functions.inc.php";
+                    showAvailableCourses("MND", $_SESSION['firstName'], $_SESSION['lastName']);
+                    ?>
                 </ul>
             </form>
         </div>
