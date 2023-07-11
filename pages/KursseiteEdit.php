@@ -33,10 +33,14 @@
         if (!isset($_GET['courseid'])) {
             echo '<h1></h1>';
         } else {
+            echo '<div class="abmeldeClass">
+                <input type="checkbox" id="abmelde_Checkbox">
+                <label for="abmelde_Checkbox"><img src="/img/64px_exit.png" alt="abmelden"/> </label>
+
+            </div>';
             include_once "../includes/functions.inc.php";
             $courseIdNr = $_GET['courseid'];
             getExistingCourseInfo($courseIdNr);
-
         }
         ?>
 
