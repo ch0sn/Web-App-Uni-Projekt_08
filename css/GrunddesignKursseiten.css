@@ -2,7 +2,7 @@
 
     position: relative;
     margin-top: 50px;
-    height: 200px;
+    height: min-content;
     border-radius: 10px;
     background-color: rgb(217, 217, 217);
     font-family: 'Orbitron', sans-serif;

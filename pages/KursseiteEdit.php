@@ -35,7 +35,7 @@
         } else {
             echo '<div class="abmeldeClass">
                 <input type="checkbox" id="abmelde_Checkbox">
-                <label for="abmelde_Checkbox"><img src="/img/64px_exit.png" alt="abmelden"/> </label>
+                <label for="abmelde_Checkbox"><img src="/img/64px_exit.png" alt="abmelden" style="height: 50px;"/> </label>
 
             </div>';
             include_once "../includes/functions.inc.php";
