@@ -11,18 +11,19 @@
 
         <div class="BodyCourseClass">
 
-            <h1 id="enrollmentOptionsId">Einschreibeoptionen</h1> 
-            
-            <p id="courseNameBodyId">WK_1100 Einführung in die Wirtschaftsinfromatik SoSe23</p>
+            <h1 id="enrollmentOptionsId">Einschreibeoptionen</h1>
+            <?php
+            echo '<p id="courseNameBodyId">'. getCourseNameById($_GET['courseid']).'</p> ';
+            echo '<p id="teacherNameId">'.getCourseTeacherName(getCourseTeacherByCourseId($_GET['courseid'])).'</p>';
 
-            <p id="teacherNameId">Prof. Hopfen</p>                       
-            
-            <input type="password" id="loginKeyPanel"placeholder="Einschreibeschlüssel"/>
-            
-            <input type="submit" value="Einschreiben" id="enrollButtonId"/>
+            echo '<input type="password" id="loginKeyPanel"placeholder="Einschreibeschlüssel"/>';
 
-            <input type="submit" value="Abbrechen" id="cancelButtonId"/>
+            echo '<form action="../includes/enrollment.inc.php?userid='. $_SESSION["usersID"]. '&courseid=' . $_GET["courseid"] . '"' .'method="post" >
+                <input type="submit" value="Einschreiben" id="enrollButtonId"/>
+            </form>';
 
+            echo '<a href="mainsite.php" id="cancelButtonId">Abbrechen</a>';
+            ?>
 
         </div>
 
