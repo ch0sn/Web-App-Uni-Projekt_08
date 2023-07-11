@@ -33,13 +33,15 @@
         if (!isset($_GET['courseid'])) {
             echo '<h1></h1>';
         } else {
-            echo '<div class="abmeldeClass">
-                <input type="checkbox" id="abmelde_Checkbox">
-                <label for="abmelde_Checkbox"><img src="/img/64px_exit.png" alt="abmelden" style="height: 50px;"/> </label>
-
-            </div>';
             include_once "../includes/functions.inc.php";
             $courseIdNr = $_GET['courseid'];
+            echo '<div class="abmeldeClass">
+                <form action="../includes/delisting.inc.php?userid='. $_SESSION['usersID'] .'&courseid='. $courseIdNr . '"' . 'method="post">
+                <button type="submit" id="abmelde_button"><img src="/img/64px_exit.png" alt="abmelden" style="height: 50px;"></button>
+                <label for="abmelde_Checkbox"></label>
+                </form>  
+            </div>';
+
             getExistingCourseInfo($courseIdNr);
         }
         ?>

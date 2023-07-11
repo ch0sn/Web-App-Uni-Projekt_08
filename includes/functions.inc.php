@@ -712,3 +712,74 @@ function enrollToCourse($usersId, $coursesId){
 
     mysqli_stmt_close($stmt);
 }
+
+function delistCourse($usersId, $coursesId){
+    global $conn;
+
+    $sql = "DELETE FROM enrollment WHERE usersId = ? AND coursesId = ?";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "ii", $usersId, $coursesId);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+}
+
+function delistAllFromCourse($coursesId){
+    global $conn;
+
+    $sql = "DELETE FROM enrollment WHERE coursesId = ?";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $coursesId);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+}
+
+function deleteCourseContent($coursesId){
+    global $conn;
+
+    $sql = "DELETE FROM coursesteacherdata WHERE idCourse = ?";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $coursesId);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+}
+
+function deletingCourse($usersId, $coursesId){
+    global $conn;
+
+    delistAllFromCourse($coursesId);
+    deleteCourseContent($coursesId);
+
+    $sql = "DELETE FROM courses WHERE courseTeacher = ? AND coursesId = ?";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "ii", $usersId, $coursesId);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+}
