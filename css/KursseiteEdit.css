@@ -263,3 +263,11 @@ background-color: rgb(116, 0, 94);
     margin-left: 5px;
 }
 
+#editButton{
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.TextAreaFieldClass{
+    width: calc(100% - 10px);
+}

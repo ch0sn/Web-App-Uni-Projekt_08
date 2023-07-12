@@ -229,10 +229,13 @@ include_once "../header.php";
                     var bodyCourseClass = document.querySelector('.BodyCourseClass');
                     var bodyCourseClassWidth = getComputedStyle(bodyCourseClass).width;
 
+                    console.log(bodyCourseClassWidth);
+
                     var newTextarea = document.createElement('textarea');
+                    newTextarea.className = "TextAreaFieldClass";
                     newTextarea.style.resize = "none";
                     newTextarea.style.height = "auto";
-                    newTextarea.style.width = bodyCourseClassWidth;
+                    //newTextarea.style.width = bodyCourseClassWidth;
                     newTextarea.style.overflowY = "hidden";
                     newTextarea.addEventListener("input", function() {
 
