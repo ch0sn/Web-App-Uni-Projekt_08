@@ -54,7 +54,7 @@
         <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben"/>
         <!-- Fachbereich-Auswahl -->
         <select id="course_subjectarea" name="course_subjectarea">
-            <option selected="selected">Alle Fachbereiche</option>
+            <option value="" selected="selected">Alle Fachbereiche</option>
             <option value="B">B (01)</option>
             <option value="EI">EI (02)</option>
             <option value="ME">ME (03)</option>
@@ -65,7 +65,7 @@
         </select>
         <!-- Semester-Auswahl, wo der Kurs angeboten wird -->
         <select id="course_semesternumber" name="course_semesternumber">
-            <option selected="selected">Alle Semester</option>
+            <option value="" selected="selected">Alle Semester</option>
             <option value="1">1.Semester</option>
             <option value="2">2.Semester</option>
             <option value="3">3.Semester</option>
