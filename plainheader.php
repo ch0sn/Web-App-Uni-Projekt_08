@@ -14,11 +14,16 @@
     <!-- Logo wird in Navbar hinzugefügt. -->
     <?php
     $currentURL = $_SERVER['REQUEST_URI'];
+    /* Standard Login und Sign-Up */
     if ($currentURL == '/Web-App-Uni-Projekt/pages/login.php' || $currentURL == '/Web-App-Uni-Projekt/pages/signup.php') {
         echo "<a class='barTopLogo' href='../index.php'><img src='../img/thm_logo.svg' alt='THM Logo Icon' height=75> </a>";
-    } else if ($currentURL == '/Web-App-Uni-Projekt/pages/login.php?error=emptyfield' || $currentURL == '/Web-App-Uni-Projekt/pages/login.php?error=wronglogin') {
+    }
+    /* bei fehlgeschlagenen Login und/oder Sign-Up */
+    else if ($currentURL == '/Web-App-Uni-Projekt/pages/login.php?error=emptyfield' || $currentURL == '/Web-App-Uni-Projekt/pages/login.php?error=wronglogin') {
         echo "<a class='barTopLogo' href='../index.php'><img src='../img/thm_logo.svg' alt='THM Logo Icon' height=75> </a>";
-    }else if ($currentURL == '/Web-App-Uni-Projekt/index.php'){
+    }
+    /* wenn man auf der Index-Seite schon ist */
+    else if ($currentURL == '/Web-App-Uni-Projekt/index.php'){
         echo "<a class='barTopLogo' href='index.php'><img src='../img/thm_logo.svg' alt='THM Logo Icon' height=75> </a>";
     }else{
         echo "<a class='barTopLogo' href='../index.php'><img src='../img/thm_logo.svg' alt='THM Logo Icon' height=75> </a>";

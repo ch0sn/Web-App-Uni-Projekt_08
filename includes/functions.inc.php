@@ -164,8 +164,9 @@ function getUserId($firstName, $lastName)
     mysqli_close($stmt);
 }
 
-function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid)
+function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid)
 {
+    global $conn;
     $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher, courseContent) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_prepare($conn, $sql);
     $courseEmptyContent = "[]";
@@ -174,11 +175,17 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
         header("Location: ../pages/KursseiteEdit.php?error=stmtfailed");
         exit();
     }
-    if ($coursePassword === '') {
+    if ($coursePassword == "") {
         mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid, $courseEmptyContent);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
+    } else {
+        $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
 
+        mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
         $_SESSION['courseID'] = getCourseID($conn, $coursename);
         $_SESSION['courseName'] = $coursename;
         $_SESSION['courseSubjectArea'] = $coursesubjectarea;
@@ -190,43 +197,17 @@ function createCourse($conn, $coursename, $coursesubjectarea, $coursesemesternr,
 
         header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID'] . "&enrolled=yes");
         exit();
-    } else {
-        $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
-
-        mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
-
-        $_SESSION['courseID'] = getCourseID($conn, $coursename);
-        $_SESSION['courseName'] = $coursename;
-        $_SESSION['courseSubjectArea'] = $coursesubjectarea;
-        $_SESSION['courseSemester'] = $coursesemesternr;
-        $_SESSION['courseSemesterSeason'] = $coursesemestertime;
-        $_SESSION['courseTeacher'] = getCourseTeacherName($courseteacherid);
-
-        enrollToNewCourses($conn, $courseteacherid, $_SESSION['courseID']);
-
-        header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID'] . "&enrolled=yes");
-        exit();
-    }
 }
 
-function enrollToNewCourses($conn, $userId, $courseId)
-{
+function enrollToNewCourses($conn, $userId, $courseId){
 
     $sql = "INSERT INTO enrollment (usersId ,coursesId) VALUES(?,?)";
-
-
 
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-
-
         return false;
     }
-
-
 
     mysqli_stmt_bind_param($stmt, "ii", $userId, $courseId);
     mysqli_stmt_execute($stmt);
@@ -236,25 +217,16 @@ function enrollToNewCourses($conn, $userId, $courseId)
 function getCourseTeacherName($courseteacherid) {
     global $conn;
 
-
-
     $sql = "SELECT usersFirstName, usersLastName FROM users u, courses c WHERE u.usersID = ?;";
-
-
 
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-
         return false;
     }
 
-
-
     mysqli_stmt_bind_param($stmt, "i", $courseteacherid);
     mysqli_stmt_execute($stmt);
-
-
 
     mysqli_stmt_bind_result($stmt, $courseTeacherFirstName, $courseTeacherLastName);
 
