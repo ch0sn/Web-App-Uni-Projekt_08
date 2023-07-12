@@ -612,6 +612,7 @@ function getCourseNameById($id){
     return $courseName;
 }
 
+/* Anzeige der möglichen Kurse mit Unterscheidung, ob User eingeschrieben ist oder nicht */
 function showAvailableCourses($courseSubjectArea, $firstName, $lastName){
 
     global $conn;
@@ -645,6 +646,7 @@ function showAvailableCourses($courseSubjectArea, $firstName, $lastName){
     mysqli_stmt_close($stmt);
 }
 
+/* Überprüfung, ob ein User in einem Kurs eingeschrieben ist anhand Kurs-Id */
 function checkEnroll($userID, $courseID){
 
     global $conn;
@@ -673,6 +675,7 @@ function checkEnroll($userID, $courseID){
     }
 }
 
+/* Eintrag in die "enrollment" Tabelle mit User-Id und Kurs-Id*/
 function enrollToCourse($usersId, $coursesId){
 
     global $conn;
@@ -690,6 +693,50 @@ function enrollToCourse($usersId, $coursesId){
 
     mysqli_stmt_close($stmt);
 }
+
+/* Boolean Rückgabe, ob ein Kurs ein Passwort hat*/
+function availableCoursePwd($courseid){
+    global $conn;
+    $sql = "SELECT coursePwd FROM courses WHERE coursesId = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i",$courseid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $availablePW);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+    if(empty($availablePW)){
+        return false;
+    }else {
+        return true;
+    }
+
+}
+
+/* Rückgabe des Passwortes vom Kurs abhängig von der Kurs-ID*/
+function getCoursePW($courseid){
+
+    global $conn;
+    $sql = "SELECT coursePwd FROM courses WHERE coursesId = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i",$courseid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $checkPW);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $checkPW;
+
+}
+
 
 function delistCourse($usersId, $coursesId){
 

@@ -16,13 +16,22 @@
             echo '<p id="courseNameBodyId">'. getCourseNameById($_GET['courseid']).'</p> ';
             echo '<p id="teacherNameId">'.getCourseTeacherName(getCourseTeacherByCourseId($_GET['courseid'])).'</p>';
 
-            echo '<input type="password" id="loginKeyPanel"placeholder="Einschreibeschlüssel"/>';
-
             echo '<form action="../includes/enrollment.inc.php?userid='. $_SESSION["usersID"]. '&courseid=' . $_GET["courseid"] . '"' .'method="post" >
-                <input type="submit" value="Einschreiben" id="enrollButtonId"/>
-            </form>';
+                  <input type="password" name="loginKeyPanel" id="loginKeyPanel" placeholder="Einschreibeschlüssel"/>';
+
+            echo '<input type="submit" value="Einschreiben" id="enrollButtonId"/>
+                  </form>';
 
             echo '<a href="mainsite.php" id="cancelButtonId">Abbrechen</a>';
+
+            if (!isset($_GET['pwkey'])){
+            }
+            else{
+                $enrolled = $_GET['pwkey'];
+                if($enrolled== "false"){
+                    echo '<p style="color:red">Der Einschreibeschlüssel ist falsch.</p>';
+                }
+            }
             ?>
 
         </div>
