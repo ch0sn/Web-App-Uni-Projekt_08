@@ -5,6 +5,20 @@
 }
 
 
+.abmeldeClass {
+    margin-left: 95%;
+    height: 30px;
+}
+
+.abmeldeClass label {
+}
+
+.abmeldeClass #abmelde_button {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
 .popup-form {
     position: absolute;
     display:flex;
@@ -22,12 +36,10 @@
     justify-content: center;
     align-items: center;
     z-index: 5;
-
     pointer-events: auto;
     visibility: visible;
     opacity: 1;
 }
-
 
 .popup-form h1 {
     font-size: 35px;
@@ -111,12 +123,13 @@
  .HeaderCourseClass h1 {
      font-size: 48px;
      font-weight: bold;
-     margin-top: 21px;
+     margin-top: 10px;
  }
 
 .HeaderCourseClass p {
     font-size: 30px;
     margin-top: 21px;
+    margin-bottom: 30px;
     
 }
 
@@ -166,30 +179,10 @@
      margin-top: 0px;
  }
 
-
-/* test                    */
-
-
-
 .active-textarea {
     display: block;
 }
 
 .empty-line {
     height: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-.popup-form p {
-    font-size: 13px;
-    margin-left: 35%;
-    margin-top: 15px;
 }
