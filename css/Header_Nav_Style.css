@@ -32,31 +32,32 @@ nav ul a {
   text-decoration: none;
 }
 
-/* "Kurse"-Dropdown-Einstellungen */
-.dropdown_K {
+/* "Kurse"/"Tools"/"Forum"/"Profil"-Dropdown-Einstellungen */
+.dropdown_K, .dropdown_T, .dropdown_F, .dropdown_P {
   height: min-content;
   width: var(--dropdown-width);
-  background: var(--background-color);
+  background: var(--side-background-color-1);
 
   display: none;
   flex-direction: column;
 
   position: absolute;
   top: var(--navbar-height);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color-black);
   border-radius: var(--border-radius);
   z-index: 5;
 }
 
-/* "Kurse"-Dropdown-Eintragsgrößen-Einstellungen */
-.dropdown_K li {
+/* "Kurse"/"Tools"/"Forum"-Dropdown-Eintragsgrößen-Einstellungen */
+.dropdown_K li, .dropdown_T li, .dropdown_F li, .dropdown_P li {
   height: 40px;
   width: 100%;
 }
 
-/* "Kurse"-Dropdown-Wortzentrierungseinstellungen */
-.dropdown_K li a {
+/* "Kurse"-Dropdown-Optionen-Einstellungen */
+.dropdown_K li a, .dropdown_T li a, .dropdown_F li a, .dropdown_P li a  {
   justify-content: center;
+  color: var(--text-color-white);
 }
 
 .dropdown_K button {
@@ -68,8 +69,8 @@ nav ul a {
   cursor: pointer;
 }
 
-/* "Kurse"-Dropdown bei Hover-Einstellung */
-nav li:hover .dropdown_K {
+/* "Kurse"/"Tools"/"Forum"/"Profil"-Dropdown bei Hover-Einstellung */
+nav li:hover .dropdown_K, nav li:hover .dropdown_T, nav li:hover .dropdown_F, nav li:hover .dropdown_P {
   display: flex;
 }
 
@@ -78,87 +79,8 @@ nav input[type="checkbox"] {
   display: none;
 }
 
-/* "Kurse"-Label Zentrierung-Einstellung*/
-.expandable_li_K {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* "Tools"-Dropdown-Einstellungen */
-.dropdown_T {
-  height: min-content;
-  width: var(--dropdown-width);
-  background: var(--background-color);
-
-  display: none;
-  flex-direction: column;
-
-  position: absolute;
-  top: var(--navbar-height);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  z-index: 5;
-}
-
-/* "Tools"-Dropdown-Eintragsgrößen-Einstellungen */
-.dropdown_T li {
-  height: 40px;
-  width: 100%;
-}
-
-/* "Tools"-Dropdown-Wortzentrierungseinstellungen */
-.dropdown_T li a {
-  justify-content: center;
-}
-
-/* "Tools"-Dropdown bei Hover-Einstellung */
-nav li:hover .dropdown_T {
-  display: flex;
-}
-
-/* "Tools"-Label Zentrierung-Einstellung*/
-.expandable_li_T {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* "Forum"-Dropdown-Einstellungen */
-.dropdown_F {
-  height: min-content;
-  width: var(--dropdown-width);
-  background: var(--background-color);
-
-  display: none;
-  flex-direction: column;
-
-  position: absolute;
-  left: 0;
-  top: var(--navbar-height);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  z-index: 5;
-}
-
-/* "Forum"-Dropdown-Eintragsgrößen-Einstellungen */
-.dropdown_F li {
-  height: 40px;
-  width: 100%;
-}
-
-/* "Forum"-Dropdown-Wortzentrierungseinstellungen */
-.dropdown_F li a {
-  justify-content: center;
-}
-
-/* "Forum"-Dropdown bei Hover-Einstellung */
-nav li:hover .dropdown_F {
-  display: flex;
-}
-
-/* "Forum"-Label Zentrierung-Einstellung*/
-.expandable_li_F {
+/* "Kurse"/"Tools"/"Forum"/"Profil"-Label Zentrierung-Einstellung*/
+.expandable_li_K, .expandable_li_T, .expandable_li_F, .expandable_li_P {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -226,45 +148,6 @@ input[type="search"]:focus {
   margin-left: 5px;
 }
 
-/* "Profilbereich"-Dropdown-Einstellungen */
-.dropdown_P {
-  height: min-content;
-  width: var(--profile-dd-width);
-  background: var(--background-color);
-
-  display: none;
-  flex-direction: column;
-
-  position: absolute;
-  top: var(--navbar-height);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  z-index: 5;
-}
-
-/* "Profil"-Dropdown-Eintragsgrößen-Einstellungen */
-.dropdown_P li {
-  height: 40px;
-  width: 100%;
-}
-
-/* "Profil"-Dropdown-Wortzentrierungseinstellungen */
-.dropdown_P li a {
-  justify-content: center;
-}
-
-/* "Profil"-Dropdown bei Hover-Einstellung */
-nav li:hover .dropdown_P {
-  display: flex;
-}
-
-/* "Profil"-Label Zentrierung-Einstellung*/
-.expandable_li_P {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .darkmode {
   margin-left: 50px;
 }
@@ -280,26 +163,20 @@ nav li:hover .dropdown_P {
 }
 
 #searchResults {
-
   top: 0px ;
-  
   margin-top: 70px;
   left: 0px;
   position: absolute;
   left: 945px;
   z-index: 11;
   display: none;
-  background-color: var(--background-color);
+  background-color: var(--navbar-dropdown-options-background-color);
   width: 300px;
   border-radius: var(--border-radius);
   border-color: var(--accent-color);
-  border: 1px solid var(--border-color);
-  
-  
-  
+  border: 1px solid var(--border-color-black);
   
 }
-
 
 .liSearchContent{   
    width: 100%;
@@ -314,4 +191,3 @@ nav li:hover .dropdown_P {
   /* justify-content: left !important;
   text-align: left; */
 }
-
