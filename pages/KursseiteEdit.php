@@ -135,20 +135,18 @@ include_once "../header.php";
 
 
         <?php
-        if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent") {
-            echo '
-        
-
-        <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>
+        if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent" &&
+            $_SESSION['usersID'] == getCourseTeacherByCourseId($_GET['courseid'])) {
+            echo ' <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>';
+        }
+        ?>
         <button id="addButton" hidden onclick="addButtons()">Abschnitt hinzufügen</button>
         <button id="saveButton" hidden onclick="saveContentInArray(); GetArrayFromDatabase();
         
-                document.getElementById("addButton").style.display = "none";
-                document.getElementById("saveButton").style.display = "none";
+                document.getElementById('addButton').style.display = 'none';
+                document.getElementById('saveButton').style.display = 'none';
         ">Speichern und Bearbeitungsmodus verlassen</button>
-        ';
-        }
-        ?>
+
         <br>
         <br>
         <br>
