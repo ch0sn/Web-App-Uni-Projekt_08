@@ -134,15 +134,21 @@ include_once "../header.php";
     <div class="BodyCourseClass">
 
 
+        <?php
+        if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent") {
+            echo '
+        
 
         <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>
         <button id="addButton" hidden onclick="addButtons()">Abschnitt hinzufügen</button>
         <button id="saveButton" hidden onclick="saveContentInArray(); GetArrayFromDatabase();
         
-                document.getElementById('addButton').style.display = 'none';
-                document.getElementById('saveButton').style.display = 'none';
-                ">Speichern und Bearbeitungsmodus verlassen</button>
-
+                document.getElementById("addButton").style.display = "none";
+                document.getElementById("saveButton").style.display = "none";
+        ">Speichern und Bearbeitungsmodus verlassen</button>
+        ';
+        }
+        ?>
         <br>
         <br>
         <br>
