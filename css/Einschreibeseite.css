@@ -33,14 +33,22 @@ input[type=submit] {
 
 #loginKeyPanel{
     position: relative;    
-    margin-top: 55px;  
-    font-size: 35px;   
+    margin-top: 55px;
+    margin-bottom: 15px;
+    font-size: 35px;
     text-align: center;
     width: 30%;
     margin-left: 35%;
     margin-top: 55px;
     border-radius: 5px;
     border: 1px solid rgb(0, 0, 0);
+}
+
+#errorMsg {
+    color:red;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
 }
 
 #enrollButtonId {
@@ -53,7 +61,7 @@ input[type=submit] {
     align-items: center;
     font-size: 35px;
     margin-left: 25%;
-    margin-top: 55px;
+    margin-top: 45px;
     margin-bottom: 50px;
     border-radius: 5px;
 }
@@ -63,7 +71,6 @@ input[type=submit] {
     padding: 0.25%;
     font-family: 'Orbitron', sans-serif;  
     cursor: pointer;
-    width: 15%;
     border: 2px solid rgb(0, 0, 0);
     align-items: center;
     font-size: 20px;
