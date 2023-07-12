@@ -15,6 +15,8 @@ if (isset($_GET['method'])) {
         TeacherDataGet();
     } elseif ($method === "saveTeacherData") {
         TeacherDataSave();
+    } elseif ($method === "CoursesSearchBar") {
+        CoursesSearchBar();
     }
 }
 
@@ -71,5 +73,16 @@ function TeacherDataGet()
     $courseid = $_POST['courseid'];
     $dataName = $_POST['dataName'];
     $content = getTeacherData($conn, $courseid, $dataName);
+    echo $content;
+}
+
+function CoursesSearchBar()
+{
+    require_once 'dbh.inc.php';
+    require_once 'functions.inc.php';
+
+    global $conn;
+    $searchContent = $_POST['searchContent'];
+    $content = showCoursesSearchBar($searchContent);
     echo $content;
 }

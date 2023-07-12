@@ -2,8 +2,9 @@
 
 :root {
     /**/
-    --background-color: rgb(217, 217, 217);
+    --background-color: aliceblue;
     /**/
+    --border-color: transparent;
     --darker-background-color: #243848;
     --accent-color: #1183d6;
     --text-color: #000000;
