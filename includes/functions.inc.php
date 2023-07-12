@@ -348,6 +348,7 @@ function showEnrolledCourses($userId)
 
 function showCoursesSearchBar($searchContent)
 {
+    session_start();
     global $conn;
 
     $sql = "SELECT enrollment.usersid, courses.coursesid, coursesName FROM courses LEFT JOIN enrollment
@@ -380,12 +381,12 @@ function showCoursesSearchBar($searchContent)
         $courseId = $row['coursesid'];
         $usersid = $row['usersid'];
 
-        if ($usersid == null) {
+        if ($usersid == $_SESSION['usersID']) {            
             echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
-                $courseId . '&enrolled=no">' . $courseName . '</a></li>';
+            $courseId . '&enrolled=yes">' . $courseName . ' (eingeschrieben)' . '</a></li>';
         } else {
             echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
-                $courseId . '&enrolled=yes">' . $courseName . ' (eingeschrieben)' . '</a></li>';
+            $courseId . '&enrolled=no">' . $courseName . '</a></li>';
         }
     }
 
