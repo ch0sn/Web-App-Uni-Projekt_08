@@ -135,8 +135,10 @@ include_once "../header.php";
 
 
         <?php
-        if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent" &&
-            $_SESSION['usersID'] == getCourseTeacherByCourseId($_GET['courseid'])) {
+        if (
+            isset($_SESSION["role"]) && $_SESSION['role'] == "dozent" &&
+            $_SESSION['usersID'] == getCourseTeacherByCourseId($_GET['courseid'])
+        ) {
             echo ' <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>';
         }
         ?>
@@ -512,25 +514,13 @@ include_once "../header.php";
                 contentArray = textareaList.concat(fileInputList).concat(hrList);
 
 
-                for (var i = 0; i < contentArray.length; i++) {
-                    var currentItem = contentArray[i];
-                    var id = currentItem.id;
-                    var prefix = id.match(/[A-Za-z]+/)[0];
-                    var newId = prefix + i;
-                    currentItem.id = newId;
-                }
-
-                contentArray.sort((a, b) => {
-                    const numA = parseInt(a.id.match(/\d+/)[0]);
-                    const numB = parseInt(b.id.match(/\d+/)[0]);
-
-                    return numA - numB;
+                contentArray = contentArray.sort((a, b) => {
+                    const numberA = parseInt(a.id.match(/\d+$/)[0]);
+                    const numberB = parseInt(b.id.match(/\d+$/)[0]);
+                    return numberA - numberB;
                 });
 
-                console.log(contentArray)
-                console.log("Arrayyyy");
-
-
+                
 
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=saveContentArray", false);
