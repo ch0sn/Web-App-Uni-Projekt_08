@@ -135,11 +135,12 @@ include_once "../header.php";
 
 
         <?php
-        if (
-            isset($_SESSION["role"]) && $_SESSION['role'] == "dozent" &&
-            $_SESSION['usersID'] == getCourseTeacherByCourseId($_GET['courseid'])
-        ) {
-            echo ' <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>';
+        if (!isset($_GET['courseid'])) {
+        }else{
+            if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent" &&
+              $_SESSION['usersID'] == getCourseTeacherByCourseId($_GET['courseid'])) {
+             echo ' <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>';
+         }
         }
         ?>
         <button id="addButton" hidden onclick="addButtons()">Abschnitt hinzufügen</button>
