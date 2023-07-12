@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 ?>
 <title>Kurssseite bearbeiten</title>
-<link rel="stylesheet" href="../css/KurssseiteEdit.css">
+<link rel="stylesheet" href="../css/KursseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
 
 

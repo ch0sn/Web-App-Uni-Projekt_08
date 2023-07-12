@@ -27,7 +27,7 @@
     <ul class="blackboard_content">
         <button type="button" name="notd" class="newsOfTheDay_collapsible">Meldung des Tages</button>
         <ul class="notd_content">
-            <li><a href="#">Wartungsarbeiten am 20.Juli</a></li>#
+            <li><a href="#">Wartungsarbeiten am 20.Juli</a></li>
             <li><a href="#">Rückmeldeschluss für kommende Wintersemester am 31.Juli</a></li>
 
         </ul>

@@ -1,7 +1,7 @@
 <?php
     include_once "../header.php";
 ?>
-<link rel="stylesheet" href="../css/KurssseiteEdit.css">
+<link rel="stylesheet" href="../css/KursseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
  <script> document.addEventListener("DOMContentLoaded", function() {
          // Disable all clickable elements on the page except for the popup form
