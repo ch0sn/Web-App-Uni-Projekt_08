@@ -152,7 +152,7 @@
  }
 
  #addButton {
-     background-color: #008CBA;
+     background-color: rgb(0, 140, 186);
      color: white;
      padding: 6px 20px;
      border: none;
@@ -162,7 +162,7 @@
  }
 
  #addButton:hover {
-     background-color: #0077a7;
+     background-color: rgb(0, 119, 167);
  }
 
  #singleContent {
@@ -170,13 +170,17 @@
  }
 
  #saveButton {
-     background-color: purple;
+     background-color: rgb(160, 0, 160);
      color: white;
      padding: 6px 20px;
      border: none;
      border-radius: 4px;
      cursor: pointer;
      margin-top: 0px;
+ }
+
+ #saveButton:hover{
+background-color: rgb(116, 0, 94);
  }
 
 .active-textarea {
@@ -186,3 +190,76 @@
 .empty-line {
     height: 20px;
 }
+
+.textAreaClass{
+    background-color: aliceblue;
+    margin-right: 5px;
+    border-radius: 3px;
+    border-color: transparent;
+    
+}
+
+.textAreaClass:hover{
+     background-color: white;
+    
+}
+
+.studentsFileUploadClass{
+    background-color: aliceblue;
+    margin-right: 5px;
+    border-radius: 3px;
+    border-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    
+}
+
+.studentsFileUploadClass:hover{
+     background-color: white;
+    
+}
+
+.fileUploadClass{
+    background-color: aliceblue;
+    margin-right: 5px;
+    border-radius: 3px;
+    border-color: transparent;
+    
+}
+
+.fileUploadClass:hover{
+     background-color: white;
+    
+}
+
+.dividingLineClass{
+    background-color: aliceblue;
+    margin-right: 5px;
+    border-radius: 3px;
+    border-color: transparent;
+    
+}
+
+.dividingLineClass:hover{
+     background-color: white;
+    
+}
+
+
+.deleteButtonClass{
+    background-color: aliceblue;
+    margin-right: 5px;
+    border-radius: 3px;
+    border-color: transparent;
+    
+}
+
+.deleteButtonClass:hover{
+     background-color: white;
+    
+}
+
+.content{
+    margin-left: 5px;
+}
+

@@ -1,20 +1,21 @@
 <?php
-    include_once "../header.php";
+include_once "../header.php";
 ?>
 <link rel="stylesheet" href="../css/KursseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
- <script> document.addEventListener("DOMContentLoaded", function() {
-         // Disable all clickable elements on the page except for the popup form
-         var elementsToDisable = document.querySelectorAll(
-             "a, li, label, textarea, button, input, img");
-         for (var i = 0; i < elementsToDisable.length; i++) {
-             if (!elementsToDisable[i].closest(".popup-form")) {
-                 elementsToDisable[i].setAttribute("disabled", "disabled");
-                 elementsToDisable[i].classList.add("blur-effect");
-             }
-         }
- });
- </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Disable all clickable elements on the page except for the popup form
+        var elementsToDisable = document.querySelectorAll(
+            "a, li, label, textarea, button, input, img");
+        for (var i = 0; i < elementsToDisable.length; i++) {
+            if (!elementsToDisable[i].closest(".popup-form")) {
+                elementsToDisable[i].setAttribute("disabled", "disabled");
+                elementsToDisable[i].classList.add("blur-effect");
+            }
+        }
+    });
+</script>
 
 
 
@@ -36,7 +37,7 @@
             include_once "../includes/functions.inc.php";
             $courseIdNr = $_GET['courseid'];
             echo '<div class="abmeldeClass">
-                <form action="../includes/delisting.inc.php?userid='. $_SESSION['usersID'] .'&courseid='. $courseIdNr . '"' . 'method="post">
+                <form action="../includes/delisting.inc.php?userid=' . $_SESSION['usersID'] . '&courseid=' . $courseIdNr . '"' . 'method="post">
                 <button type="submit" id="abmelde_button"><img src="/img/64px_exit.png" alt="abmelden" style="height: 50px;"></button>
                 <label for="abmelde_Checkbox"></label>
                 </form>  
@@ -51,7 +52,7 @@
     <form class='popup-form' action="../includes/courseEdit.inc.php" method="post">
         <h1>Kurserstellung</h1>
         <!-- Kursname-Eingabefeld -->
-        <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben"/>
+        <input type='text' id="course_name" name="course_name" placeholder="Kursname eingeben" />
         <!-- Fachbereich-Auswahl -->
         <select id="course_subjectarea" name="course_subjectarea">
             <option value="" selected="selected">Alle Fachbereiche</option>
@@ -84,20 +85,18 @@
         <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
 
         <?php
-        if (!isset($_GET['error'])){
-        }
-        else{
+        if (!isset($_GET['error'])) {
+        } else {
             $errorCheck = $_GET['error'];
-            if($errorCheck == "emptyfield"){
+            if ($errorCheck == "emptyfield") {
                 echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
             }
         }
 
-        if(!isset($_GET['courseid'])){
-        }
-        else {
+        if (!isset($_GET['courseid'])) {
+        } else {
             $courseExists = $_GET['courseid'];
-            if($courseExists){
+            if ($courseExists) {
                 echo '<script> 
                document.addEventListener("DOMContentLoaded", function() {
          // Disable all clickable elements on the page except for the popup form
@@ -115,8 +114,6 @@
               var popupForm = document.querySelector(".popup-form");
               popupForm.style.visibility = "hidden";
               popupForm.style.pointerEvents = "none";</script>';
-                
-                
             }
         }
         ?>
@@ -124,11 +121,10 @@
     </form>
 
     <?php
-    if (!isset($_GET['enrolled'])){
-    }
-    else{
+    if (!isset($_GET['enrolled'])) {
+    } else {
         $enrolled = $_GET['enrolled'];
-        if($enrolled== "no"){
+        if ($enrolled == "no") {
             include "Einschreibeseite.php";
             exit();
         }
@@ -156,11 +152,11 @@
             <div id="singleContent">
 
 
-                <button id="textArea" onclick="addTextfield(this.id);">Text</button>
-                <button id="studentsFileUpload" onclick="addStudentFileUpload(this.id); ">Abgabe Studenten</button>
-                <button id="fileUpload" onclick="addFileUpload(this.id); ">Datei hochladen</button>
-                <button id="dividingLine" onclick="addDividingLine(this.id);">Trennlinie</button>
-                <button id="deleteButton" onclick="deleteCurrentDiv(this.id); ">X</button>
+                <button class="textAreaClass" id="textArea" onclick="addTextfield(this.id);">Text</button>
+                <button class="studentsFileUploadClass" id="studentsFileUpload" onclick="addStudentFileUpload(this.id); ">Abgabe Studenten</button>
+                <button class="fileUploadClass" id="fileUpload" onclick="addFileUpload(this.id); ">Datei hochladen</button>
+                <button class="dividingLineClass" id="dividingLine" onclick="addDividingLine(this.id);">Trennlinie</button>
+                <button class="deleteButtonClass" id="deleteButton" onclick="deleteCurrentDiv(this.id); ">X</button>
 
 
 
@@ -190,7 +186,7 @@
                 event.preventDefault();
 
                 const element = document.getElementById(buttonId);
-                const innerHTMLWert = element.innerHTML;
+                const innerHTMLWert = element.id;
 
                 if (innerHTMLWert.includes("true")) {
 
@@ -205,13 +201,15 @@
                     var buttonOfTextField = document.getElementById(buttonId);
                     buttonOfTextField.id = buttonOfTextField.id.replace("true", "");
 
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
 
                     const buttons = contenDiv.querySelectorAll("button");
                     buttons.forEach((button) => {
 
                         button.disabled = false;
+                        button.style.color = "black";
+
 
                     });
 
@@ -252,11 +250,12 @@
 
 
                     const buttons = contenDiv.querySelectorAll("button");
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
                     buttons.forEach((button) => {
                         if (button.id != buttonOfTextField.id) {
                             button.disabled = true;
+                            button.style.color = "gray";
                         }
                     });
 
@@ -445,7 +444,7 @@
                 buttonLine.id = buttonLine.id + count.toString();
                 buttonDelete.id = buttonDelete.id + count.toString();
 
-                buttonText.innerHTML = buttonText.id;
+                //buttonText.innerHTML = buttonText.id;
 
                 singleContentCopy.id = "singleContent" + count
 
@@ -527,7 +526,7 @@
 
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=saveContentArray", true);
+                xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=saveContentArray", false);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4) {
@@ -565,7 +564,7 @@
                         const courseid = 1; // Setze hier den entsprechenden Kurs-ID-Wert
 
                         const xhr = new XMLHttpRequest();
-                        xhr.open('POST', '../includes/kursseiteEdit.inc.php?method=saveTeacherData', true);
+                        xhr.open('POST', '../includes/kursseiteEdit.inc.php?method=saveTeacherData', false);
                         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState === 4) {
@@ -591,7 +590,7 @@
                 event.preventDefault();
 
                 const element = document.getElementById(buttonId);
-                const innerHTMLWert = element.innerHTML;
+                const innerHTMLWert = element.id;
 
                 if (innerHTMLWert.includes("true")) {
 
@@ -605,13 +604,14 @@
                     var buttonOfTextField = document.getElementById(buttonId);
                     buttonOfTextField.id = buttonOfTextField.id.replace("true", "");
 
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
 
                     const buttons = contenDiv.querySelectorAll("button");
                     buttons.forEach((button) => {
 
                         button.disabled = false;
+                        button.style.color = "black";
 
                     });
 
@@ -641,12 +641,13 @@
 
 
                     const buttons = contenDiv.querySelectorAll("button");
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
 
                     buttons.forEach((button) => {
                         if (button.id != buttonOfTextField.id) {
                             button.disabled = true;
+                            button.style.color = "gray";
                         }
                     });
 
@@ -658,7 +659,7 @@
                 event.preventDefault();
 
                 const element = document.getElementById(buttonId);
-                const innerHTMLWert = element.innerHTML;
+                const innerHTMLWert = element.id;
 
                 if (innerHTMLWert.includes("true")) {
 
@@ -680,13 +681,14 @@
                     var buttonOfTextField = document.getElementById(buttonId);
                     buttonOfTextField.id = buttonOfTextField.id.replace("true", "");
 
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
 
                     const buttons = contenDiv.querySelectorAll("button");
                     buttons.forEach((button) => {
 
                         button.disabled = false;
+                        button.style.color = "black";
 
                     });
                 } else {
@@ -715,12 +717,13 @@
 
 
                     const buttons = contenDiv.querySelectorAll("button");
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
 
                     buttons.forEach((button) => {
                         if (button.id != buttonOfTextField.id) {
                             button.disabled = true;
+                            button.style.color = "gray";
                         }
                     });
 
@@ -732,7 +735,7 @@
                 event.preventDefault();
 
                 const element = document.getElementById(buttonId);
-                const innerHTMLWert = element.innerHTML;
+                const innerHTMLWert = element.id;
 
                 if (innerHTMLWert.includes("true")) {
 
@@ -748,13 +751,14 @@
                     var buttonOfTextField = document.getElementById(buttonId);
                     buttonOfTextField.id = buttonOfTextField.id.replace("true", "");
 
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
 
                     const buttons = contenDiv.querySelectorAll("button");
                     buttons.forEach((button) => {
 
                         button.disabled = false;
+                        button.style.color = "black";
 
                     });
 
@@ -780,12 +784,13 @@
 
 
                     const buttons = contenDiv.querySelectorAll("button");
-                    buttonOfTextField.innerHTML = buttonOfTextField.id;
+                    //buttonOfTextField.innerHTML = buttonOfTextField.id;
 
 
                     buttons.forEach((button) => {
                         if (button.id != buttonOfTextField.id) {
                             button.disabled = true;
+                            button.style.color = "gray";
                         }
                     });
 
@@ -800,7 +805,7 @@
                 const element = document.getElementById(buttonId);
                 const innerHTMLWert = element.innerHTML;
 
-                element.innerHTML = element.id;
+                //element.innerHTML = element.id;
 
 
                 var match = buttonId.match(/\d+/);
@@ -818,7 +823,7 @@
 
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getCourseContent", true);
+                xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getCourseContent", false);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4) {
@@ -1028,7 +1033,7 @@
 
     <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
 
-        <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+    <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
 
     <script>
         var button = document.querySelector('.bitcoinLogo');
