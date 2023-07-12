@@ -145,7 +145,7 @@ include_once "../header.php";
         
                 document.getElementById("addButton").style.display = "none";
                 document.getElementById("saveButton").style.display = "none";
-                ">Speichern und Bearbeitungsmodus verlassen</button>
+        ">Speichern und Bearbeitungsmodus verlassen</button>
         ';
         }
         ?>
