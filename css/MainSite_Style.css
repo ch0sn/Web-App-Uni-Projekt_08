@@ -112,6 +112,7 @@
     margin-top: 15px;
 }
 
+/* Style-Einstellung für Kursbereich. */
 
 .kursbereich{
     height: min-content;
@@ -123,8 +124,6 @@
     margin-right: var(--mainSiteBlocks-margin-right);
 }
 
-
-
 .kursbereich h1 {
     font-size: 40px;
     margin-left: 10px;
@@ -132,7 +131,6 @@
 
 .kursbereich ul {
     font-family: bold;
-
     height:min-content;
 }
 
@@ -164,7 +162,7 @@
     margin-left: 45px;
 }
 
-.fitlerContent li {
+.filterContent li {
    margin-left:15px;
 }
 
@@ -192,16 +190,17 @@
     margin-left: 45px;
 }
 
-/* Style-Einstellung für FB01. */
+/* Style-Einstellung für FB Aufklapp-Mechanismus. */
 
-.fb01Collapsible {
+.fb01Collapsible, .fb02Collapsible, .fb03Collapsible,.fb04Collapsible, .fb05Collapsible, .fb06Collapsible, .fb13Collapsible {
     background: transparent;
     cursor:pointer;
     border:none;
     padding:5px;
+    margin-top:10px;
 }
 
-.fb01_content {
+.fb01_content, .fb02_content, .fb03_content, .fb04_content, .fb05_content, .fb06_content, .fb13_content {
     background: transparent ;
     transition: max-height 0.2s ease-out;
     max-height: 0;
@@ -209,141 +208,11 @@
     margin-left: 45px;
 }
 
-.fb01_content li a {
+.fb01_content li a, .fb02_content li a, .fb03_content li a, .fb04_content li a, .fb05_content li a, .fb06_content li a, .fb13_content li a {
     text-decoration: none;
     font-size: 22px;
 }
 
-/* Style-Einstellung für FB02. */
-.fb02Collapsible {
-    background: lightgray;
-    height: min-content;
-    cursor:pointer;
-    border:none;
-    padding:3px;
-}
-
-.fb02_content {
-    background: transparent;
-    transition: max-height 0.2s ease-out;
-    max-height: 0;
-    overflow: hidden;
-    margin-left: 45px;
-}
-
-.fb02_content li a {
-    text-decoration: none;
-    font-size: 22px;
-}
-
-/* Style-Einstellung für FB03. */
-.fb03Collapsible {
-    background: lightgray;
-    height: min-content;
-    cursor:pointer;
-    border:none;
-    padding:3px;
-}
-
-.fb03_content {
-    background: transparent;
-    transition: max-height 0.2s ease-out;
-    max-height: 0;
-    overflow: hidden;
-    margin-left: 45px;
-}
-
-.fb03_content li a {
-    text-decoration: none;
-    font-size: 22px;
-}
-
-
-/* Style-Einstellung für FB04. */
-.fb04Collapsible {
-    background: lightgray;
-    height: min-content;
-    cursor:pointer;
-    border:none;
-    padding:3px;
-}
-
-.fb04_content {
-    background: transparent;
-    transition: max-height 0.2s ease-out;
-    max-height: 0;
-    overflow: hidden;
-    margin-left: 45px;
-}
-
-.fb04_content li a {
-    text-decoration: none;
-    font-size: 22px;
-}
-
-/* Style-Einstellung für FB05. */
-.fb05Collapsible {
-    background: lightgray;
-    height: min-content;
-    cursor:pointer;
-    border:none;
-    padding:3px;
-}
-
-.fb05_content {
-    background: transparent;
-    transition: max-height 0.2s ease-out;
-    max-height: 0;
-    overflow: hidden;
-    margin-left: 45px;
-}
-
-.fb05_content li a {
-    text-decoration: none;
-    font-size: 22px;
-}
-/* Style-Einstellung für FB06. */
-.fb06Collapsible {
-    background: lightgray;
-    height: min-content;
-    cursor:pointer;
-    border:none;
-    padding:3px;
-}
-
-.fb06_content {
-    background: transparent;
-    transition: max-height 0.2s ease-out;
-    max-height: 0;
-    overflow: hidden;
-    margin-left: 45px;
-}
-
-.fb06_content li a {
-    text-decoration: none;
-    font-size: 22px;
-}
-
-
-/* Style-Einstellung für FB13. */
-.fb13Collapsible {
-    background: lightgray;
-    height: min-content;
-    cursor:pointer;
-    border:none;
-    padding:3px;
-}
-
-.fb13_content {
-    background: transparent;
-    transition: max-height 0.2s ease-out;
-    max-height: 0;
-    overflow: hidden;
-}
-
-.fb13_content li a {
-    text-decoration: none;
-    font-size: 22px;
-    margin-left: 45px;
-
+.fb01_content li a:hover, .fb02_content li a:hover, .fb03_content li a:hover, .fb04_content li a:hover, .fb05_content li a:hover, .fb06_content li a:hover, .fb13_content li a:hover {
+    color: aliceblue;
 }
