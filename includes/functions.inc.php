@@ -440,6 +440,7 @@ function getExistingCourseInfo($courseIdNr)
     echo '<h1>' . $courseName . '</h1>';
     echo '<p>' . 'Fachbereich:' . $courseSA . ' / ' . $courseSeason .
         ' / ab dem: ' . $courseSemesterNumber . '.Semester / Dozent: ' . $courseTeacher . '</p>';
+    echo '<title>'.$courseName.'</title>';
 
     mysqli_stmt_close($stmt);
 }

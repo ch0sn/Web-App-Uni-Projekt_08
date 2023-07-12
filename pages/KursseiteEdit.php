@@ -1,7 +1,6 @@
 <?php
     include_once "../header.php";
 ?>
-<title>Kurssseite bearbeiten</title>
 <link rel="stylesheet" href="../css/KurssseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
  <script> document.addEventListener("DOMContentLoaded", function() {
@@ -32,6 +31,7 @@
         <?php
         if (!isset($_GET['courseid'])) {
             echo '<h1></h1>';
+            echo '<title>Kurserstellung</title>';
         } else {
             include_once "../includes/functions.inc.php";
             $courseIdNr = $_GET['courseid'];
