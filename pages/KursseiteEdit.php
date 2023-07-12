@@ -78,7 +78,7 @@
             <input type="radio" id="summer" name="course_semestertime" value="Sommer"><label for="summer">Sommersemester</label>
         </div>
         <!-- Einschreibeschlüssel-Eingabe -->
-        <input type="password" id="coursePassword" placeholder="(optional) Einschreibeschlüssel eingeben">
+        <input type="password" name="coursePassword" placeholder="(optional) Einschreibeschlüssel eingeben">
         <button type="submit" id="course_completion_btn">Erstellen</button>
 
         <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>

@@ -182,7 +182,7 @@ function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $cours
     } else {
         $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
 
-        mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemestertime, $hashedPwd, $courseteacherid, $courseEmptyContent);
+        mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $hashedPwd, $courseteacherid, $courseEmptyContent);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }

@@ -78,7 +78,7 @@
     font-size: 20px;
 }
 
-.popup-form #coursePassword {
+.popup-form .coursePassword {
     margin-top:25px;
     font-size: 18px;
     width:90%;
