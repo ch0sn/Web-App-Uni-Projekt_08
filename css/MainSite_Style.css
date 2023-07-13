@@ -4,23 +4,20 @@
 .willkommensblock {
     position: relative;
     height:min-content;
-
-    border: 2px solid rgb(0,0,0);
-    border-radius: 10px;
-    background-color: lightgray;
-    padding: 5px;
-    margin-top:  20px;
+    padding: 2px;
+    margin-top:  50px;
     margin-left: var(--mainSiteBlocks-margin-left);
     margin-right: var(--mainSiteBlocks-margin-right);
 }
 
 .willkommensblock h1 {
-    font-size: 40px;
+    font-size: var(--text-size-h1);
     margin-left: 20px;
 }
 
 .willkommensblock p {
     font-family: sans-serif;
+    font-size: var(--text-size-default);
     margin-left: 25px;
 }
 
@@ -28,18 +25,18 @@
 .blackboard {
     position: relative;
     height:min-content;
-    border: 2px solid rgb(0,0,0);
-    border-radius: 10px;
-    background-color: lightgray;
-    margin-top:20px;
+    background-color: var(--main-background-color-black);
+    border-radius: var(--border-radius);
+    margin-top:80px;
     margin-left: var(--mainSiteBlocks-margin-left);
     margin-right: var(--mainSiteBlocks-margin-right);
 }
 
 .blackboard h1 {
-    font-size: 40px;
+    font-size: var(--text-size-h2);
+    color: var(--text-color-white);
+    padding-top: 25px;
     margin-left: 25px;
-    margin-top:20px;
 }
 
 .blackboard ul {
@@ -48,24 +45,22 @@
     list-style: none;
 }
 
-.blackboard ul li {
-    font-size: 18px;
+.blackboard_content {
+    padding-bottom: 50px;
 }
 
 .blackboard_content button {
     background: transparent;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 35px;
     border:none;
-    font-size: 25px;
+    font-size: var(--text-size-h3);
+    color: var(--text-color-white);
 }
 
-.blackboard_content li a{
-    text-decoration: none;
-}
 
-/* Style-Einstellung für NewsOfTheDay (NOTD). */
-.newsOfTheDay_collapsible {
+/* Style-Einstellung für NewsOfTheDay (NOTD)/UpcomingEvents (UE). */
+.newsOfTheDay_collapsible, .upcomingEvents_collapsible {
     background: lightgray;
     height: min-content;
     cursor:pointer;
@@ -73,7 +68,7 @@
     padding:3px;
 }
 
-.notd_content {
+.notd_content, .ue_content{
     background: transparent;
     transition: max-height 0.2s ease-out;
     max-height: 0;
@@ -81,52 +76,34 @@
 }
 
 .notd_content li {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .notd_content li a {
     text-decoration: none;
-    font-size: 22px;
-
-}
-
-/* Style-Einstellung für UpcomingEvents (UE). */
-.upcomingEvents_collapsible {
-    background: lightgray;
-    height: min-content;
-    cursor:pointer;
-    border:none;
-    padding:3px;
-}
-
-.ue_content {
-    background: transparent;
-    transition: max-height 0.2s ease-out;
-    max-height: 0;
-    overflow: hidden;
+    font-size: var(--text-size-default);
+    color: var(--text-color-white);
 }
 
 .ue_content li p {
     text-decoration: none;
-    font-size: 22px;
-    margin-top: 15px;
+    font-size: var(--text-size-default);
+    color: var(--text-color-white);
+    margin-top: 20px;
 }
 
 /* Style-Einstellung für Kursbereich. */
 
 .kursbereich{
     height: min-content;
-    border: 2px solid rgb(0,0,0);
-    border-radius: 10px;
-    background-color: lightgray;
-    margin-top:20px;
+    margin-top: 50px;
     margin-left: var(--mainSiteBlocks-margin-left);
     margin-right: var(--mainSiteBlocks-margin-right);
 }
 
 .kursbereich h1 {
-    font-size: 40px;
-    margin-left: 10px;
+    font-size: var(--text-size-h2);
+    margin-left: 25px;
 }
 
 .kursbereich ul {
@@ -135,14 +112,14 @@
 }
 
 .kursbereich ul button {
-    font-size: 25px;
+    font-size: var(--text-size-h3);
     margin-left: 40px;
 }
 
 
 
 .collapsible {
-    background: lightgray;
+    background: transparent;
     margin-left: 95%;
     cursor:pointer;
     border:none;
@@ -150,10 +127,12 @@
 }
 
 .filterContent {
-    background: aliceblue;
+    background-color: var(--main-background-color-black);
+    border-radius: var(--border-radius);
     transition: max-height 0.2s ease-out;
     max-height: 0px;
     overflow: hidden;
+    padding-bottom:3px;
 }
 
 .filterContent ul li {
@@ -167,7 +146,8 @@
 }
 
 .filterContent label {
-    font-size: 18px;
+    font-size: var(--text-size-default);
+    color: var(--text-color-white);
     margin-right: 50px;
 }
 
@@ -210,9 +190,10 @@
 
 .fb01_content li a, .fb02_content li a, .fb03_content li a, .fb04_content li a, .fb05_content li a, .fb06_content li a, .fb13_content li a {
     text-decoration: none;
-    font-size: 22px;
+    font-size: var(--text-size-default);
 }
 
 .fb01_content li a:hover, .fb02_content li a:hover, .fb03_content li a:hover, .fb04_content li a:hover, .fb05_content li a:hover, .fb06_content li a:hover, .fb13_content li a:hover {
-    color: aliceblue;
+    background-image: var(--navbar-background-image-horizontal);
+    color:var(--text-color-black);
 }

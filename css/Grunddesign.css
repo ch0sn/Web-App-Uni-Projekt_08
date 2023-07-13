@@ -24,6 +24,8 @@
     --text-color-white: #ffffff;
     --text-error-msg-red: red;
     --text-size-h1: 60px;
+    --text-size-h2: 40px;
+    --text-size-h3: 25px;
     --text-size-default: 18px;
     --text-size-textfields: 25px;
 
@@ -35,7 +37,7 @@
     --dropdown-width: 200px;
     --border-radius: 5px;
     --profile-dd-width: 300px;
-    --mainSiteBlocks-margin-left: calc(1% + 95px);
+    --mainSiteBlocks-margin-left: calc(5% + 95px);
     --mainSiteBlocks-margin-right: calc(10% - 95px);
 }
 

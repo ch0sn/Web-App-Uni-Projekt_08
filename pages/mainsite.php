@@ -29,12 +29,12 @@
         <ul class="notd_content">
             <li><a href="#">Wartungsarbeiten am 20.Juli</a></li>
             <li><a href="#">Rückmeldeschluss für kommende Wintersemester am 31.Juli</a></li>
-
         </ul>
+
         <button type="button" name="ue" class="upcomingEvents_collapsible">Aktuelle Termine</button>
-            <ul class="ue_content">
-                <li><p>[Projekt-Abgabe] WebTech-Abgabe: 16.Juli.2023</p></li>
-            </ul>
+        <ul class="ue_content">
+            <li><p>[Projekt-Abgabe] WebTech-Abgabe: 16.Juli.2023</p></li>
+        </ul>
     </ul>
 </div>
 
@@ -105,6 +105,7 @@
 
             </script>
             <button type="submit" id="filtern">Filtern</button>
+
         </form>
     </div>
 
