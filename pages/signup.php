@@ -16,10 +16,10 @@ include_once '../plainheader.php';
         <?php
             if(isset($_GET['firstname'])){
                 $first = $_GET['firstname'];
-               echo " <input type='text'  name='firstname' placeholder='Vorname...' value='$first'/> ";
+               echo " <input type='text'  name='firstname'  id='vorname' placeholder='Vorname...' value='$first'/> ";
             }
             else {
-                echo " <input type='text'  name='firstname' placeholder='Vorname...'/> ";
+                echo " <input type='text'  name='firstname' id='vorname' placeholder='Vorname...'/> ";
 
             }
 
@@ -33,10 +33,10 @@ include_once '../plainheader.php';
 
         if(isset($_GET['uid'])){
             $uid = $_GET['uid'];
-            echo " <input type='text'  name='uid' placeholder='Username...' value='$uid'/> ";
+            echo " <input type='text'  name='uid' placeholder='Benutzername...' value='$uid'/> ";
         }
         else {
-            echo " <input type='text' name='uid' placeholder='Username...' /> ";
+            echo " <input type='text' name='uid' placeholder='Benutzername...' /> ";
         }
 
         if(isset($_GET['email'])){
@@ -81,35 +81,42 @@ include_once '../plainheader.php';
         }
         ?>
 
-
+        <div>
         <button class="signup-Button" type="submit" name="submit" id="submit">Registrieren</button>
-    </form>
+        </div>
 
-    <?php
-    if (!isset($_GET['error'])){
-    }
-    else{
-        $errorCheck =$_GET['error'];
-        if($errorCheck == "emptyfield"){
-            echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
+        <div class="fehlerbenachrichtigung">
+        <?php
+        if (!isset($_GET['error'])){
         }
-        else if($errorCheck == "invalidUsername"){
-            echo "<p class='error' style='color:red'>Invalid characters in the username!</p>";
+        else{
+            $errorCheck =$_GET['error'];
+            if($errorCheck == "emptyfield"){
+                echo "<p class='error' style='color:red' >Fehler: Es wurden nicht alle Felder ausgefüllt!</p>";
+            }
+            else if($errorCheck == "invalidUsername"){
+                echo "<p class='error' style='color:red'>Fehler: Es wurden nicht berechtigte Zeichen benutzt.</p> <i>Nutzen Sie nur das Alphabet und Zahlen.</i>";
+            }
+            else if($errorCheck == "invalidEmail"){
+                echo "<p class='error' style='color:red'>Fehler: ungültige Email-Adresse!</p><i>Es muss mit \"@thm.de\" enden.</i>";
+            }
+            else if($errorCheck == "invalidPWMatch"){
+                echo "<p class='error' style='color:red'>Fehler: Passwort stimmt nicht überein!</p><i>Bitte nochmal eingeben.</i>";
+            }
+            else if($errorCheck == "usernameTaken"){
+                echo "<p class='error' style='color:red'>Fehler: Benutzername ist vergeben!</p>";
+            }
         }
-        else if($errorCheck == "invalidEmail"){
-            echo "<p class='error' style='color:red'>Invalid email!</p>";
-        }
-        else if($errorCheck == "invalidPWMatch"){
-            echo "<p class='error' style='color:red'>Passwords don't match!</p>";
-        }
-        else if($errorCheck == "usernameTaken"){
-            echo "<p class='error' style='color:red'>Username is already taken!</p>";
-        }
-    }
-    ?>
+        ?>
+        </div>
+
+        <div id="abbrechenButtonDiv">
+        <a href="../index.php" id="abbrechenButton">Abbrechen</a>
+        </div>
+    </form>
 </section>
 
-    <a href="../index.php" id="abbrechenButton">Abbrechen</a>
+
 
 <footer>
     <ul class="infoBar">

@@ -13,11 +13,11 @@
 
     <h1>Willkommen</h1>
 
-    <p>Das ist die "Besseres Moodle Für Alle" Seite!</p>
-    <p>Registrieren Sie sich oder falls Sie schon ein Account haben, melden Sie sie sich gerne an!</p>
+    <p>Das ist die "Besseres Moodle Für Alle" Seite! <br>
+    Registrieren Sie sich oder falls Sie schon ein Account haben, melden Sie sie sich gerne an!</p>
 
     <a href="pages/login.php"><b>Anmelden</b></a>
-    <br>
+
     <a href="pages/signup.php"><b>Registrieren</b></a>
 
 

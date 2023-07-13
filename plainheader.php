@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/Grunddesign.css">
-    <link rel="icon" type="image/x-icon" href="img/40px_BM_Favicon.png">
+    <link rel="icon" type="image/x-icon" href="/img/40px_BM_Favicon.png">
 
 </head>
 <body>

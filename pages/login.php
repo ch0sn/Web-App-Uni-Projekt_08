@@ -22,9 +22,9 @@ include '../plainheader.php';
             <?php
             if (isset($_GET['uid'])){
                 $uid = $_GET['uid'];
-                echo "<input type='text' class='username_tf' name='uid' placeholder='THM Kennung' value='$uid' />";
+                echo "<input type='text' class='username_tf' name='uid' placeholder='Benutzername' value='$uid' />";
             }else {
-                echo '<input type="text" class="username_tf" name="uid" placeholder="THM Kennung" />';
+                echo '<input type="text" class="username_tf" name="uid" placeholder="Benutzername" />';
             }
             ?>
         </div>
@@ -38,33 +38,41 @@ include '../plainheader.php';
 
 
         <!-- Weiterleitung, falls Passwort vergessen. -->
-
+        <div id="forgotPW">
         <a href="https://www.thm.de/its/campusnetz/benutzerkonto/passwort-vergessen.html"
-           style="color:blue; margin-top:50px" target="_blank">Passwort vergessen</a>
+           target="_blank" id="forgotPW">Passwort vergessen</a>
+        </div>
 
+        <div>
         <input type="submit" name="submit" value="Anmelden" />
+        </div>
 
+        <div id="errorMessages">
         <?php
         if (!isset($_GET['error'])){
         }
         else{
             $errorCheck = $_GET['error'];
             if($errorCheck == "emptyfield"){
-                echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
+                echo "<p class='error' style='color:red' >Fehler: Es wurden nicht alle Felder ausgefüllt!</p>";
             }
             else if($errorCheck == "wronglogin"){
-                echo "<p class='error' style='color:red'>Username does not exist!</p>";
+                echo "<p class='error' style='color:red'>Fehler: Benutzername existiert nicht!</p>";
             }
             else if($errorCheck == "wrongpassword"){
-                echo "<p class='error' style='color:red'>Password wrong!</p>";
+                echo "<p class='error' style='color:red'>Fehler: Passwort ist falsch!</p>";
             }
         }
         ?>
+        </div>
 
+        <div id="cancelButtonDiv">
+        <a href="../index.php" id="abbrechenButton">Abbrechen</a>
+        </div>
     </form>
 </div>
 
-<a href="../index.php" id="abbrechenButton">Abbrechen</a>
+
 
 
 <ul class="infoBar">
