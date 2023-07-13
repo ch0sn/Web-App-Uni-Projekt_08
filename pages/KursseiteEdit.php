@@ -172,12 +172,9 @@ include_once "../header.php";
         </form>
 
         <script>
-            let savedHtml = '';
-
+           
             var count = 0;
-
             let contentArray = [];
-
             GetArrayFromDatabase()
 
 
@@ -217,17 +214,12 @@ include_once "../header.php";
                         button.disabled = false;
                         button.style.color = "black";
 
-
                     });
-
-
 
                 } else {
 
                     var match = buttonId.match(/\d+/);
                     var numberOfButton = match ? parseInt(match[0]) : null;
-
-
 
                     var bodyCourseClass = document.querySelector('.BodyCourseClass');
                     var bodyCourseClassWidth = getComputedStyle(bodyCourseClass).width;
@@ -296,10 +288,8 @@ include_once "../header.php";
 
                 contentArray.forEach(item => {
                     var button = document.getElementById('addButton');
-                    button.click(); // Klick auf den Button auslösen 
+                    button.click(); 
                 });
-
-
 
 
                 createEditElements(contentArray);
@@ -315,12 +305,12 @@ include_once "../header.php";
                     if (item.id.includes("textArea")) {
 
                         var button = document.getElementById(item.id);;
-                        button.click(); // Klick auf den Button auslösen
+                        button.click(); 
 
-                        const containerId = item.id; // Erzeuge die ID des Containers basierend auf der ID des Objekts
+                        const containerId = item.id; 
 
                         console.log(containerId);
-                        const container = document.getElementById(containerId); // Finde den Container anhand der ID
+                        const container = document.getElementById(containerId); 
 
 
                         container.value = item.value || "";
@@ -331,7 +321,7 @@ include_once "../header.php";
                     if (item.id.includes("dividingLine")) {
 
                         var button = document.getElementById(item.id);;
-                        button.click(); // Klick auf den Button auslösen
+                        button.click(); 
 
                     }
 
@@ -389,17 +379,7 @@ include_once "../header.php";
                         var data = "courseid=1&dataName=" + item.file // Passen Sie hier die Werte entsprechend an
                         xhr.send(data);
 
-
-
-
-
-
                     }
-
-
-
-
-
 
 
                 });
@@ -420,20 +400,6 @@ include_once "../header.php";
 
 
             }
-
-            function loadContent() {
-
-                const newForm = document.createElement('form');
-
-                // Set the class name and ID for the form
-                newForm.className = 'content';
-                newForm.id = 'content';
-
-                newForm.innerHTML = savedHtml;
-
-                document.body.appendChild(newForm);
-            }
-
             function addButtons() {
 
                 event.preventDefault();
@@ -454,7 +420,7 @@ include_once "../header.php";
                 buttonLine.id = buttonLine.id + count.toString();
                 buttonDelete.id = buttonDelete.id + count.toString();
 
-                //buttonText.innerHTML = buttonText.id;
+                
 
                 singleContentCopy.id = "singleContent" + count
 
@@ -544,11 +510,6 @@ include_once "../header.php";
                 var data = "courseid=1&contentArray=" + JSON.stringify(contentArray);
                 xhr.send(data);
 
-
-
-
-
-
                 const fileInputElements = div.querySelectorAll('input:not([id*="student"])');
                 xhr = new XMLHttpRequest();
 
@@ -559,8 +520,7 @@ include_once "../header.php";
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         const base64Data = event.target.result.split(',')[1];
-                        const courseid = 1; // Setze hier den entsprechenden Kurs-ID-Wert
-
+                        const courseid = 1; 
                         const xhr = new XMLHttpRequest();
                         xhr.open('POST', '../includes/kursseiteEdit.inc.php?method=saveTeacherData', false);
                         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -669,9 +629,9 @@ include_once "../header.php";
                     for (var i = contenDiv.children.length - 1; i >= 0; i--) {
                         var child = contenDiv.children[i];
 
-                        // Überprüfe, ob das Kind ein <a>- oder <input>-Element ist
+                        
                         if (child.tagName === 'A' || child.tagName === 'INPUT') {
-                            // Entferne das Kind aus dem Container
+                            
                             contenDiv.removeChild(child);
                         }
                     }
@@ -818,8 +778,6 @@ include_once "../header.php";
 
             function GetArrayFromDatabase() {
 
-
-
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getCourseContent", false);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -832,9 +790,6 @@ include_once "../header.php";
                             if (response == "connected") {
                                 return;
                             }
-
-
-
 
                             var response = xhr.responseText;
                             var jsonStartIndex = response.indexOf("[");
@@ -849,9 +804,6 @@ include_once "../header.php";
 
                             console.log(contentArray)
 
-
-
-
                         } else {
                             console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
                         }
@@ -861,26 +813,12 @@ include_once "../header.php";
                 xhr.send(data);
             }
 
-
-
             function arrayToWebsite(array) {
-
-
-
-
-
-
-
-
-
 
                 const elementsContainer = document.getElementById('content');
                 const firstElement = elementsContainer.querySelector(':first-child');
 
                 elementsContainer.innerHTML = firstElement.outerHTML;
-
-
-
 
                 for (let i = 0; i < array.length; i++) {
                     const item = array[i];
@@ -895,13 +833,6 @@ include_once "../header.php";
                         const emptyLine = document.createElement('div');
                         emptyLine.classList.add('empty-line');
                         elementsContainer.appendChild(emptyLine);
-
-
-
-
-
-
-
 
                     }
 
@@ -918,9 +849,6 @@ include_once "../header.php";
 
                     if (item.id.includes('fileUpload') && !item.id.includes('student')) {
 
-
-
-
                         var xhr = new XMLHttpRequest();
                         xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getTeacherData", false);
                         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -936,66 +864,51 @@ include_once "../header.php";
                                     }
 
                                     response = response.substring(response.indexOf('data'));
-
-
-
-                                    // Erstellen der URL für den Blob
-                                    // Decodiere das Base64-Bild in einen Byte-Array
+                                    
                                     var byteCharacters = atob(response.split(',')[1]);
 
-                                    // Erstelle ein Byte-Array
+                                   
                                     var byteArrays = [];
 
                                     for (var j = 0; j < byteCharacters.length; j++) {
                                         byteArrays.push(byteCharacters.charCodeAt(j));
                                     }
 
-                                    // Konvertiere das Byte-Array in ein Blob
+                                    
                                     var blob = new Blob([new Uint8Array(byteArrays)], {
                                         type: 'image/png'
                                     });
 
-                                    // Erstelle die URL für das Blob
+                                   
                                     var blobUrl = URL.createObjectURL(blob);
 
-                                    // Erstelle den Download-Link
+                                  
                                     var downloadLink = document.createElement('a');
                                     downloadLink.href = blobUrl;
-                                    downloadLink.download = item.file; // Dateiname für den Download
+                                    downloadLink.download = item.file; 
                                     downloadLink.textContent = item.file;
-
-                                    // Füge den Download-Link zum Dokument hinzu
+                        
                                     elementsContainer.appendChild(downloadLink);
-
-
-                                    // Verwenden Sie 'blobUrl' für Ihren Dateilink oder andere Zwecke
+                                  
 
                                 } else {
                                     console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
                                 }
                             }
                         };
-                        var data = "courseid=1&dataName=" + item.file // Passen Sie hier die Werte entsprechend an
+                        var data = "courseid=1&dataName=" + item.file 
                         xhr.send(data);
-
-
-
-
 
                     }
 
                     if (item.id.includes('dividingLine')) {
-                        // Erstelle eine Trennlinie
+                        
                         const divideLineContainer = document.createElement('div');
-
-
-                        // Erstelle eine Trennlinie
+                        
                         const divideLine = document.createElement('hr');
-
-                        // Füge die Trennlinie dem Container hinzu
+                      
                         divideLineContainer.appendChild(divideLine);
-
-                        // Füge den Container mit der Trennlinie zu elementsContainer hinzu
+                        
                         elementsContainer.appendChild(divideLineContainer);
                         const emptyLine = document.createElement('div');
                         emptyLine.classList.add('empty-line');
@@ -1003,16 +916,10 @@ include_once "../header.php";
 
                     }
 
-
-
-
                 }
 
                 elementsContainer.style.display = "flex";
                 elementsContainer.style.flexDirection = "column";
-
-
-
 
             }
         </script>
