@@ -1,86 +1,91 @@
 /*Kursnamen-Styling*/
 #courseNameBodyId {
     color: black;
-    font-size: 25px;
-    margin-top: 35px;
+    font-size: var(--text-size-h2);
+    margin-top: 50px;
+    text-align: center;
+}
+
+#teacherNameId {
+    position: relative;
+    margin-top: 55px;
+    font-size: 35px;
     text-align: center;
 }
 
 /*Kursinfos-Styling*/
 #enrollmentOptionsId {
-    color: black;
-    font-size: 35px;
-    margin-left: 10px;
+    color: var(--text-color-black);
+    font-size: var(--text-size-h2);
     text-align: center;
 }
 
-input[type=submit] {
-    background-color: rgb(207, 207, 207);
-    padding: 0.25%;
-    margin-top: 10%;
-    cursor: pointer;
-    border: 0px solid rgb(0, 0, 0);
-    cursor: pointer;
-    inline-size: 200px;
-}
 
-#teacherNameId {
-    position: relative;    
-    margin-top: 55px;  
-    font-size: 35px;   
-    text-align: center;
-}
 
 #loginKeyPanel{
-    position: relative;    
-    margin-top: 55px;
     margin-bottom: 15px;
     font-size: 35px;
     text-align: center;
-    width: 30%;
-    margin-left: 35%;
     margin-top: 55px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 1px solid rgb(0, 0, 0);
 }
 
 #errorMsg {
     color:red;
     text-align: center;
-    font-size: 20px;
+    font-size: var(--text-size-default);
     font-style: italic;
 }
 
 #enrollButtonId {
-    background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
+    background-color: var(--side-background-color-1);
+    color: var(--text-color-white);
     padding: 0.25%;
-    font-family: 'Orbitron', sans-serif;  
+    font-size: var(--text-size-default);
+    margin-top: 40px;
+    font-family: 'Orbitron', sans-serif;
     cursor: pointer;
-    width: 50%;
-    border: 2px solid rgb(0, 0, 0);
+    border-radius: var(--border-radius);
     align-items: center;
-    font-size: 35px;
-    margin-left: 25%;
-    margin-top: 45px;
-    margin-bottom: 50px;
-    border-radius: 5px;
+    justify-content: center;
 }
 
-#cancelButtonId {
-    background-image: linear-gradient(to bottom, rgb(165, 174, 182), rgb(121, 126, 121));
-    padding: 0.25%;
-    font-family: 'Orbitron', sans-serif;  
-    cursor: pointer;
-    border: 2px solid rgb(0, 0, 0);
+#enrollButtonDiv {
     align-items: center;
-    font-size: 20px;
-    margin-left: 46%;
-    border-radius: 5px;
+    justify-content: center;
+}
+
+#enrollButtonId:hover{
+    background-image: var(--navbar-background-image-horizontal);
+    color:var(--text-color-black);
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.4);
+}
+
+#cancelButtonDiv2{
+    text-align: center;
+    margin-top: 30px;
+}
+
+#cancelButtonDiv2 #cancelButtonId{
+    background-color: var(--side-background-color-1);
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-color-white);
+    font-size: var(--text-size-default);
+    padding:3px 0px;
     text-decoration: none;
+    border: 1px solid rgb(0,0,0);
+    border-radius: var(--border-radius);
+}
+
+#cancelButtonDiv2 a[id=cancelButtonId]:hover{
+    background-image: var(--navbar-background-image-horizontal);
+    color:var(--text-color-black);
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.4);
 }
 
 .abmeldeClass {
-    margin-left: 95%;
+    margin-left: 100%;
     visibility: hidden;
 }
 

@@ -42,7 +42,7 @@
 }
 
 .popup-form h1 {
-    font-size: 35px;
+    font-size: var(--text-size-h2);
 }
 
 .popup-form #course_name {
@@ -56,7 +56,7 @@
     margin-top:25px;
     height:30px;
     width:50%;
-    font-size: 20px;
+    font-size: var(--text-size-default);
 }
 
 .popup-form #course_semesternumber {
@@ -64,7 +64,7 @@
     margin-bottom:15px;
     height:30px;
     width: 50%;
-    font-size: 20px;
+    font-size: var(--text-size-default);
 }
 
 .popup-form .rg_course_semestertime {
@@ -75,62 +75,70 @@
 
 .popup-form .rg_course_semestertime label {
     margin-right: 8px;
-    font-size: 20px;
+    font-size: var(--text-size-default);
 }
 
-.popup-form .coursePassword {
+.popup-form #coursePassword {
     margin-top:25px;
-    font-size: 18px;
+    height: 20px;
+    font-size: var(--text-size-default);
     width:90%;
 }
 
 .popup-form #course_completion_btn {
     margin-top: 25px;
-    width:30%;
+    width:150px;
     height:40px;
     cursor: pointer;
+    border-radius: var(--border-radius);
+    color: var(--text-color-white);
+    background-color: var(--side-background-color-1);
+
 }
 .popup-form #course_completion_btn:hover {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    background-image: var(--navbar-background-image-horizontal);
+    color:var(--text-color-black);
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.4);
 }
 
 .popup-form #course_completion_cancel_btn{
-    margin-top: 15px;
-    margin-right: 70%;
-    width:30%;
-    height:25px;
+    margin-top: 20px;
+    width:147px;
     cursor: pointer;
+    border-radius: var(--border-radius);
+    background-color: var(--side-background-color-1);
 }
 
 .popup-form #course_completion_cancel_btn a{
     text-decoration: none;
+    color: var(--text-color-white);
+    width: 50%;
 }
 
 .popup-form #course_completion_cancel_btn:hover {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    background-image: var(--navbar-background-image-horizontal);
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.4);}
+
+.popup-form #course_completion_cancel_btn a:hover{
+    color:var(--text-color-black);
 }
 
 .popup-form p {
     font-size: 13px;
-    margin-left: 35%;
     margin-top: 15px;
+    color:var(--text-error-msg-red);
 }
 
- body {
-     font-family: Arial, sans-serif;
- }
+.popup-form i {
+    font-size: 13px;
+    color:var(--text-error-msg-red);
+}
 
- .HeaderCourseClass h1 {
-     font-size: 48px;
-     font-weight: bold;
-     margin-top: 10px;
- }
-
-.HeaderCourseClass p {
-    font-size: 30px;
-    margin-top: 21px;
-    margin-bottom: 30px;
-    
+.popup-form #popup-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom:10px;
 }
 
  #editButton {

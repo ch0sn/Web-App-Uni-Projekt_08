@@ -40,13 +40,14 @@
     --profile-dd-width: 275px;
     --mainSiteBlocks-margin-left: calc(5% + 95px);
     --mainSiteBlocks-margin-right: calc(10% - 95px);
+    --mainHeader-Top-margin: 120px;
 }
 
 * {
     /**/
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: var(--text-size-default);
     font-family: sans-serif;
     color: var(--text-color-black);
 }
