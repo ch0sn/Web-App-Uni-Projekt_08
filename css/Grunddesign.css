@@ -92,10 +92,12 @@ nav .barTopLogo {
     margin-right: 50px;
 }
 
-
+#infobarDiv{
+    width: 100%;
+}
 .infoBar {
     /**/
-    position: fixed;
+    margin-top:80px;
     background: rgb(74, 78, 97);
     height: 50px;
     margin-left: 10%;

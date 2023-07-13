@@ -44,7 +44,7 @@ include '../plainheader.php';
         </div>
 
         <div>
-        <input type="submit" name="submit" value="Anmelden" />
+        <input type="submit" name="submit" id="anmelde_btn" value="Anmelden" />
         </div>
 
         <div id="errorMessages">

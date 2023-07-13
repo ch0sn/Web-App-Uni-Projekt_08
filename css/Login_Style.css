@@ -1,10 +1,7 @@
 .login {
-    /*border-radius: 10px;*/
     background-color: var(--main-background-color-white);
     font-family: 'Orbitron', sans-serif;
-    /*border: 2px solid rgb(0, 0, 0); */
-    margin: 50px calc(10% - 95px) 10px 10%;
-
+    margin: 150px calc(10% - 95px) 10px 10%;
     text-align: center;
     z-index: -2;
 }
@@ -35,7 +32,7 @@
 }
 
 .username_tf {
-    width:20%;
+    width:330px;
     font-size: var(--text-size-textfields);
     font-family: 'Orbitron', sans-serif;
     text-align: center;
@@ -45,7 +42,7 @@
 }
 
 .password_tf {
-    width:20%;
+    width:330px;
     margin-top: 50px;
     margin-bottom: 7px;
     font-size: var(--text-size-textfields);
@@ -64,16 +61,16 @@
 }
 
 
-input[type=submit] {
+#anmelde_btn {
     background-color: var(--side-background-color-1);
     color: var(--text-color-white);
-    width: 20%;
-    padding: 0.25%;
+    padding:3px 115px;
     font-size: var(--text-size-default);
-    margin-top: 40px;
+    margin-top: 30px;
     font-family: 'Orbitron', sans-serif;
     cursor: pointer;
     border-radius: var(--border-radius);
+    border:none;
 }
 
 input[type=submit]:hover{
@@ -94,7 +91,7 @@ input[type=submit]:hover{
 
 #cancelButtonDiv{
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 #cancelButtonDiv #abbrechenButton{
@@ -102,9 +99,8 @@ input[type=submit]:hover{
     font-family: 'Orbitron', sans-serif;
     color: var(--text-color-white);
     font-size: var(--text-size-default);
-    padding:3px 0px;
+    padding:3px 115px;
     text-decoration: none;
-    border: 1px solid rgb(0,0,0);
     border-radius: var(--border-radius);
 }
 

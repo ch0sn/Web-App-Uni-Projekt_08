@@ -6,12 +6,13 @@
 
 
     <div class="BodyCourseClass">
-        <h1 id="enrollmentOptionsId">Einschreibeschlüsseleingabe</h1>
+
         <?php
        // echo '<p id="courseNameBodyId">'. getCourseNameById($_GET['courseid']).'</p> ';
        // echo '<p id="teacherNameId">'.getCourseTeacherName(getCourseTeacherByCourseId($_GET['courseid'])).'</p>';
 
-        echo '<form action="../includes/enrollment.inc.php?userid='. $_SESSION["usersID"]. '&courseid=' . $_GET["courseid"] . '"' .'method="post" >
+        echo '<form id="einschreibeform" action="../includes/enrollment.inc.php?userid='. $_SESSION["usersID"]. '&courseid=' . $_GET["courseid"] . '"' .'method="post" >
+              <h1 id="enrollmentOptionsId">Einschreibeschlüsseleingabe</h1>
               <div><input type="password" name="loginKeyPanel" id="loginKeyPanel" placeholder="Einschreibeschlüssel"/></div>';
 
         if (!isset($_GET['pwkey'])){
@@ -23,14 +24,14 @@
             }
         }
 
-        echo '<div id="enrollButtonDiv"><input type="submit" value="Einschreiben" id="enrollButtonId"/></div>
-              </form>';
+        echo '<div id="enrollButtonDiv"><input type="submit" value="Einschreiben" id="enrollButtonId"/></div>';
 
-        echo '<div id="cancelButtonDiv2"><a href="mainsite.php" id="cancelButtonId">Abbrechen</a></div>';
+        echo '<div id="cancelButtonDiv2"><a href="mainsite.php" id="cancelButtonId">Abbrechen</a></div></form>';
 
         ?>
     </div>
-    
+
+    <div id="infobarDiv">
     <ul class="infoBar">
 
         <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
