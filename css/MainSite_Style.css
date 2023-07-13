@@ -5,7 +5,7 @@
     position: relative;
     height:min-content;
     padding: 2px;
-    margin-top:  50px;
+    margin-top:  120px;
     margin-left: var(--mainSiteBlocks-margin-left);
     margin-right: var(--mainSiteBlocks-margin-right);
 }
@@ -83,6 +83,11 @@
     text-decoration: none;
     font-size: var(--text-size-default);
     color: var(--text-color-white);
+}
+.notd_content li a:hover{
+background: -webkit-linear-gradient(rgb(0, 255, 0),rgb(74, 142, 206));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 
 .ue_content li p {

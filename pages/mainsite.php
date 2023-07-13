@@ -1,7 +1,7 @@
 <?php
     include_once '../header.php';
 ?>
-
+<body>
 <!-- Main-Seite spezifischer Titel und Einstellungen -->
 <title>BMFA-Startseite</title>
 <link rel="stylesheet" href="../css/MainSite_Style.css">
@@ -210,6 +210,7 @@
 
 
 </body>
-<script src="../js/mainsite_scripts.js"></script>
+<script src="../js/mainsite_scripts.js">
+</script>
 </html>
 

@@ -12,9 +12,7 @@ session_start();
     <link rel="stylesheet" href="../css/Grunddesign.css">
     <link rel="icon" type="image/x-icon" href="../img/40px_BM_Favicon.png">
 
-</head>
 
-<body>
     <!-- Navbar-Sektion beginnt. -->
     <nav>
         <!-- Logo wird in Navbar hinzugefügt. -->
@@ -34,7 +32,7 @@ session_start();
                     include_once "includes/functions.inc.php";
                     showEnrolledCourses($_SESSION['usersID']);
                     if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent") {
-                        echo '<li><a href="../pages/KursseiteEdit.php">Kurs erstellen</a></li>';
+                        echo '<li><a href="../pages/KursseiteEdit.php" style="color:yellow;">Kurs erstellen</a></li>';
                     }
                     ?>
                 </ul>
@@ -165,3 +163,7 @@ session_start();
             </div>
         </ul>
     </nav>
+
+</head>
+
+

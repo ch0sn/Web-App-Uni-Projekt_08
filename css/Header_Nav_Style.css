@@ -8,6 +8,10 @@ nav ul {
   list-style: none;
 }
 
+nav ul li label {
+  font-size: var(--text-size-default);
+}
+
 /* in der Navbar zugehörige Listeneintrag-Einstellungen mit Hover-Einstellung */
 nav li {
   height: 100%;
@@ -48,16 +52,18 @@ nav ul a {
   z-index: 5;
 }
 
-/* "Kurse"/"Tools"/"Forum"-Dropdown-Eintragsgrößen-Einstellungen */
+/* "Kurse"/"Tools"/"Forum"/"Profil"-Dropdown-Eintragsgrößen-Einstellungen */
 .dropdown_K li, .dropdown_T li, .dropdown_F li, .dropdown_P li {
-  height: 40px;
+  height: 45px;
   width: 100%;
 }
 
-/* "Kurse"-Dropdown-Optionen-Einstellungen */
+/* "Kurse"/"Tools"/"Forum"/"Profil"-Dropdown-Optionen-Einstellungen */
 .dropdown_K li a, .dropdown_T li a, .dropdown_F li a, .dropdown_P li a  {
+  text-align: center;
   justify-content: center;
   color: var(--text-color-white);
+  font-size: var(--text-size-ddo);
 }
 
 .dropdown_K button {
@@ -88,7 +94,7 @@ nav input[type="checkbox"] {
 
 /* Suchfeldleiste-Einstellung*/
 .searchBar {
-  margin-left: 60px;
+  margin-left: 50px;
   color: black;
   display: flex;
   padding: 2px;
@@ -136,7 +142,7 @@ input[type="search"]:focus {
 .expandable_li_P {
   display: flex;
   align-items: center;
-  margin-left: 250px;
+  margin-left: 45px;
   width: var(--profile-dd-width);
 }
 /* Abstand zu Profilbild */
@@ -163,23 +169,22 @@ input[type="search"]:focus {
 }
 
 #searchResults {
-  top: 0px ;
+  top:0px;
   margin-top: 70px;
-  left: 0px;
   position: absolute;
-  left: 945px;
+  left: 1160px;
   z-index: 11;
   display: none;
-  background-color: var(--navbar-dropdown-options-background-color);
-  width: 300px;
+  background-color: var(--side-background-color-1);
+  width: 325px;
   border-radius: var(--border-radius);
   border-color: var(--accent-color);
   border: 1px solid var(--border-color-black);
-  
+  color: var(--text-color-white);
 }
 
 .liSearchContent{   
-   width: 100%;
+  width: 100%;
    
   justify-content: center ;
   text-align: center;
@@ -187,7 +192,8 @@ input[type="search"]:focus {
 }
 
 .liSearchContent a {
-
+  font-size: var(--text-size-default);
+  color: var(--text-color-white);
   /* justify-content: left !important;
   text-align: left; */
 }
