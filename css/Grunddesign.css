@@ -4,7 +4,7 @@
     /**/
     --navbar-background-image-horizontal: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
     --navbar-background-image-vertical: linear-gradient(to bottom, rgb(74, 142, 206), rgb(0, 255, 0));
-    --navbar-dropdown-options-background-color: aliceblue;
+    --navbar-dropdown-options-background-color: #4A4E61FF;
     /**/
     --border-color: transparent;
 
@@ -112,23 +112,17 @@ nav .barTopLogo {
     text-decoration: none;
     font-family: 'Orbitron', sans-serif;
     border-radius: var(--border-radius);
-
     bottom: 1%;
     right: 0;
     left: 0;
 
-
 }
-
-
-
 
 .infoBar li {
     /**/
     width: 80%;
     text-align: right;
     margin-right: 12%;
-
 }
 
 .infoBar li a {
@@ -144,4 +138,3 @@ nav .barTopLogo {
     cursor: pointer;
     align-self: center;
 }
-
