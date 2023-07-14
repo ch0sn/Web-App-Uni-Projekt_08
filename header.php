@@ -30,7 +30,7 @@ session_start();
 
                     <?php
                     include_once "includes/functions.inc.php";
-                    showEnrolledCourses($_SESSION['usersID']);
+                    listingEnrolledCourses($_SESSION['usersID']);
                     if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent") {
                         echo '<li><a href="../pages/KursseiteEdit.php" style="color:yellow;">Kurs erstellen</a></li>';
                     }
