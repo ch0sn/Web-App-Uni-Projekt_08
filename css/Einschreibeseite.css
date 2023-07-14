@@ -1,18 +1,3 @@
-/*Kursnamen-Styling*/
-#courseNameBodyId {
-    color: black;
-    font-size: var(--text-size-h2);
-    margin-top: 50px;
-    text-align: center;
-}
-
-#teacherNameId {
-    position: relative;
-    margin-top: 55px;
-    font-size: 35px;
-    text-align: center;
-}
-
 /*Kursinfos-Styling*/
 #enrollmentOptionsId {
     color: var(--text-color-black);
@@ -26,11 +11,12 @@
     align-items: center;
     padding-top:20px;
     padding-bottom:20px;
+    margin-top: 40px
 }
 
 #loginKeyPanel{
-    margin-bottom: 15px;
-    font-size: 35px;
+    margin-bottom: 10px;
+    font-size: var(--text-size-textfields);
     text-align: center;
     margin-top: 55px;
     border-radius: var(--border-radius);
@@ -44,23 +30,21 @@
     font-style: italic;
 }
 
+#enrollButtonDiv {
+    align-items: center;
+    justify-content: center;
+}
+
 #enrollButtonId {
     background-color: var(--side-background-color-1);
     color: var(--text-color-white);
     padding: 3px 100px;
     font-size: var(--text-size-default);
-    margin-top: 40px;
+    margin-top: 30px;
     font-family: 'Orbitron', sans-serif;
     cursor: pointer;
     border-radius: var(--border-radius);
-    align-items: center;
-    justify-content: center;
     border:none;
-}
-
-#enrollButtonDiv {
-    align-items: center;
-    justify-content: center;
 }
 
 #enrollButtonId:hover{
@@ -71,7 +55,7 @@
 
 #cancelButtonDiv2{
     text-align: center;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 #cancelButtonDiv2 #cancelButtonId{
@@ -91,7 +75,7 @@
 }
 
 .abmeldeClass {
-    margin-left: 100%;
+    margin-left: 88%;
     visibility: hidden;
 }
 
@@ -101,4 +85,14 @@
 
 .abmeldeClass #abmelde_Checkbox {
     visibility: hidden;
+}
+
+.BodyCourseClass_Einschreibeseite{
+    height:65%;
+    margin-left:calc(15% - 95px);
+    margin-right: calc(10% - 95px);
+    margin-top:80px;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    padding-top: 10px;
 }
