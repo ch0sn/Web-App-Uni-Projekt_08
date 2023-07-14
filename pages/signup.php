@@ -1,6 +1,7 @@
 <?php
 include_once '../plainheader.php';
 ?>
+<body>
 <!-- Sign Up-spezifische Titel und Css-Verlinkung -->
 <title>Sign Up</title>
 <link rel="stylesheet" href="../css/SignUp_Style.css">
@@ -118,7 +119,7 @@ include_once '../plainheader.php';
 
 
 
-<footer>
+<footer id="footer">
     <ul class="infoBar">
         <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
         <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>

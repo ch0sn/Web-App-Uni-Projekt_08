@@ -1,6 +1,7 @@
 <?php
 include_once "../header.php";
 ?>
+<body>
 <link rel="stylesheet" href="../css/KursseiteEdit.css">
 <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
 <script>
@@ -79,9 +80,10 @@ include_once "../header.php";
             <input type="radio" id="summer" name="course_semestertime" value="Sommer"><label for="summer">Sommersemester</label>
         </div>
         <!-- Einschreibeschlüssel-Eingabe -->
-        <input type="password" name="coursePassword" placeholder="(optional) Einschreibeschlüssel eingeben">
+        <input type="password" name="coursePassword" id="coursePassword" placeholder="(optional) Einschreibeschlüssel eingeben">
         <button type="submit" id="course_completion_btn">Erstellen</button>
 
+        <div id="popup-bottom">
         <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
 
         <?php
@@ -89,7 +91,7 @@ include_once "../header.php";
         } else {
             $errorCheck = $_GET['error'];
             if ($errorCheck == "emptyfield") {
-                echo "<p class='error' style='color:red' >You did not fill in all necessary fields!</p>";
+                echo "<p class='error'>Fehler: Sie haben nicht die benötigten Daten eingetragen.</p><i>*Einschreibeschlüssel ist nicht verpflichtend.</i>";
             }
         }
 
@@ -117,7 +119,7 @@ include_once "../header.php";
             }
         }
         ?>
-
+        </div>
     </form>
 
     <?php
@@ -1105,27 +1107,30 @@ include_once "../header.php";
 
     </div>
 
+    <footer id="footer">
+        <ul class="infoBar">
+
+            <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
+
+            <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
+
+            <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
+
+            <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+
+            <script>
+                var button = document.querySelector('.bitcoinLogo');
+                button.addEventListener('click', function() {
+                    document.documentElement.scrollTop = 0;
+                });
+            </script>
+
+        </ul>
+    </footer>
+    <br>
 </div>
 
-<ul class="infoBar">
 
-    <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
-
-    <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
-
-    <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
-
-    <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
-
-    <script>
-        var button = document.querySelector('.bitcoinLogo');
-        button.addEventListener('click', function() {
-            document.documentElement.scrollTop = 0;
-        });
-    </script>
-
-</ul>
-</div>
 
 </body>
 

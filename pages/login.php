@@ -1,6 +1,7 @@
 <?php
 include '../plainheader.php';
 ?>
+<body>
 <!-- Login-spezifische Titel und Css-Verlinkung -->
 <title>Login</title>
 <link rel="stylesheet" href="../css/Login_Style.css">
@@ -44,7 +45,7 @@ include '../plainheader.php';
         </div>
 
         <div>
-        <input type="submit" name="submit" value="Anmelden" />
+        <input type="submit" name="submit" id="anmelde_btn" value="Anmelden" />
         </div>
 
         <div id="errorMessages">
@@ -74,7 +75,7 @@ include '../plainheader.php';
 
 
 
-
+<footer id="footer">
 <ul class="infoBar">
 
     <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
@@ -93,6 +94,7 @@ include '../plainheader.php';
     </script>
 
 </ul>
+</footer>
 </div>
 
 </body>

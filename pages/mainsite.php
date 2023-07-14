@@ -1,7 +1,7 @@
 <?php
     include_once '../header.php';
 ?>
-
+<body>
 <!-- Main-Seite spezifischer Titel und Einstellungen -->
 <title>BMFA-Startseite</title>
 <link rel="stylesheet" href="../css/MainSite_Style.css">
@@ -29,12 +29,12 @@
         <ul class="notd_content">
             <li><a href="#">Wartungsarbeiten am 20.Juli</a></li>
             <li><a href="#">Rückmeldeschluss für kommende Wintersemester am 31.Juli</a></li>
-
         </ul>
+
         <button type="button" name="ue" class="upcomingEvents_collapsible">Aktuelle Termine</button>
-            <ul class="ue_content">
-                <li><p>[Projekt-Abgabe] WebTech-Abgabe: 16.Juli.2023</p></li>
-            </ul>
+        <ul class="ue_content">
+            <li><p>[Projekt-Abgabe] WebTech-Abgabe: 16.Juli.2023</p></li>
+        </ul>
     </ul>
 </div>
 
@@ -105,6 +105,7 @@
 
             </script>
             <button type="submit" id="filtern">Filtern</button>
+
         </form>
     </div>
 
@@ -192,7 +193,7 @@
 
 
 <!-- untere Bar -->
-<div>
+<footer id="footer">
     <ul class="infoBar">
         <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
         <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
@@ -205,10 +206,12 @@
             });
         </script>
     </ul>
-</div>
+</footer>
 
+<br>
 
 </body>
-<script src="../js/mainsite_scripts.js"></script>
+<script src="../js/mainsite_scripts.js">
+</script>
 </html>
 

@@ -10,14 +10,14 @@ h1 {
     display: flex;
     flex-direction: column;
     position: relative;
-    margin-top: 50px;
-    height: 55%;
+    margin-top: var(--mainHeader-Top-margin);
+    height: 80%;
     background-color: var(--main-background-color-white);
-    font-family: 'Orbitron', sans-serif;
-    /*border: 2px solid rgb(0, 0, 0);*/
     margin-left: 10%;
     margin-right: calc(10% - 95px);
     text-align: center;
+    overflow: auto;
+    padding-bottom: 50px;
 }
 
 .choices p {
@@ -40,10 +40,14 @@ h1 {
     justify-content: center;
     height: 50px;
     width:20%;
-    padding: 3px 5%;
+    padding: 3px 100px;
     border-radius: var(--border-radius);
     color: var(--text-color-white);
     background-color: var(--side-background-color-1);
+}
+
+.choices #login {
+    padding: 3px 111px;
 }
 
 .choices b:hover{

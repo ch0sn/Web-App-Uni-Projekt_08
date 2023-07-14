@@ -3,9 +3,8 @@
     flex-direction: column;
     background-color: var(--main-background-color-white);
     font-family: 'Orbitron', sans-serif;
-    /*border: 2px solid rgb(0, 0, 0);
-    border-radius: 10px; */
-    margin: 50px calc(10% - 95px) 10px 10%;
+    height:86%;
+    margin: var(--mainHeader-Top-margin) calc(10% - 95px) 10px 10%;
     text-align: center;
 }
 
@@ -58,8 +57,8 @@ margin-top: 50px;
     cursor: pointer;
     font-size: var(--text-size-default);
     height: 40px;
-    width: 20%;
-    border:1px solid rgb(0,0,0);
+    padding: 3px 145px;
+    border: none;
     border-radius: var(--border-radius);
     background-color: var(--side-background-color-1);
     color: var(--text-color-white);
@@ -94,12 +93,12 @@ margin-top: 50px;
  a[id=abbrechenButton]{
      font-family: 'Orbitron', sans-serif;
      font-size: var(--text-size-default);
-     padding:2px;
+     padding:3px 10px;
      text-decoration: none;
-     border: 1px solid rgb(0,0,0);
      border-radius: var(--border-radius);
      background-color: var(--side-background-color-1);
      color: var(--text-color-white);
+     border:none;
  }
 
  a[id=abbrechenButton]:hover{

@@ -1,6 +1,7 @@
 <?php
      include 'plainheader.php';
 ?>
+<body>
 <!-- Index-spezifische Titel und Css-Verlinkung -->
 <link rel="stylesheet" href="css/index_Style.css">
 <title>Willkommen</title>
@@ -9,23 +10,21 @@
 <div class="barLeft">
 </div>
 
-<section class="choices">
+<div class="choices">
 
     <h1>Willkommen</h1>
 
     <p>Das ist die "Besseres Moodle Für Alle" Seite! <br>
     Registrieren Sie sich oder falls Sie schon ein Account haben, melden Sie sie sich gerne an!</p>
 
-    <a href="pages/login.php"><b>Anmelden</b></a>
+    <a href="pages/login.php"><b id="login">Anmelden</b></a>
 
     <a href="pages/signup.php"><b>Registrieren</b></a>
 
+</div>
 
 
-</section>
-
-
-
+<footer id="footer">
 <ul class="infoBar">
 
     <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
@@ -44,7 +43,7 @@
     </script>
 
 </ul>
-</div>
+</footer>
 
 </body>
 

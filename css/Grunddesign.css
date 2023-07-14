@@ -24,26 +24,30 @@
     --text-color-white: #ffffff;
     --text-error-msg-red: red;
     --text-size-h1: 60px;
+    --text-size-h2: 40px;
+    --text-size-h3: 25px;
     --text-size-default: 18px;
     --text-size-textfields: 25px;
+    --text-size-ddo: 16px;
 
     --border-color-black: #000000;
 
     --box-shadow-color: #00000066;
 
     --navbar-height: 95px;
-    --dropdown-width: 200px;
+    --dropdown-width: 275px;
     --border-radius: 5px;
-    --profile-dd-width: 300px;
-    --mainSiteBlocks-margin-left: calc(1% + 95px);
+    --profile-dd-width: 275px;
+    --mainSiteBlocks-margin-left: calc(5% + 95px);
     --mainSiteBlocks-margin-right: calc(10% - 95px);
+    --mainHeader-Top-margin: 120px;
 }
 
 * {
     /**/
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: var(--text-size-default);
     font-family: sans-serif;
     color: var(--text-color-black);
 }
@@ -55,7 +59,7 @@ html {
 
 body {
     /**/
-    height: 100%;
+    height: calc(100% - 150px);
 }
 
 /* left bar-Einstellung */
@@ -70,11 +74,15 @@ body {
 
 /* Navbar-Einstellungen */
 nav {
+    position: fixed;
     height: var(--navbar-height);
+    width:100%;
+    top:0px;
     background-image: linear-gradient(to right, rgb(74, 142, 206), rgb(0, 255, 0));
     display: flex;
     align-items: center;
     justify-content: start;
+    z-index: 5;
 }
 
 /* in der Navbar zugehörige Logo Einstellungen - Abstand zum Internetseitenrand */
@@ -84,19 +92,26 @@ nav .barTopLogo {
     margin-right: 50px;
 }
 
+#footer{
+    position: relative;
+    height: 50px;
+    margin-right: calc(10% - 95px);
+    margin-left: var(--mainSiteBlocks-margin-left);
+    clear:both;
+}
+
 
 .infoBar {
     /**/
-    position: fixed;
+    margin-top:80px;
     background: rgb(74, 78, 97);
-    height: 50px;
-    margin-left: 10%;
-    margin-right: calc(10% - 95px);
+    height:50px;
     display: flex;
     align-items: center;
     list-style: none;
     text-decoration: none;
     font-family: 'Orbitron', sans-serif;
+    border-radius: var(--border-radius);
 
     bottom: 1%;
     right: 0;
@@ -104,6 +119,9 @@ nav .barTopLogo {
 
 
 }
+
+
+
 
 .infoBar li {
     /**/
