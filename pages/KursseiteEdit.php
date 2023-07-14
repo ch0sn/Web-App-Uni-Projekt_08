@@ -136,15 +136,17 @@ include_once "../header.php";
 
         <?php
         if (!isset($_GET['courseid'])) {
-        }else{
-            if (isset($_SESSION["role"]) && $_SESSION['role'] == "dozent" &&
-              $_SESSION['usersID'] == getCourseTeacherByCourseId($_GET['courseid'])) {
-             echo ' <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>';
-         }
+        } else {
+            if (
+                isset($_SESSION["role"]) && $_SESSION['role'] == "dozent" &&
+                $_SESSION['usersID'] == getCourseTeacherByCourseId($_GET['courseid'])
+            ) {
+                echo ' <button id="editButton" onclick="toggleEdit()">Bearbeiten</button>';
+            }
         }
         ?>
         <button id="addButton" hidden onclick="addButtons()">Abschnitt hinzufügen</button>
-        <button id="saveButton" hidden onclick="saveContentInArray(); GetArrayFromDatabase();
+        <button id="saveButton" hidden onclick="saveContentInArray(); GetArrayFromDatabase(); arrayToWebsite(contentArray);
         
                 document.getElementById('addButton').style.display = 'none';
                 document.getElementById('saveButton').style.display = 'none';
@@ -160,7 +162,7 @@ include_once "../header.php";
 
 
                 <button class="textAreaClass" id="textArea" onclick="addTextfield(this.id);">Text</button>
-                <button class="studentsFileUploadClass" id="studentsFileUpload" onclick="addStudentFileUpload(this.id); ">Abgabe Studenten</button>
+                <button class="studentsFileUploadClass" id="studentFileUpload" onclick="addStudentFileUpload(this.id); ">Abgabe Studenten</button>
                 <button class="fileUploadClass" id="fileUpload" onclick="addFileUpload(this.id); ">Datei hochladen</button>
                 <button class="dividingLineClass" id="dividingLine" onclick="addDividingLine(this.id);">Trennlinie</button>
                 <button class="deleteButtonClass" id="deleteButton" onclick="deleteCurrentDiv(this.id); ">X</button>
@@ -171,19 +173,20 @@ include_once "../header.php";
 
         </form>
 
+
+
         <script>
-           
             var count = 0;
             let contentArray = [];
             GetArrayFromDatabase()
+            arrayToWebsite(contentArray);
 
 
-            function addEmptyLine(id) {
+            function addEmptyLine(container) {
 
-                const elementsContainer = document.getElementById(id);
                 const emptyLine = document.createElement('div');
                 emptyLine.classList.add('empty-line');
-                elementsContainer.appendChild(emptyLine);
+                container.appendChild(emptyLine);
             }
 
             function addTextfield(buttonId) {
@@ -288,7 +291,7 @@ include_once "../header.php";
 
                 contentArray.forEach(item => {
                     var button = document.getElementById('addButton');
-                    button.click(); 
+                    button.click();
                 });
 
 
@@ -305,12 +308,12 @@ include_once "../header.php";
                     if (item.id.includes("textArea")) {
 
                         var button = document.getElementById(item.id);;
-                        button.click(); 
+                        button.click();
 
-                        const containerId = item.id; 
+                        const containerId = item.id;
 
                         console.log(containerId);
-                        const container = document.getElementById(containerId); 
+                        const container = document.getElementById(containerId);
 
 
                         container.value = item.value || "";
@@ -321,18 +324,29 @@ include_once "../header.php";
                     if (item.id.includes("dividingLine")) {
 
                         var button = document.getElementById(item.id);;
-                        button.click(); 
+                        button.click();
 
                     }
 
-                    if (item.id.includes("fileUpload")) {
+                    if (item.id.includes("FileUpload") && item.id.includes("student")) {
 
 
+                        console.log("Student erkannt und geklickt!!!!  " + item.id);
                         var button = document.getElementById(item.id);;
                         button.click();
 
 
 
+
+
+
+                    }
+
+                    if (item.id.includes("fileUpload") && !item.id.includes("student")) {
+
+
+                        var button = document.getElementById(item.id);;
+                        button.click();
 
                         var xhr = new XMLHttpRequest();
                         xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getTeacherData", false);
@@ -364,9 +378,24 @@ include_once "../header.php";
                                     var downloadLink = document.createElement('a');
                                     downloadLink.href = blobUrl;
                                     downloadLink.download = item.file;
-                                    downloadLink.textContent = item.file;
+                                    downloadLink.textContent = "Aktuelle Datei: " + item.file;
 
                                     fileInput.parentNode.appendChild(downloadLink);
+
+
+
+
+
+                                    // Create a new File object
+                                    const myFile = new File([item.file], item.file, {
+
+                                        lastModified: new Date(),
+                                    });
+
+                                    // Now let's create a DataTransfer to get a FileList
+                                    const dataTransfer = new DataTransfer();
+                                    dataTransfer.items.add(myFile);
+                                    fileInput.files = dataTransfer.files;
 
 
 
@@ -400,6 +429,7 @@ include_once "../header.php";
 
 
             }
+
             function addButtons() {
 
                 event.preventDefault();
@@ -420,7 +450,7 @@ include_once "../header.php";
                 buttonLine.id = buttonLine.id + count.toString();
                 buttonDelete.id = buttonDelete.id + count.toString();
 
-                
+
 
                 singleContentCopy.id = "singleContent" + count
 
@@ -454,18 +484,51 @@ include_once "../header.php";
 
                 fileInputElments.forEach((fileInput) => {
 
-                    const fileObject = {
-                        id: fileInput.id
-                    };
+                    if (fileInput.files[0] != null) {
+                        const fileObject = {
+                            id: fileInput.id
+                        };
 
-                    if (!fileObject.id.includes("student")) {
 
-                        console.log(fileInput.id);
                         fileObject.file = fileInput.files[0].name;
+
+
+                        fileInputList.push(fileObject);
+
                     }
-                    fileInputList.push(fileObject);
+                    if (fileInput.files[0] == null && !fileInput.id.includes("student")) {
+
+
+                        const num = parseInt(fileInput.id.match(/\d+/));
+
+                        if (contentArray[num] == undefined) return;
+
+                        const fileObject = {
+                            id: contentArray[num].id
+                        };
+
+
+
+
+                        fileObject.file = contentArray[num].file;
+
+                        fileInputList.push(fileObject);
+                    }
+
+                    if (fileInput.files[0] == null && fileInput.id.includes("student")) {
+
+                        const fileObject = {
+                            id: fileInput.id,
+                            file: "",
+                        };
+
+                        fileInputList.push(fileObject);
+
+                    }
 
                 });
+
+
 
                 const hrElements = div.querySelectorAll('hr');
                 const hrList = [];
@@ -487,8 +550,47 @@ include_once "../header.php";
                     return numberA - numberB;
                 });
 
-                
 
+
+                SaveContentArrayToDatabase();
+
+                const fileInputElements = div.querySelectorAll('input:not([id*="student"])');
+                xhr = new XMLHttpRequest();
+
+
+                for (let i = 0; i < fileInputElements.length; i++) {
+                    const fileInput = fileInputElements[i];
+                    const file = fileInput.files[0];
+
+                    if (file == null || fileInput.disabled == true) continue;
+
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const base64Data = event.target.result.split(',')[1];
+                        const courseid = 1;
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', '../includes/kursseiteEdit.inc.php?method=saveTeacherData', false);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    console.log('Datei erfolgreich hochgeladen.');
+                                } else {
+                                    console.log('Fehler beim Hochladen der Datei. Fehlercode: ' + xhr.status);
+                                }
+                            }
+                        };
+
+                        const data = 'courseid=1' + '&dataName=' + file.name + '&base64Image=' + encodeURIComponent(base64Data);
+                        xhr.send(data);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+
+            }
+
+            function SaveContentArrayToDatabase() {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=saveContentArray", false);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -509,37 +611,36 @@ include_once "../header.php";
                 };
                 var data = "courseid=1&contentArray=" + JSON.stringify(contentArray);
                 xhr.send(data);
+            }
 
-                const fileInputElements = div.querySelectorAll('input:not([id*="student"])');
-                xhr = new XMLHttpRequest();
+            function clearDataArray() {
 
-                for (let i = 0; i < fileInputElements.length; i++) {
-                    const fileInput = fileInputElements[i];
-                    const file = fileInput.files[0];
 
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        const base64Data = event.target.result.split(',')[1];
-                        const courseid = 1; 
-                        const xhr = new XMLHttpRequest();
-                        xhr.open('POST', '../includes/kursseiteEdit.inc.php?method=saveTeacherData', false);
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4) {
-                                if (xhr.status === 200) {
-                                    console.log('Datei erfolgreich hochgeladen.');
-                                } else {
-                                    console.log('Fehler beim Hochladen der Datei. Fehlercode: ' + xhr.status);
-                                }
-                            }
-                        };
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=cleanContentArray", false);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
 
-                        const data = 'courseid=1' + '&dataName=' + file.name + '&base64Image=' + encodeURIComponent(base64Data);
-                        xhr.send(data);
-                    };
 
-                    reader.readAsDataURL(file);
-                }
+                            var response = xhr.responseText;
+
+
+
+
+                        } else {
+                            console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
+                        }
+                    }
+                };
+                var data = "courseid=1&contentArray=" + JSON.stringify(contentArray);
+                xhr.send(data);
+
+
+
+
+
 
             }
 
@@ -629,9 +730,9 @@ include_once "../header.php";
                     for (var i = contenDiv.children.length - 1; i >= 0; i--) {
                         var child = contenDiv.children[i];
 
-                        
+
                         if (child.tagName === 'A' || child.tagName === 'INPUT') {
-                            
+
                             contenDiv.removeChild(child);
                         }
                     }
@@ -799,7 +900,7 @@ include_once "../header.php";
 
                             console.log(response);
                             var array = JSON.parse(jsonSubstring);
-                            arrayToWebsite(array)
+
                             contentArray = array;
 
                             console.log(contentArray)
@@ -820,6 +921,8 @@ include_once "../header.php";
 
                 elementsContainer.innerHTML = firstElement.outerHTML;
 
+                var button;
+
                 for (let i = 0; i < array.length; i++) {
                     const item = array[i];
 
@@ -830,9 +933,7 @@ include_once "../header.php";
                         div.id = item.id;
                         div.innerHTML = item.value.replace(/\n/g, '<br>'); // Ersetze Zeilenumbrüche mit <br>-Tags
                         elementsContainer.appendChild(div);
-                        const emptyLine = document.createElement('div');
-                        emptyLine.classList.add('empty-line');
-                        elementsContainer.appendChild(emptyLine);
+                        addEmptyLine(elementsContainer);
 
                     }
 
@@ -842,12 +943,75 @@ include_once "../header.php";
                         fileInput.type = 'file';
                         fileInput.id = item.id;
                         elementsContainer.appendChild(fileInput)
-                        const emptyLine = document.createElement('div');
-                        emptyLine.classList.add('empty-line');
-                        elementsContainer.appendChild(emptyLine);
+                        addEmptyLine(elementsContainer);
+
+                        var match = item.id.match(/\d+/);
+
+                        button = document.createElement("button");
+                        button.textContent = "Speichern";
+                        button.setAttribute("id", "saveStudentFileButton" + match);
+                        button.setAttribute("class", "saveStudentFileButton" + match);
+                        button.style.width = "130px";
+
+
+                        fileInput.insertAdjacentElement("afterend", button);
+
+                        button.addEventListener("click", function() {
+                            event.preventDefault();
+
+                            var match = button.id.match(/\d+/);
+
+                            var studentFileUploadId = "studentFileUpload" + match;
+
+
+
+
+                            const fileInputElement = document.querySelector('input[id*="' + studentFileUploadId + '"]');
+
+                            const fileInput = fileInputElement;
+                            const file = fileInput.files[0];
+
+                            GetArrayFromDatabase();
+
+                            contentArray[match].file = file.name;
+
+                            SaveContentArrayToDatabase();
+
+
+
+                            xhr = new XMLHttpRequest();
+
+                            const reader = new FileReader();
+                            reader.onload = function(event) {
+                                const base64Data = event.target.result.split(',')[1];
+                                const courseid = 1;
+                                const xhr = new XMLHttpRequest();
+                                xhr.open('POST', '../includes/kursseiteEdit.inc.php?method=saveTeacherData', false);
+                                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                xhr.onreadystatechange = function() {
+                                    if (xhr.readyState === 4) {
+                                        if (xhr.status === 200) {
+                                            console.log('Datei erfolgreich hochgeladen.');
+                                        } else {
+                                            console.log('Fehler beim Hochladen der Datei. Fehlercode: ' + xhr.status);
+                                        }
+                                    }
+                                };
+
+                                const data = 'courseid=1' + '&dataName=' + file.name + '&base64Image=' + encodeURIComponent(base64Data);
+                                xhr.send(data);
+                            };
+
+                            reader.readAsDataURL(file);
+
+                            
+
+                        });
+
+
                     }
 
-                    if (item.id.includes('fileUpload') && !item.id.includes('student')) {
+                    if (item.id.includes('Upload')) {
 
                         var xhr = new XMLHttpRequest();
                         xhr.open("POST", "../includes/kursseiteEdit.inc.php?method=getTeacherData", false);
@@ -864,55 +1028,68 @@ include_once "../header.php";
                                     }
 
                                     response = response.substring(response.indexOf('data'));
-                                    
+
                                     var byteCharacters = atob(response.split(',')[1]);
 
-                                   
+
                                     var byteArrays = [];
 
                                     for (var j = 0; j < byteCharacters.length; j++) {
                                         byteArrays.push(byteCharacters.charCodeAt(j));
                                     }
 
-                                    
+
                                     var blob = new Blob([new Uint8Array(byteArrays)], {
                                         type: 'image/png'
                                     });
 
-                                   
+
                                     var blobUrl = URL.createObjectURL(blob);
 
-                                  
+
                                     var downloadLink = document.createElement('a');
                                     downloadLink.href = blobUrl;
-                                    downloadLink.download = item.file; 
+                                    downloadLink.download = item.file;
                                     downloadLink.textContent = item.file;
-                        
-                                    elementsContainer.appendChild(downloadLink);
-                                  
+
+
+                                    if (item.id.includes('student')) {
+                                        var downloadLinkCopy = document.createElement('a');
+                                        downloadLinkCopy.href = blobUrl;
+                                        downloadLinkCopy.download = item.file;
+                                        downloadLinkCopy.textContent = item.file;
+                                        button.insertAdjacentElement("afterend", downloadLinkCopy);
+                                    } else {
+
+                                        elementsContainer.appendChild(downloadLink);
+                                        addEmptyLine(elementsContainer);
+                                    }
+
+
+
+
+
 
                                 } else {
                                     console.log("Fehler bei der AJAX-Anfrage. Fehlercode: " + xhr.status);
                                 }
                             }
                         };
-                        var data = "courseid=1&dataName=" + item.file 
+                        var data = "courseid=1&dataName=" + item.file
                         xhr.send(data);
 
                     }
 
                     if (item.id.includes('dividingLine')) {
-                        
+
                         const divideLineContainer = document.createElement('div');
-                        
+
                         const divideLine = document.createElement('hr');
-                      
+
                         divideLineContainer.appendChild(divideLine);
-                        
+
                         elementsContainer.appendChild(divideLineContainer);
-                        const emptyLine = document.createElement('div');
-                        emptyLine.classList.add('empty-line');
-                        elementsContainer.appendChild(emptyLine);
+                        addEmptyLine(elementsContainer);
 
                     }
 
