@@ -6,8 +6,9 @@
 
 
 .abmeldeClass {
-    margin-left: 95%;
-    height: 30px;
+    margin-left: 85%;
+    height: 40px;
+    margin-top: var(--mainHeader-Top-margin);
 }
 
 .abmeldeClass label {

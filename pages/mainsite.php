@@ -193,7 +193,7 @@
 
 
 <!-- untere Bar -->
-<div>
+<footer id="footer">
     <ul class="infoBar">
         <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
         <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
@@ -206,8 +206,9 @@
             });
         </script>
     </ul>
-</div>
+</footer>
 
+<br>
 
 </body>
 <script src="../js/mainsite_scripts.js">

@@ -411,8 +411,8 @@ function getExistingCourseInfo($courseIdNr)
     $_SESSION['courseID'] = getCourseID($conn, $courseName);
 
     echo '<h1>' . $courseName . '</h1>';
-    echo '<p>' . 'Fachbereich:' . $courseSA . ' / ' . $courseSeason .
-        ' / ab dem: ' . $courseSemesterNumber . '.Semester / Dozent: ' . $courseTeacher . '</p>';
+    echo '<p>' . 'Fachbereich: ' . $courseSA . ' | ' . $courseSeason .
+        ' | ab dem: ' . $courseSemesterNumber . '.Semester | Dozent: ' . $courseTeacher . '</p>';
     echo '<title>'.$courseName.'</title>';
 
     mysqli_stmt_close($stmt);

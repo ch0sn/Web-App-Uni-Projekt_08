@@ -59,7 +59,7 @@ html {
 
 body {
     /**/
-    height: 100%;
+    height: calc(100% - 150px);
 }
 
 /* left bar-Einstellung */
@@ -92,21 +92,26 @@ nav .barTopLogo {
     margin-right: 50px;
 }
 
-#infobarDiv{
-    width: 100%;
+#footer{
+    position: relative;
+    height: 50px;
+    margin-right: calc(10% - 95px);
+    margin-left: var(--mainSiteBlocks-margin-left);
+    clear:both;
 }
+
+
 .infoBar {
     /**/
     margin-top:80px;
     background: rgb(74, 78, 97);
-    height: 50px;
-    margin-left: 10%;
-    margin-right: calc(10% - 95px);
+    height:50px;
     display: flex;
     align-items: center;
     list-style: none;
     text-decoration: none;
     font-family: 'Orbitron', sans-serif;
+    border-radius: var(--border-radius);
 
     bottom: 1%;
     right: 0;
@@ -114,6 +119,9 @@ nav .barTopLogo {
 
 
 }
+
+
+
 
 .infoBar li {
     /**/

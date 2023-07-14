@@ -1,7 +1,8 @@
 .login {
     background-color: var(--main-background-color-white);
+    height: 86%;
     font-family: 'Orbitron', sans-serif;
-    margin: 150px calc(10% - 95px) 10px 10%;
+    margin: var(--mainHeader-Top-margin) calc(10% - 95px) 10px 10%;
     text-align: center;
     z-index: -2;
 }

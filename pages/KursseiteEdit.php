@@ -930,27 +930,30 @@ include_once "../header.php";
 
     </div>
 
+    <footer id="footer">
+        <ul class="infoBar">
+
+            <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
+
+            <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
+
+            <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
+
+            <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+
+            <script>
+                var button = document.querySelector('.bitcoinLogo');
+                button.addEventListener('click', function() {
+                    document.documentElement.scrollTop = 0;
+                });
+            </script>
+
+        </ul>
+    </footer>
+    <br>
 </div>
 
-<ul class="infoBar">
 
-    <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
-
-    <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
-
-    <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
-
-    <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
-
-    <script>
-        var button = document.querySelector('.bitcoinLogo');
-        button.addEventListener('click', function() {
-            document.documentElement.scrollTop = 0;
-        });
-    </script>
-
-</ul>
-</div>
 
 </body>
 

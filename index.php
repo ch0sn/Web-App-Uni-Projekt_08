@@ -1,6 +1,7 @@
 <?php
      include 'plainheader.php';
 ?>
+<body>
 <!-- Index-spezifische Titel und Css-Verlinkung -->
 <link rel="stylesheet" href="css/index_Style.css">
 <title>Willkommen</title>
@@ -9,7 +10,7 @@
 <div class="barLeft">
 </div>
 
-<section class="choices">
+<div class="choices">
 
     <h1>Willkommen</h1>
 
@@ -20,12 +21,10 @@
 
     <a href="pages/signup.php"><b>Registrieren</b></a>
 
+</div>
 
 
-</section>
-
-
-
+<footer id="footer">
 <ul class="infoBar">
 
     <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
@@ -44,7 +43,7 @@
     </script>
 
 </ul>
-</div>
+</footer>
 
 </body>
 
