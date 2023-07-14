@@ -737,7 +737,7 @@ function getCoursePW($courseid){
 
 }
 
-
+/* Eintraglöschung in "enrollment" Nutzer- sowie Kurs-Id abhängig, der Nutzer sich abmeldet, der sich auch abmelden wollte. */
 function delistCourse($usersId, $coursesId){
 
     global $conn;
@@ -756,6 +756,7 @@ function delistCourse($usersId, $coursesId){
     mysqli_stmt_close($stmt);
 }
 
+/* Eintraglöschung in "enrollment" Kurs-Id abhängig, damit alle eingeschriebenen Nutzer abgemeldet werden, falls der Dozent den Kurs schließt. */
 function delistAllFromCourse($coursesId){
 
     global $conn;
@@ -774,6 +775,7 @@ function delistAllFromCourse($coursesId){
     mysqli_stmt_close($stmt);
 }
 
+/* Kursinhalt löschen wenn Kurs gelöscht wird. */
 function deleteCourseContent($coursesId){
 
     global $conn;
@@ -792,6 +794,7 @@ function deleteCourseContent($coursesId){
     mysqli_stmt_close($stmt);
 }
 
+/* Kurslöschung in "courses" abhängig von Nutzer- sowie Kurs-Id. */
 function deletingCourse($usersId, $coursesId){
 
     global $conn;
