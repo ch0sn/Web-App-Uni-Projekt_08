@@ -167,6 +167,7 @@ function getUserId($firstName, $lastName)
 function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid)
 {
     global $conn;
+    /* SQL Anfrage */
     $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher, courseContent) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_prepare($conn, $sql);
     $courseEmptyContent = "[]";
@@ -175,11 +176,12 @@ function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $cours
         header("Location: ../pages/KursseiteEdit.php?error=stmtfailed");
         exit();
     }
+    /* Falls Passwort-Input leer ist, wird es leer in der SQL Tabelle hinzugefügt */
     if ($coursePassword == "") {
         mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid, $courseEmptyContent);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-    } else {
+    } else {     /* Falls Passwort-Input ausgefüllt wurde, wird das Passwort gehashed und in der SQL Tabelle eingetragen */
         $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
 
         mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $hashedPwd, $courseteacherid, $courseEmptyContent);
@@ -193,8 +195,12 @@ function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $cours
         $_SESSION['courseSemesterSeason'] = $coursesemesterseason;
         $_SESSION['courseTeacher'] = getCourseTeacherName($courseteacherid);
 
+        /* Nach erfolgreicher Eintragung in der SQL Tabelle,
+        wird der Kurslehrer als "eingeschrieben" in "enrollment" SQL-Tabelle eingetragen */
         enrollToNewCourses($conn, $courseteacherid, $_SESSION['courseID']);
 
+        /* Kurslehrer wird zu der neu-geöffneten Kursseite weitergeleitet:
+        In der Url wird die KursId und "eingeschrieben Status" deutlich gemacht. */
         header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID'] . "&enrolled=yes");
         exit();
 }
