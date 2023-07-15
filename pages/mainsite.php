@@ -28,7 +28,7 @@
         <button type="button" name="notd" class="newsOfTheDay_collapsible">Wichtige Hinweise</button>
         <ul class="notd_content">
             <li><a href="#">Wartungsarbeiten am 20.Juli</a></li>
-            <li><a href="#">Rückmeldeschluss für kommende Wintersemester am 31.Juli</a></li>
+            <li><a href="https://www.thm.de/site/hochschule/zentrale-bereiche/studiensekretariat/rueckmeldung.html">Rückmeldeschluss für kommende Wintersemester am 31.Juli</a></li>
         </ul>
 
         <button type="button" name="ue" class="upcomingEvents_collapsible">Aktuelle Termine</button>
