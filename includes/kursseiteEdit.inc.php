@@ -11,10 +11,10 @@ if (isset($_GET['method'])) {
         ContentArraySave();
     } elseif ($method === "getCourseContent") {
         CourseContentGet();
-    } elseif ($method === "getTeacherData") {
-        TeacherDataGet();
-    } elseif ($method === "saveTeacherData") {
-        TeacherDataSave();
+    } elseif ($method === "getCourseData") {
+        CourseDataGet();
+    } elseif ($method === "saveCourseData") {
+        CourseDataSave();
     } elseif ($method === "CoursesSearchBar") {
         CoursesSearchBar();
     }
@@ -24,8 +24,7 @@ if (isset($_GET['method'])) {
 function CourseContentGet()
 {
     global $conn;
-    $courseid = $_POST['courseid'];
-    $content = getCourseContent($conn, $courseid);
+    $content = getCourseContent($conn);
     echo $content;
 }
 
@@ -34,45 +33,37 @@ function ContentArraySave()
 {
 
     global $conn;
-    $courseid = $_POST['courseid'];
     $contentArray = json_decode($_POST['contentArray'], true);
+    updateCourseContent($conn, $contentArray);
 
-    updateCourseContent($conn, $courseid, $contentArray);
 }
 
 
-function TeacherDataSave()
+function CourseDataSave()
 {
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
-
     global $conn;
-
-    // Überprüfen, ob die erforderlichen Daten vorhanden sind
-    if (isset($_POST['courseid']) && isset($_POST['dataName']) && isset($_POST['base64Image'])) {
-        $courseid = $_POST['courseid'];
-        $dataName = $_POST['dataName'];
-        $base64Image = $_POST['base64Image'];
-
-        // Daten in die Datenbank einfügen
-        insertTeacherData($conn, $courseid, $dataName, $base64Image);
-        echo "Data inserted successfully";
-    } else {
-        echo "Missing data";
-    }
-}
-
-
-
-function TeacherDataGet()
-{
-    require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
-
-    global $conn;
-    $courseid = $_POST['courseid'];
+  
+   
     $dataName = $_POST['dataName'];
-    $content = getTeacherData($conn, $courseid, $dataName);
+    $base64Image = $_POST['base64Image'];
+
+    insertCourseData($conn, $dataName, $base64Image);
+    echo "Data inserted successfully";
+   
+}
+
+
+
+function CourseDataGet()
+{
+    require_once 'dbh.inc.php';
+    require_once 'functions.inc.php';
+    global $conn;
+
+    $dataName = $_POST['dataName'];
+    $content = getCourseData($conn, $dataName);
     echo $content;
 }
 

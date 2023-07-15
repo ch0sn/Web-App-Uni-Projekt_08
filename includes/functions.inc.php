@@ -120,7 +120,7 @@ function loginUser($conn, $username, $pwd)
             $role = $row['usersRole'];
 
 
-            $_SESSION['usersID'] = $usersIdNr;
+           
 
             $_SESSION['usersID'] =$usersIdNr;
             $_SESSION['firstName'] = $firstName;
@@ -192,6 +192,8 @@ function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $cours
         $_SESSION['courseSemester'] = $coursesemesternr;
         $_SESSION['courseSemesterSeason'] = $coursesemesterseason;
         $_SESSION['courseTeacher'] = getCourseTeacherName($courseteacherid);
+
+        $_SESSION['courseTeacherID'] = $courseteacherid;    
 
         enrollToNewCourses($conn, $courseteacherid, $_SESSION['courseID']);
 
@@ -323,8 +325,8 @@ function showCoursesSearchBar($searchContent)
     session_start();
     global $conn;
 
-    $sql = "SELECT enrollment.usersid, courses.coursesid, coursesName FROM courses LEFT JOIN enrollment
-     ON courses.coursesid = enrollment.coursesid where coursesName like ? ";
+    $sql = "SELECT enrollment.usersid, courses.coursesid, courses.coursesName FROM courses LEFT JOIN enrollment ON courses.coursesid = 
+    enrollment.coursesid AND (enrollment.usersid = ? OR enrollment.usersid IS NULL) WHERE coursesName LIKE ?; ";
 
 
     $stmt = mysqli_stmt_init($conn);
@@ -334,7 +336,7 @@ function showCoursesSearchBar($searchContent)
     }
 
     $searchPattern = "%" . $searchContent . "%";
-    mysqli_stmt_bind_param($stmt, "s", $searchPattern);
+    mysqli_stmt_bind_param($stmt, "is", $_SESSION['usersID'], $searchPattern);
     mysqli_stmt_execute($stmt);
 
 
@@ -356,7 +358,9 @@ function showCoursesSearchBar($searchContent)
         if ($usersid == $_SESSION['usersID']) {            
             echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
             $courseId . '&enrolled=yes">' . $courseName . ' (eingeschrieben)' . '</a></li>';
-        } else {
+        } 
+        else 
+        {
             echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
             $courseId . '&enrolled=no">' . $courseName . '</a></li>';
         }
@@ -409,6 +413,8 @@ function getExistingCourseInfo($courseIdNr)
     $courseSeason = $row['courseSeason'];
     $courseTeacher = getCourseTeacherName($row['courseTeacher']);
     $_SESSION['courseID'] = getCourseID($conn, $courseName);
+    $_SESSION['courseTeacher'] = $row['courseTeacher'];
+    $_SESSION['courseTeacherID'] = $row['courseTeacher'];
 
     echo '<h1>' . $courseName . '</h1>';
     echo '<p>' . 'Fachbereich: ' . $courseSA . ' | ' . $courseSeason .
@@ -418,20 +424,14 @@ function getExistingCourseInfo($courseIdNr)
     mysqli_stmt_close($stmt);
 }
 
-function updateCourseContent($conn, $courseid, $contentArray){
+function updateCourseContent($conn, $contentArray){
 
     session_start();
     $courseid = $_SESSION['courseID'];
 
-
-
     $jsonContent = json_encode($contentArray);
 
-
-
     $sql = "UPDATE courses SET courseContent = ? WHERE coursesId = ?;";
-
-
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -439,18 +439,14 @@ function updateCourseContent($conn, $courseid, $contentArray){
         return false;
     }
 
-
-
     mysqli_stmt_bind_param($stmt, "si", $jsonContent, $courseid);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-
-
     return true;
 }
 
-function getCourseContent($conn, $courseid){
+function getCourseContent($conn){
 
     session_start();
     $courseid = $_SESSION['courseID'];
@@ -501,15 +497,17 @@ function getCourseContent($conn, $courseid){
     return true;
 } */
 
-function insertTeacherData($conn, $idCourse, $dataName, $base64Image){
+function insertCourseData($conn, $dataName, $base64Image){
 
+    
     session_start();
-
+   
+    $userID = $_SESSION['usersID']; 
     $idCourse = $_SESSION['courseID'];
 
     $blobData = base64_decode($base64Image);
 
-    $sql = "INSERT INTO coursesteacherdata (idCourse, dataName, dataBlob) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO coursedata (idCourse, dataName, dataBlob, userID) VALUES (?, ?, ?, ?)";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -517,7 +515,7 @@ function insertTeacherData($conn, $idCourse, $dataName, $base64Image){
 
     }
 
-    mysqli_stmt_bind_param($stmt, "iss", $idCourse, $dataName, $blobData);
+    mysqli_stmt_bind_param($stmt, "issi", $idCourse, $dataName, $blobData, $userID);
     mysqli_stmt_execute($stmt);
 
     if (mysqli_stmt_affected_rows($stmt) > 0) {
@@ -529,12 +527,14 @@ function insertTeacherData($conn, $idCourse, $dataName, $base64Image){
     mysqli_stmt_close($stmt);
 }
 
-function getTeacherData($conn, $idCourse, $dataName){
+function getCourseData($conn, $dataName){
 
     session_start();
+
+
     $idCourse = $_SESSION['courseID'];
 
-    $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ? AND dataName = ?;";
+    $sql = "SELECT dataBlob FROM coursedata WHERE idCourse = ? AND dataName = ?;";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -564,7 +564,7 @@ function getAllTeacherData($conn, $idCourse){
     session_start();
     $idCourse = $_SESSION['courseID'];
 
-    $sql = "SELECT dataBlob FROM coursesteacherdata WHERE idCourse = ?";
+    $sql = "SELECT dataBlob FROM coursedata WHERE idCourse = ?";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -778,7 +778,7 @@ function deleteCourseContent($coursesId){
 
     global $conn;
 
-    $sql = "DELETE FROM coursesteacherdata WHERE idCourse = ?";
+    $sql = "DELETE FROM coursedata WHERE idCourse = ?";
 
     $stmt = mysqli_stmt_init($conn);
 
