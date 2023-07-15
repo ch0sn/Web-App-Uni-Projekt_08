@@ -167,6 +167,7 @@ function getUserId($firstName, $lastName)
 function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid)
 {
     global $conn;
+    /* SQL Anfrage */
     $sql = "INSERT INTO courses (coursesName, courseSubjectArea, courseSemesterNr, courseSeason, coursePwd, courseTeacher, courseContent) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_prepare($conn, $sql);
     $courseEmptyContent = "[]";
@@ -175,11 +176,12 @@ function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $cours
         header("Location: ../pages/KursseiteEdit.php?error=stmtfailed");
         exit();
     }
+    /* Falls Passwort-Input leer ist, wird es leer in der SQL Tabelle hinzugefügt */
     if ($coursePassword == "") {
         mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $coursePassword, $courseteacherid, $courseEmptyContent);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-    } else {
+    } else {     /* Falls Passwort-Input ausgefüllt wurde, wird das Passwort gehashed und in der SQL Tabelle eingetragen */
         $hashedPwd = password_hash($coursePassword, PASSWORD_DEFAULT);
 
         mysqli_stmt_bind_param($stmt, "ssissis", $coursename, $coursesubjectarea, $coursesemesternr, $coursesemesterseason, $hashedPwd, $courseteacherid, $courseEmptyContent);
@@ -195,8 +197,12 @@ function createCourse($coursename, $coursesubjectarea, $coursesemesternr, $cours
 
         $_SESSION['courseTeacherID'] = $courseteacherid;    
 
+        /* Nach erfolgreicher Eintragung in der SQL Tabelle,
+        wird der Kurslehrer als "eingeschrieben" in "enrollment" SQL-Tabelle eingetragen */
         enrollToNewCourses($conn, $courseteacherid, $_SESSION['courseID']);
 
+        /* Kurslehrer wird zu der neu-geöffneten Kursseite weitergeleitet:
+        In der Url wird die KursId und "eingeschrieben Status" deutlich gemacht. */
         header("Location: ../pages/KursseiteEdit.php?courseid=" . $_SESSION['courseID'] . "&enrolled=yes");
         exit();
 }
@@ -290,7 +296,7 @@ function getCourseID($conn, $coursename){
     return $coursesId;
 }
 
-function showEnrolledCourses($userId)
+function listingEnrolledCourses($userId)
 {
     global $conn;
 
@@ -320,14 +326,16 @@ function showEnrolledCourses($userId)
     mysqli_stmt_close($stmt);
 }
 
+
 function showCoursesSearchBar($searchContent)
 {
     session_start();
     global $conn;
 
-    $sql = "SELECT enrollment.usersid, courses.coursesid, courses.coursesName FROM courses LEFT JOIN enrollment ON courses.coursesid = 
-    enrollment.coursesid AND (enrollment.usersid = ? OR enrollment.usersid IS NULL) WHERE coursesName LIKE ?; ";
-
+    $sql = "SELECT DISTINCT courses.coursesid, coursesName 
+            FROM courses 
+            LEFT JOIN enrollment ON courses.coursesid = enrollment.coursesid 
+            WHERE coursesName LIKE ?";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -336,48 +344,60 @@ function showCoursesSearchBar($searchContent)
     }
 
     $searchPattern = "%" . $searchContent . "%";
-    mysqli_stmt_bind_param($stmt, "is", $_SESSION['usersID'], $searchPattern);
+    $userId = $_SESSION['usersID'];
+    mysqli_stmt_bind_param($stmt, "s", $searchPattern);
     mysqli_stmt_execute($stmt);
-
 
     $result = mysqli_stmt_get_result($stmt);
 
-
-
-
-    if (mysqli_num_rows($result) == 0) {   
-        echo 'Keine Kurse gefunden!';        
+    if (mysqli_num_rows($result) == 0) {
+        echo 'Keine Kurse gefunden!';
     }
- 
+
     while ($row = mysqli_fetch_assoc($result)) {
-        
         $courseName = $row['coursesName'];
         $courseId = $row['coursesid'];
-        $usersid = $row['usersid'];
 
-        if ($usersid == $_SESSION['usersID']) {            
-            echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
+        if(enrolled($userId,$courseId)){
+        echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
             $courseId . '&enrolled=yes">' . $courseName . ' (eingeschrieben)' . '</a></li>';
-        } 
-        else 
-        {
+        }else{
             echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
-            $courseId . '&enrolled=no">' . $courseName . '</a></li>';
+                $courseId . '&enrolled=no">' . $courseName . '</a></li>';
         }
     }
-
-
-    /* $boundParams = [$searchPattern];
-    $boundParamsString = implode(', ', $boundParams);
-
-    $modifiedSqlCommand = str_replace('?', $boundParamsString, $sql);
-    echo $modifiedSqlCommand; */
-
-
-
     mysqli_stmt_close($stmt);
 }
 
+
+function enrolled($userId, $courseId){
+    global $conn;
+
+    $sql = "SELECT enrollmentId
+            FROM enrollment 
+            WHERE usersId = ? AND coursesId = ?";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "ii", $userId, $courseId);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_bind_result($stmt, $enrolled);
+
+    mysqli_stmt_fetch($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if($enrolled){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 function getExistingCourseInfo($courseIdNr)
 {
@@ -737,7 +757,7 @@ function getCoursePW($courseid){
 
 }
 
-
+/* Eintraglöschung in "enrollment" Nutzer- sowie Kurs-Id abhängig, der Nutzer sich abmeldet, der sich auch abmelden wollte. */
 function delistCourse($usersId, $coursesId){
 
     global $conn;
@@ -756,6 +776,7 @@ function delistCourse($usersId, $coursesId){
     mysqli_stmt_close($stmt);
 }
 
+/* Eintraglöschung in "enrollment" Kurs-Id abhängig, damit alle eingeschriebenen Nutzer abgemeldet werden, falls der Dozent den Kurs schließt. */
 function delistAllFromCourse($coursesId){
 
     global $conn;
@@ -774,6 +795,7 @@ function delistAllFromCourse($coursesId){
     mysqli_stmt_close($stmt);
 }
 
+/* Kursinhalt löschen wenn Kurs gelöscht wird. */
 function deleteCourseContent($coursesId){
 
     global $conn;
@@ -792,6 +814,7 @@ function deleteCourseContent($coursesId){
     mysqli_stmt_close($stmt);
 }
 
+/* Kurslöschung in "courses" abhängig von Nutzer- sowie Kurs-Id. */
 function deletingCourse($usersId, $coursesId){
 
     global $conn;

@@ -40,7 +40,7 @@ nav ul a {
 .dropdown_K, .dropdown_T, .dropdown_F, .dropdown_P {
   height: min-content;
   width: var(--dropdown-width);
-  background: var(--side-background-color-1);
+  background: var(--navbar-dropdown-options-background-color);
 
   display: none;
   flex-direction: column;

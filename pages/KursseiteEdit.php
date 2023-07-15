@@ -87,52 +87,56 @@ include_once "../header.php";
             <div id="popup-bottom">
                 <button type="button" id="course_completion_cancel_btn"><a href="../pages/mainsite.php">Abbrechen</a></button>
 
-                <?php
-                if (!isset($_GET['error'])) {
-                } else {
-                    $errorCheck = $_GET['error'];
-                    if ($errorCheck == "emptyfield") {
-                        echo "<p class='error'>Fehler: Sie haben nicht die benötigten Daten eingetragen.</p><i>*Einschreibeschlüssel ist nicht verpflichtend.</i>";
-                    }
+            <!-- Falls "error" in der URL übergeben wird, handelt es sich um ein Fehler. -->
+            <?php
+            if (!isset($_GET['error'])) {
+            } else {
+                $errorCheck = $_GET['error'];
+                if ($errorCheck == "emptyfield") {
+                    echo "<p class='error'>Fehler: Sie haben nicht die benötigten Daten eingetragen.</p><i>*Einschreibeschlüssel ist nicht verpflichtend.</i>";
                 }
+            }
 
-                if (!isset($_GET['courseid'])) {
-                } else {
-                    $courseExists = $_GET['courseid'];
-                    if ($courseExists) {
-                        echo '<script> 
-               document.addEventListener("DOMContentLoaded", function() {
-         // Disable all clickable elements on the page except for the popup form
-         var elementsToDisable = document.querySelectorAll(
-             "a, li, label, textarea, button, input, img, class");
+             /* Falls "courseid" in der URL übergeben wird, war die Kurserstellung erfolgreich und
+                Weichenzeichner, sowie die restlichen Buttons funktionieren wieder.*/
+            if (!isset($_GET['courseid'])) {
+            } else {
+                $courseExists = $_GET['courseid'];
+                if ($courseExists) {
+                    echo '<script> 
+                      document.addEventListener("DOMContentLoaded", function() {
+                      // Disable all clickable elements on the page except for the popup form
+                        var elementsToDisable = document.querySelectorAll(
+                                                "a, li, label, textarea, button, input, img, class");
         
-         // Remove the disabled attribute from the elements
-
-         for (var i = 0; i < elementsToDisable.length; i++) {
-                  elementsToDisable[i].removeAttribute("disabled");
-                  elementsToDisable[i].classList.remove("blur-effect");
-              }                 
- });
-              // Hide the popup form
-              var popupForm = document.querySelector(".popup-form");
-              popupForm.style.visibility = "hidden";
-              popupForm.style.pointerEvents = "none";</script>';
-                    }
-                }
-                ?>
-            </div>
-        </form>
-
-        <?php
-        if (!isset($_GET['enrolled'])) {
-        } else {
-            $enrolled = $_GET['enrolled'];
-            if ($enrolled == "no") {
-                include "Einschreibeseite.php";
-                exit();
+                        // Remove the disabled attribute from the elements
+                        for (var i = 0; i < elementsToDisable.length; i++) {
+                            elementsToDisable[i].removeAttribute("disabled");
+                            elementsToDisable[i].classList.remove("blur-effect");
+                        }                 
+                      });
+                    // Hide the popup form
+                      var popupForm = document.querySelector(".popup-form");
+                      popupForm.style.visibility = "hidden";
+                      popupForm.style.pointerEvents = "none";</script>';
             }
         }
         ?>
+        </div>
+    </form>
+
+    <!-- Falls "enrolled" in der URL übergeben wird, wird bei einem "no" die Einschreibeseite angezeigt.
+         Mit der Einschreibung wird dann ein Eintrag in "enrollment" gespeichert. -->
+    <?php
+    if (!isset($_GET['enrolled'])) {
+    } else {
+        $enrolled = $_GET['enrolled'];
+        if ($enrolled == "no") {
+            include "Einschreibeseite.php";
+            exit();
+        }
+    }
+    ?>
 
         <div class="BodyCourseClass">
 

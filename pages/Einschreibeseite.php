@@ -5,11 +5,9 @@
     <link rel="stylesheet" href="../css/GrunddesignKursseiten.css">
 
 
-    <div class="BodyCourseClass">
+    <div class="BodyCourseClass_Einschreibeseite">
 
         <?php
-       // echo '<p id="courseNameBodyId">'. getCourseNameById($_GET['courseid']).'</p> ';
-       // echo '<p id="teacherNameId">'.getCourseTeacherName(getCourseTeacherByCourseId($_GET['courseid'])).'</p>';
 
         echo '<form id="einschreibeform" action="../includes/enrollment.inc.php?userid='. $_SESSION["usersID"]. '&courseid=' . $_GET["courseid"] . '"' .'method="post" >
               <h1 id="enrollmentOptionsId">Einschreibeschlüsseleingabe</h1>
@@ -31,26 +29,26 @@
         ?>
     </div>
 
-    <div id="infobarDiv">
-    <ul class="infoBar">
+    <footer id="footer">
+        <ul class="infoBar">
 
-        <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
+            <li><a href="https://www.thm.de/site/impressum.html" target="_blank">Impressum</a></li>
 
-        <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
+            <li><a href="https://www.thm.de/site/hochschule/service/infocenter-thm.html" target="_blank">Hilfe</a></li>
 
-        <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
+            <li><a href="https://www.thm.de/datenschutz/" target="_blank">Datenschutz</a></li>
 
-        <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
+            <img src="/img/bitcoin.svg" class="bitcoinLogo" alt="THM Logo Icon" height="32px" width="32px">
 
-        <script>
-            var button = document.querySelector('.bitcoinLogo');
-            button.addEventListener('click', function () {
-                document.documentElement.scrollTop = 0;
-            });
-        </script>
+            <script>
+                var button = document.querySelector('.bitcoinLogo');
+                button.addEventListener('click', function() {
+                    document.documentElement.scrollTop = 0;
+                });
+            </script>
 
-    </ul>
-    </div>
+        </ul>
+    </footer>
 
 </body>
 
