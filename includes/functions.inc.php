@@ -358,7 +358,7 @@ function showCoursesSearchBar($searchContent)
         $courseName = $row['coursesName'];
         $courseId = $row['coursesid'];
 
-        if(enrolled($userId,$courseId)){
+        if(checkEnroll($userId,$courseId)){
         echo '<li class="liSearchContent"><a href="../pages/KursseiteEdit.php?courseid=' .
             $courseId . '&enrolled=yes">' . $courseName . ' (eingeschrieben)' . '</a></li>';
         }else{
@@ -367,36 +367,6 @@ function showCoursesSearchBar($searchContent)
         }
     }
     mysqli_stmt_close($stmt);
-}
-
-
-function enrolled($userId, $courseId){
-    global $conn;
-
-    $sql = "SELECT enrollmentId
-            FROM enrollment 
-            WHERE usersId = ? AND coursesId = ?";
-
-    $stmt = mysqli_stmt_init($conn);
-
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        return false;
-    }
-
-    mysqli_stmt_bind_param($stmt, "ii", $userId, $courseId);
-    mysqli_stmt_execute($stmt);
-
-    mysqli_stmt_bind_result($stmt, $enrolled);
-
-    mysqli_stmt_fetch($stmt);
-
-    mysqli_stmt_close($stmt);
-
-    if($enrolled){
-        return true;
-    }else{
-        return false;
-    }
 }
 
 function getExistingCourseInfo($courseIdNr)

@@ -30,20 +30,21 @@ include_once "../header.php";
 
     <div class="gridCoursesClass">
 
-        <div class="HeaderCourseClass">
-            <?php
-            if (!isset($_GET['courseid'])) {
-                echo '<h1></h1>';
-                echo '<title>Kurserstellung</title>';
-            } else {
-                include_once "../includes/functions.inc.php";
-                $courseIdNr = $_GET['courseid'];
-                echo '<div class="abmeldeClass">
-                <form action="../includes/delisting.inc.php?userid=' . $_SESSION['usersID'] . '&courseid=' . $courseIdNr . '"' . 'method="post">
-                <button type="submit" id="abmelde_button"><img src="/img/64px_exit.png" alt="abmelden" style="height: 50px;"></button>
-                <label for="abmelde_Checkbox"></label>
-                </form>  
-            </div>';
+    <div class="HeaderCourseClass">
+        <?php
+        if (!isset($_GET['courseid'])) {
+            echo '<h1></h1>';
+            echo '<title>Kurserstellung</title>';
+        } else {
+            include_once "../includes/functions.inc.php";
+            $courseIdNr = $_GET['courseid'];
+            /* Abmeldebutton wird hinzugefügt, falls Kurs existiert (also in der SQL-Tabelle "courses" */
+            echo '<div class="abmeldeClass">
+                    <form action="../includes/delisting.inc.php?userid=' . $_SESSION['usersID'] . '&courseid=' . $courseIdNr . '"' . 'method="post">
+                    <button type="submit" id="abmelde_button"><img src="/img/64px_exit.png" alt="abmelden" style="height: 50px;"></button>
+                    <label for="abmelde_Checkbox"></label>
+                    </form>  
+                  </div>';
 
                 getExistingCourseInfo($courseIdNr);
             }
@@ -182,8 +183,8 @@ include_once "../header.php";
 
             <script src="../KursseiteEdit.js"></script>
 
-            
-            
+
+
            <!--  <script>
                 var count = 0;
                 let contentArray = [];
